@@ -53,13 +53,17 @@ git commit -S -m "My signed commit message"
 
 ![image](https://github.com/user-attachments/assets/eac4736e-4d35-4dba-ab57-4a1dfe3c5623)
 
-  
 ## Задача 2: Стратегии слияния в Git
 
 1. **Изучить стратегии слияния:**
 
 Краткое описание располагается в следующем файле submission1.md.
 
+2. **Измените настройки репозитория**:
+
+Отключение сквош и повторное объединение в разделе "Параметры" репозитория на GitHub
+
+![image](https://github.com/user-attachments/assets/cdc1cce3-65f5-4f06-aca3-695d68a40cb2)
 
 ## Информация об авторе
 
