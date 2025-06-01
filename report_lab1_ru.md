@@ -39,7 +39,7 @@ git clone git@github.com:Kulikova-A18/Sum25-intro-labs.git
 vboxuser@xubu:~/Sum25-intro-labs$ git config --global user.signingkey "ssh-ed25519 ********* vboxuser@xubu"
 vboxuser@xubu:~/Sum25-intro-labs$ git config --global commit.gpgSign true
 vboxuser@xubu:~/Sum25-intro-labs$ git config --global gpg.format ssh
-
+```
 
 3. **Создать подписанный коммит**:
 
@@ -47,7 +47,12 @@ vboxuser@xubu:~/Sum25-intro-labs$ git config --global gpg.format ssh
 git commit -S -m "My signed commit message"
 ```
 
-   - Нажмите на фиксацию с помощью вашего файла submission1.md.
+![image](https://github.com/user-attachments/assets/089c70ab-6e3f-4ca8-89b3-412da15d7497)
+
+Проверка
+
+![image](https://github.com/user-attachments/assets/eac4736e-4d35-4dba-ab57-4a1dfe3c5623)
+
   
 ## Задача 2: Стратегии слияния в Git
 
