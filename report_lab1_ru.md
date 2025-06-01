@@ -22,6 +22,16 @@ ssh-keygen -t ed25519
 
 ![image](https://github.com/user-attachments/assets/dd9fef10-2d4d-4360-80b0-6905c3eeb25f)
 
+Теперь дальнешее выполнение будет происходить с помощью локального изменения с commit в git
+
+Была выполнена команда по клонированию репозитария с помощью команды
+
+```
+git clone git@github.com:Kulikova-A18/Sum25-intro-labs.git
+```
+
+![image](https://github.com/user-attachments/assets/ee1cbf6a-73a3-4b25-a218-74b75c2fdcef)
+
 
    - Настройте Git так, чтобы он использовал ваш новый SSH-ключ для подписи коммитов.
 
