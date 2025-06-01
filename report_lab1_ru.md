@@ -33,20 +33,19 @@ git clone git@github.com:Kulikova-A18/Sum25-intro-labs.git
 ![image](https://github.com/user-attachments/assets/ee1cbf6a-73a3-4b25-a218-74b75c2fdcef)
 
 
-   - Настройте Git так, чтобы он использовал ваш новый SSH-ключ для подписи коммитов.
+Была выполнена команда, чтобы git использовал SSH-ключ для подписи коммитов (SSH-ключ заменен на *****)
 
-      ```sh
-     git config --global user.signingkey <YOUR_SSH_KEY>
-     git config --global commit.gpgSign true
-     git config --global gpg.format ssh
-     ```
+```
+vboxuser@xubu:~/Sum25-intro-labs$ git config --global user.signingkey "ssh-ed25519 ********* vboxuser@xubu"
+vboxuser@xubu:~/Sum25-intro-labs$ git config --global commit.gpgSign true
+vboxuser@xubu:~/Sum25-intro-labs$ git config --global gpg.format ssh
 
-4. **Создать подписанный коммит**:
-   - Создать и подписать коммит.
 
-     ```sh
-     git commit -S -m "Your signed commit message"
-     ```
+3. **Создать подписанный коммит**:
+
+```
+git commit -S -m "My signed commit message"
+```
 
    - Нажмите на фиксацию с помощью вашего файла submission1.md.
   
