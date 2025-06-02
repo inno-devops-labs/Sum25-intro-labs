@@ -6,16 +6,20 @@ Welcome to the DevOps Introduction Course, where you will gain a solid foundatio
 
 In this course, we will cover the following topics:
 
-1. Introduction to DevOps: Understand the core principles and concepts of DevOps.
-2. Tooling: Explore the essential tools used in the DevOps ecosystem.
-3. Version Control: Learn about version control systems and their importance in collaborative software development.
-4. Software Distribution: Gain insights into software distribution strategies and best practices.
-5. GitOps & SRE: Discover the principles of GitOps and Site Reliability Engineering (SRE).
-6. Operating Systems & Networking: Get familiar with operating systems and networking fundamentals in a DevOps context.
-7. Virtualization: Understand the concepts and benefits of virtualization in modern IT infrastructures.
-8. Containers: Dive into containerization technologies like Docker and container orchestration with Kubernetes.
-9. CI/CD: Explore continuous integration and continuous deployment practices.
-10. Cloud Computing: Learn about cloud platforms and their integration with DevOps workflows.
+1. Introduction to DevOps: Understand the core principles, essential tools and concepts of DevOps.
+2. Version Control: Learn about version control systems and their importance in collaborative software development. Tooling: Explore the  used in the DevOps ecosystem.
+3. Networking & OS for DevOps: IP, DNS, firewalls, Linux fundamentals (shell, systemd, logs, users), permissions, basic troubleshooting, DevOps-friendly distros.
+4. Virtualization: Understand the concepts and benefits of virtualization in modern IT infrastructures.
+5. Containers: Dive into containerization technologies like Docker and container orchestration with Kubernetes.
+6. CI/CD: Explore continuous integration and continuous deployment practices.
+7. Software Distribution: Gain insights into software distribution strategies and best practices.
+8. GitOps & Progressive Delivery: Git as the source of truth, FluxCD, Argo CD. Canary deployments, blue/green, feature flags, and rollbacks.
+9. Site Reliability Engineering (SRE) & Resilience: SLOs, SLAs, SLIs, error budgets, incident management, chaos engineering (ChaosMesh, Litmus), and postmortems.
+10. Security in DevOps (DevSecOps): Shift-left security, SAST/DAST, SBOM, container/image scanning (Trivy, Snyk), secret management (Vault, Doppler, SOPS).
+11. Monitoring, Observability & Logging: Concepts of observability vs monitoring, metrics/logs/traces. Tools: Prometheus, Grafana, Loki, ELK stack, OpenTelemetry.
+12. Infrastructure as Code (IaC): Automating infrastructure with Terraform, Pulumi, AWS CDK. Immutable infrastructure, state management, modularization.
+13. Configuration Management: Tools like Ansible, Chef, Puppet. Declarative vs procedural, idempotency, real-world examples.
+14. Cloud Fundamentals: AWS, Azure, GCP basics. IaaS, PaaS, SaaS. Regions/zones, pricing, basic services (EC2, S3, IAM, VPC). Cloud-native patterns.
 
 ## Lab Instructions and Grading
 
