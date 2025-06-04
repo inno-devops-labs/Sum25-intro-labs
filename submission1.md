@@ -14,5 +14,18 @@ Signed commits build trust in teams and opensource projects -- because you can e
 
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB67Ef.../QMwAzZpGnN.../TR... decter49pro@gmail.com
 
+didnt work for the 1st commit, so I'm trying again
+
+tried adding the gpg allowed signers:
+
+mkdir -p ~/.gnupg
+touch ~/.gnupg/allowed_signers
+chmod 600 ~/.gnupg/allowed_signers
+
+git config --global gpg.format ssh
+git config --global user.signingkey /home/al1ych/.ssh/id_ed25519.pub
+git config --global gpg.ssh.allowedSignersFile ~/.gnupg/allowed_signers
+git config --global commit.gpgSign true
+
 
 # Task 2 -- merge strategies
