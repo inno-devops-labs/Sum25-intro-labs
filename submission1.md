@@ -10,7 +10,7 @@ Comparison of Merge Strategies
 
 Standard Merge: Combines two branches by creating a merge commit, preserving the history of both. Pros: Maintains complete history, ideal for traceability in collaborative projects. Cons: Can result in a cluttered history with many merge commits.
 
-Squash and Merge: Combines all commits from a feature branch into a single commit before merging. Pros: Produces a cleaner history. Cons: Loses individual commit details, which can complicate debugging.
+Squash and Merge: Combines all commits from a feature branch into a single commit before merging. Pros: Produces a cleaner history. Cons: Loses individual commit details, which can complicate debugging..
 
 Rebase and Merge: Reapplies feature branch commits onto the base branch, creating a linear history. Pros: Clean, linear history. Cons: Rewrites history, which can cause conflicts in collaborative settings.
 
