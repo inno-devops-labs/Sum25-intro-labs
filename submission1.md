@@ -29,7 +29,7 @@ git config --global commit.gpgSign true
 
 still didnt work
 
-test
+test123
 
 
 # Task 2 -- merge strategies
