@@ -12,25 +12,52 @@ Signed commits build trust in teams and opensource projects -- because you can e
 
 ## 2 Set up SSH Commit signing
 
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB67Ef.../QMwAzZpGnN.../TR... decter49pro@gmail.com
+pubkey: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB67Ef.../QMwAzZpGnN.../TR... decter49pro@gmail.com`
 
-didnt work for the 1st commit, so I'm trying again
+Didn't work for the 1st commit, so I'm trying again.
 
-tried adding the gpg allowed signers:
+Then i realized that the SSH key i provided on GH was actually for auth, not signing :>
 
-mkdir -p ~/.gnupg
-touch ~/.gnupg/allowed_signers
-chmod 600 ~/.gnupg/allowed_signers
-
-git config --global gpg.format ssh
-git config --global user.signingkey /Users/aladdinych/.ssh/id_ed25519.pub
-git config --global gpg.ssh.allowedSignersFile ~/.gnupg/allowed_signers
-git config --global commit.gpgSign true
-
-still didnt work
-
-фыв
-test123
-asdfasd
+![alt text](image.png)
 
 # Task 2 -- merge strategies
+
+## 1 Research Merge Strategies
+
+Standard merge keeps all individual commits and adds a merge commit—this is great for preserving history and seeing exactly when branches combined.
+
+Squash-and-merge smooshes all feature-branch commits into one single commit on the main branch, makes the log cleaner but loses the details, the commit history.
+
+\+ if you need to revert just the merge, you can do that easily with a single command.
+
+\+ merge commit shows exactly when branches joined.
+
+\- extra Merge branch.. noise in the log.
+
+\- if you merge a feature that turned out to be problematic, you've still brought in every little intermediate commit.
+
+Rebase-and-merge puts in the original order each commit onto the top of the branch you're merging into without a merge commit, giving you a linear history but rewriting the branch's history in the process, which can confuse teammates.
+
+\+ Collapses all feature commits into one, making the main branch history clean.
+
+\+ Lets you write a single summary message for the entire feature.
+
+\- Loses details of the history.
+
+\- Harder to trace exactly how a specific bug was fixed inside the feature.
+
+I would say, most teams prefer standard merge because it's safe, shows full context and avoids rewriting history. But I've also seen squash-and-merge strategy used extensively. Depends on the team's preference.
+
+\+ Produces a straight-line history without merge commits.
+
+\+ Keeps individual commits, so you still see each change.
+
+\+ If you rebase often, conflicts happen incrementally rather than all at once.
+
+\- Rewrites branch history, confuses teammates who have the old branch.
+
+\- Anyone who already pulled the feature branch has to force-pull or rebase themselves, they risk losing the work they've done.
+
+## 2 Modify Repository Settings
+
+![alt text](image-1.png)
