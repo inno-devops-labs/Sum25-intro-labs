@@ -1,0 +1,9 @@
+default: true
+MD013: false
+MD033: false
+MD041:
+  level: 1
+MD007:
+  indent: 2
+MD029:
+  style: ordered
