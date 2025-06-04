@@ -28,7 +28,7 @@ git config --global gpg.ssh.allowedSignersFile ~/.gnupg/allowed_signers
 git config --global commit.gpgSign true
 
 still didnt work
-
+фыв
 test123
 asdfasd
 
