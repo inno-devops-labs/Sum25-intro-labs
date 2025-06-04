@@ -23,9 +23,12 @@ touch ~/.gnupg/allowed_signers
 chmod 600 ~/.gnupg/allowed_signers
 
 git config --global gpg.format ssh
-git config --global user.signingkey /home/al1ych/.ssh/id_ed25519.pub
+git config --global user.signingkey /Users/aladdinych/.ssh/id_ed25519.pub
 git config --global gpg.ssh.allowedSignersFile ~/.gnupg/allowed_signers
 git config --global commit.gpgSign true
+
+still didnt work
+
 
 
 # Task 2 -- merge strategies
