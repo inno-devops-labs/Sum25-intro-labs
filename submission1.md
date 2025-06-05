@@ -4,3 +4,6 @@ The very heart of the practice of signing commits with SSH or GPG keys is an ass
 
 # Merge Strategies in Git
 The classic merge strategy preserves a complete commit history by creating a merge commit. This is the ideal one in collaborative settings because it does maintain traceability and context. Squash and merge simplifies the history by reducing feature branch commits into one, yet that granularity of each step disappears, making debugging a little more difficult at times. Rebase and merge achieves a linear history by effectively reapplying my commits on top of the target branch. And it does pose that risk of rewriting public history causing conflicts for other collaborators. Standard merges are generally preferred in a team setting as it presents a clear record of branch integration without rewriting history and hence providing transparency and auditability for the ease of others.
+
+![alt text](image.png)
+![alt text](image-1.png)
