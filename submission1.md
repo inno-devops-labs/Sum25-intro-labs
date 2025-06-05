@@ -20,7 +20,8 @@
         `git add . && git commit -S -m "Demonstrate SSH signed commit"`
     *   Finally, the signed commit was pushed to the remote repository:
         `git push origin master`
-    * fix with signed key
+    * Outcome: The commit appeared as "Verified" on GitHub.
+![alt text](image-1.png)
 
 ## Task 2: Merge Strategies
 
@@ -40,5 +41,8 @@
         This strategy rewrites the feature branch's history by replaying its commits one by one on top of the latest commit of the target branch. This creates a linear history, making it appear as though the feature was developed sequentially on the target branch.
         *   **Advantages:** Produces a very clean, straight-line project history, which can be easier to follow. It's often preferred in workflows like trunk-based development.
         *   **Disadvantages:** History rewriting can be risky, especially for branches shared with others, as it changes commit IDs and can lead to confusion. If the original commits were signed, those specific signatures are lost as new commits are created (though the new rebased commits can be signed). Resolving merge conflicts can be more tedious, as conflicts might need to be addressed for each commit being rebased rather than once for the entire merge.
-
+    * Repository Settings Modification:
+    
+    The repository settings on GitHub were adjusted to permit only the standard "merge commit" strategy for pull requests. Squash merging and rebase merging options were disabled.
+![alt text](image-2.png)
 
