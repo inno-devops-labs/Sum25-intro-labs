@@ -68,10 +68,10 @@ feature:    \---D---E (unchanged)
 
 To enforce standard merge only:
 
-- [ ] Go to repository Settings → Pull Requests
-- [ ] ✅ Allow merge commits
-- [ ] ❌ Allow squash merging
-- [ ] ❌ Allow rebase merging
+- [X] Go to repository Settings → Pull Requests
+- [X] ✅ Allow merge commits
+- [X] ❌ Allow squash merging
+- [X] ❌ Allow rebase merging
 
 ## Pro Tips
 
