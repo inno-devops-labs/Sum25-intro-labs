@@ -20,6 +20,7 @@
         `git add . && git commit -S -m "Demonstrate SSH signed commit"`
     *   Finally, the signed commit was pushed to the remote repository:
         `git push origin master`
+    * fix with signed key
 
 ## Task 2: Merge Strategies
 
