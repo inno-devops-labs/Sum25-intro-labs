@@ -91,3 +91,110 @@ danilandreev@Danils-MacBook-Air ms24-sum25-devops % git cat-file -p c15ebc8e860f
 - **Trees** represent directory content and structure by referencing blobs and other trees.
 
 - **Commits** represent a repository snapshot at a specific point of time. They reference a single tree object that represents the whole repository, parent commit, and other metadata.
+
+## Task 2: Practice with Git Reset Command
+
+### Commands
+
+Switch to new branch:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git switch -c git-reset-practice
+Switched to a new branch 'git-reset-practice'
+```
+
+Create mock commits:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % echo "First commit" > file.txt
+git add file.txt
+git commit -m "First commit"
+[git-reset-practice 74e34d1] First commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.txt
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % echo "Second commit" >> file.txt
+git add file.txt
+git commit -m "Second commit"
+[git-reset-practice 5df285d] Second commit
+ 1 file changed, 1 insertion(+)
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % echo "Third commit" >> file.txt
+git add file.txt
+git commit -m "Third commit"
+[git-reset-practice e36a07d] Third commit
+ 1 file changed, 1 insertion(+)
+```
+
+Perform soft reset to previous commit, then check commit history and working directory:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git reset --soft HEAD~1
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git log --oneline -n 2 
+5df285d (HEAD -> git-reset-practice) Second commit
+74e34d1 First commit
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git status             
+On branch git-reset-practice
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file.txt
+```
+
+Perform hard reset to the previous commit, then check commit history and working directory:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git reset --hard HEAD~1
+HEAD is now at 74e34d1 First commit
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git log --oneline -n 1 
+74e34d1 (HEAD -> git-reset-practice) First commit
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git status             
+On branch git-reset-practice
+nothing to commit, working tree clean
+```
+
+Check reflog and undo resets:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git reflog
+74e34d1 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+5df285d HEAD@{1}: reset: moving to HEAD~1
+e36a07d HEAD@{2}: commit: Third commit
+5df285d HEAD@{3}: commit: Second commit
+74e34d1 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit
+f1f79b6 (lab-02) HEAD@{5}: checkout: moving from lab-02 to git-reset-practice
+f1f79b6 (lab-02) HEAD@{6}: commit: lab2 add task1
+4db366c HEAD@{7}: reset: moving to HEAD~
+625f79d HEAD@{8}: commit: lab2 update submission
+4db366c HEAD@{9}: commit: lab2 add submission file
+3dd1718 (upstream/master, master) HEAD@{10}: rebase (finish): returning to refs/heads/lab-02
+3dd1718 (upstream/master, master) HEAD@{11}: rebase (start): checkout master
+0fea98c (origin/master, origin/HEAD) HEAD@{12}: checkout: moving from master to lab-02
+3dd1718 (upstream/master, master) HEAD@{13}: pull upstream master: Fast-forward
+0fea98c (origin/master, origin/HEAD) HEAD@{14}: checkout: moving from lab-02 to master
+0fea98c (origin/master, origin/HEAD) HEAD@{15}: reset: moving to HEAD
+0fea98c (origin/master, origin/HEAD) HEAD@{16}: reset: moving to HEAD~
+f62eac4 HEAD@{17}: commit: lab2 add submission file
+0fea98c (origin/master, origin/HEAD) HEAD@{18}: reset: moving to head~
+8138b40 HEAD@{19}: commit: lab2 add submission file
+0fea98c (origin/master, origin/HEAD) HEAD@{20}: checkout: moving from master to lab-02
+0fea98c (origin/master, origin/HEAD) HEAD@{21}: checkout: moving from lab-01 to master
+5a19fb3 (origin/lab-01, lab-01) HEAD@{22}: commit: lab1 add task2
+81dde98 HEAD@{23}: commit: lab1 add task1
+0fea98c (origin/master, origin/HEAD) HEAD@{24}: reset: moving to HEAD~
+f7a4a02 HEAD@{25}: commit: add task 1 solution
+0fea98c (origin/master, origin/HEAD) HEAD@{26}: checkout: moving from master to lab-01
+0fea98c (origin/master, origin/HEAD) HEAD@{27}: clone: from https://github.com/FleshRazer/ms24-sum25-devops.git
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git reset --hard e36a07d
+HEAD is now at e36a07d Third commit
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git log --oneline -n 3        
+e36a07d (HEAD -> git-reset-practice) Third commit
+5df285d Second commit
+74e34d1 First commit
+```
+
+### Summary
+
+1. We did soft reset to the previous commit on the branch. This updated HEAD pointer, but kept working directory and staging area as is.
+2. We did hard reset to the previous commit on the branch. This updated HEAD pointer, discarded staging area and updated working directory to match the previous commit.
+3. We checked the reflog to find the hash of the third commit, and restored everything by resetting head to that commit.
