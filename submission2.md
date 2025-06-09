@@ -352,3 +352,31 @@ lab1 Intro
 The visualization helps to understand the branches are connected with each other and which commit corresponds to what branch. It leads to better understanding of the workflow and project structure
 
 ## Task 4
+
+Tag names created: `v.1.0.0` and `v1.1.0`
+
+Commands used:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+git add .
+git commit -m "Update [submission2.md]"
+git push
+git tag v1.1.0
+git push origin v1.1.0
+```
+
+Commit hashes:
+
+```bash
+git rev-parse v1.0.0 // -> 695208a2f71e77c3e805f8436045e7cfd0458b18
+git rev-parse v1.1.0 // -> c649221911fba4eb4ebdd95ccc4c5f54a927c8c6
+```
+
+**Importance:**
+Tags provide clear milestones and help to better understand the workflow and its crucial points, as releases and different versions. It is quite important for both developers and users as simplify the user experience inside the project
+
+## Task 5: GitHub Social Interactions
+
+GitHub stars are useful as they provide the measure of credibility: the more stars the project has the more trustworthy it usually is
