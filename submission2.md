@@ -263,3 +263,92 @@ Date:   Thu May 29 20:48:58 2025 +0300
 
     Signed-off-by: Dmitriy Creed <creed@soramitsu.co.jp>
 ```
+
+## Task 3
+
+### Graph
+
+```bash
+git log --oneline --graph --all
+```
+
+returns the following graph
+
+```text
+* 695208a (HEAD -> lab2) Commit C
+* c9faf46 Commit B
+* 35df4d5 Commit A
+*   08b79ae (origin/lab2) Merge pull request #1 from dsomni/git-reset-practice
+|\
+| * 619df37 (origin/git-reset-practice, git-reset-practice) Final state
+| * b312eb3 Third commit
+| * 2ed777c Second commit
+| * 75d7a59 First commit
+|/
+* 1aab261 Add [task1] submission2.md
+* eb1f95a Add [commit generator] global
+* ea14b42 Add [nGAyV] random.txt
+* 45371d7 Add [tdbdg] random.txt
+* 3dd1718 (origin/master, origin/HEAD, master) lab2 Git
+| * a5c2392 (origin/lab1, lab1) Add [submission1.md] global
+|/
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+
+After branching:
+
+```text
+* 0301778 (side-branch) Side branch commit
+* 695208a (lab2) Commit C
+* c9faf46 Commit B
+* 35df4d5 Commit A
+*   08b79ae (origin/lab2) Merge pull request #1 from dsomni/git-reset-practice
+|\
+| * 619df37 (origin/git-reset-practice, git-reset-practice) Final state
+| * b312eb3 Third commit
+| * 2ed777c Second commit
+| * 75d7a59 First commit
+|/
+* 1aab261 Add [task1] submission2.md
+* eb1f95a Add [commit generator] global
+* ea14b42 Add [nGAyV] random.txt
+* 45371d7 Add [tdbdg] random.txt
+* 3dd1718 (HEAD -> master, origin/master, origin/HEAD) lab2 Git
+| * a5c2392 (origin/lab1, lab1) Add [submission1.md] global
+|/
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+
+### Commit messages
+
+```bash
+git log --pretty=format:"%s"
+```
+
+results in
+
+```text
+Commit C
+Commit B
+Commit A
+Merge pull request #1 from dsomni/git-reset-practice
+Final state
+Third commit
+Second commit
+First commit
+Add [task1] submission2.md
+Add [commit generator] global
+Add [nGAyV] random.txt
+Add [tdbdg] random.txt
+lab2 Git
+lab2 Git
+lab1 Intro
+```
+
+### Reflection
+
+The visualization helps to understand the branches are connected with each other and which commit corresponds to what branch. It leads to better understanding of the workflow and project structure
+
+## Task 4
