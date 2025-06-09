@@ -170,3 +170,86 @@ commit c2961c57b01af51538bb5aa560f3ab40a1b4bdaa
 Author: adbedlam <nyaneev@yandex.ru>
 Date:   Mon Jun 9 20:32:31 2025 +0300
 ```
+
+### TASK 3
+
+1. 
+```
+echo "Commit A" > history.txt
+git add history.txt
+
+```
+
+```
+echo "Commit B" >> history.txt
+git add history.txt
+git commit -m "Commit B"
+```
+
+```
+echo "Commit C" >> history.txt
+git add history.txt
+git commit -m "Commit C"
+```
+
+2. `git log --oneline --graph --all`
+
+```
+* 668f421 (HEAD -> git-reset-practice) Commit C
+* a0bb5fc Commit B
+* e7e8865 Commit A
+* 50053f2 (origin/git-reset-practice) Add task2
+* 08c6ef3 First commit
+* 3be9ee4 rem
+* cc98465 Second commit
+* c2961c5 First commit
+* f841697 small fixes
+* c02f6fd add task1
+* fab1b52 First commit
+* 3594ebf add commit
+* ab0afaa new commit
+* 6366a50 (origin/lab2) add submission.md
+*   7b48717 (origin/master, origin/HEAD, master) Merge branch 'master' of https://github.com/adbedlam/Sum25-intro-labs
+|\
+| *   7fae309 Merge branch 'inno-devops-labs:master' into master
+| |\
+| | * 0fea98c lab2 Git
+* | | d2f04b4 Add task 2
+|/ /
+:
+
+```
+
+```
+* ac318bd (HEAD -> side-branch) Side branch commit
+* 668f421 (git-reset-practice) Commit C
+* a0bb5fc Commit B
+* e7e8865 Commit A
+* 50053f2 (origin/git-reset-practice) Add task2
+* 08c6ef3 First commit
+* 3be9ee4 rem
+* cc98465 Second commit
+* c2961c5 First commit
+* f841697 small fixes
+* c02f6fd add task1
+* fab1b52 First commit
+* 3594ebf add commit
+* ab0afaa new commit
+* 6366a50 (origin/lab2) add submission.md
+*   7b48717 (origin/master, origin/HEAD, master) Merge branch 'master' of https://github.com/adbedlam/Sum25-intro-labs
+|\
+| *   7fae309 Merge branch 'inno-devops-labs:master' into master
+| |\
+| | * 0fea98c lab2 Git
+* | | d2f04b4 Add task 2
+|/ /
+* / 41a2e59 Signed commit
+|/
+* a107866 lab1 Intro
+
+```
+
+With this view, you can intuitively understand the structure of each branch and its committees.
+
+
+### TASK 4
