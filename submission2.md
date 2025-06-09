@@ -253,3 +253,42 @@ With this view, you can intuitively understand the structure of each branch and 
 
 
 ### TASK 4
+
+1. `git tag v1.0.0`
+
+2. `git push origin v1.0.0`
+```
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 1.13 KiB | 1.13 MiB/s, done.
+Total 9 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 1 local object.
+To https://github.com/adbedlam/Sum25-intro-labs.git
+ * [new tag]         v1.0.0 -> v1.0.0
+```
+
+3. `git tag v1.1.0` with new commit
+
+4. ` git push origin v1.1.0`
+```
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.10 KiB | 1.10 MiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/adbedlam/Sum25-intro-labs.git
+ * [new tag]         v1.1.0 -> v1.1.0
+ ```
+
+
+*Commit hashes:*
+- 2640273959e2b8198f9cbbec3cf5b608f3531774
+
+- 668f4210c73ba06c21b8eaf9f8337e837a299541
+
+
+ Tagging in software development provides clear milestones for versioning, triggers automated CI/CD pipelines, and simplifies release notes by marking specific points in the codebase (e.g., commits, builds, or releases).
