@@ -198,3 +198,83 @@ e36a07d (HEAD -> git-reset-practice) Third commit
 1. We did soft reset to the previous commit on the branch. This updated HEAD pointer, but kept working directory and staging area as is.
 2. We did hard reset to the previous commit on the branch. This updated HEAD pointer, discarded staging area and updated working directory to match the previous commit.
 3. We checked the reflog to find the hash of the third commit, and restored everything by resetting head to that commit.
+
+## Task 3: Visualizing Git Commit History
+
+Commit graph:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git log --oneline --graph --all
+* 3971236 (side-branch) Side branch commit
+* 0f8efb3 (lab-02) Commit C
+* 05bec13 Commit B
+* a4b96e0 Commit A
+* f542a10 lab2 add task2
+| * e36a07d (git-reset-practice) Third commit
+| * 5df285d Second commit
+| * 74e34d1 First commit
+|/  
+* f1f79b6 lab2 add task1
+* 4db366c lab2 add submission file
+* 3dd1718 (HEAD -> master, upstream/master) lab2 Git
+| * 5a19fb3 (origin/lab-01, lab-01) lab1 add task2
+| * 81dde98 lab1 add task1
+|/  
+* 0fea98c (origin/master, origin/HEAD) lab2 Git
+* a107866 lab1 Intro
+```
+
+List of commit messages:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git log --oneline --all
+3971236 (side-branch) Side branch commit
+0f8efb3 (lab-02) Commit C
+05bec13 Commit B
+a4b96e0 Commit A
+f542a10 lab2 add task2
+e36a07d (git-reset-practice) Third commit
+5df285d Second commit
+74e34d1 First commit
+f1f79b6 lab2 add task1
+4db366c lab2 add submission file
+3dd1718 (HEAD -> master, upstream/master) lab2 Git
+5a19fb3 (origin/lab-01, lab-01) lab1 add task2
+81dde98 lab1 add task1
+0fea98c (origin/master, origin/HEAD) lab2 Git
+a107866 lab1 Intro
+```
+
+Graph visualization helps to see how branches diverge, track contributions, and resolve conflicts.
+
+## Task 4: Tagging a Commit
+
+### Commands
+
+Create and push new tag:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git tag v1.0.0
+
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git push origin v1.0.0 
+Enumerating objects: 22, done.
+Counting objects: 100% (22/22), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (21/21), 4.55 KiB | 4.55 MiB/s, done.
+Total 21 (delta 9), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (9/9), done.
+To https://github.com/FleshRazer/ms24-sum25-devops.git
+ * [new tag]         v1.0.0 -> v1.0.0
+```
+
+Check tagged commit hash:
+```
+danilandreev@Danils-MacBook-Air ms24-sum25-devops % git log -n 1  
+commit 0f8efb36a3db35b48990692fd2e365f1293193d1 (HEAD -> lab-02, tag: v1.0.0)
+Author: Danil Andreev <61481131+FleshRazer@users.noreply.github.com>
+Date:   Sun Jun 8 14:05:22 2025 +0300
+
+    Commit C
+```
+
+### Summary
+
+Tagging helps mark important versions so teams can track releases, automate testing/deployment, and keep release notes organized.
