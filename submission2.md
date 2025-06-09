@@ -65,4 +65,108 @@ add commit
 
 ### TASK 2
 
+1. `git checkout -b git-reset-practice`
 
+2. 
+```
+echo "First commit" > file.txt
+git add file.txt
+git commit -m "First commit"
+```
+Content of filt.txt:
+
+```
+First commit
+
+```
+
+```
+echo "Second commit" >> file.txt
+git add file.txt
+git commit -m "Second commit"
+```
+
+Content after the second commit
+```
+First commit
+Second commit
+```
+
+
+```
+echo "Third commit" >> file.txt
+git add file.txt
+git commit -m "Third commit"
+
+```
+
+Content after the third commit
+
+```
+First commit
+Second commit
+Third commit
+```
+
+3. After `git reset --soft HEAD~1`
+We stage the last commit, just canceled last command `git commit`
+
+4. If we use `git reset --hard HEAD~1` it's delete last commit and all stages files
+
+5. `git reflog`
+
+```
+08c6ef3 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+912d668 HEAD@{1}: reset: moving to HEAD~1
+1c4857e HEAD@{2}: commit: Third commit
+912d668 HEAD@{3}: commit: Second commit
+08c6ef3 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit
+```
+
+6. `git log`
+
+```
+commit 08c6ef311ec78eaaf1c7f87028c1869d2a335615 (HEAD -> git-reset-practice)
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:41:16 2025 +0300
+
+    First commit
+
+commit 3be9ee457a039d5b19638eb2e07c3a597b264810
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:40:52 2025 +0300
+
+    rem
+
+commit cc98465c65e6db52348917688a8b3575db98b8e0 (origin/git-reset-practice)
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:32:52 2025 +0300
+
+    Second commit
+
+commit c2961c57b01af51538bb5aa560f3ab40a1b4bdaa
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:32:31 2025 +0300
+:
+commit 08c6ef311ec78eaaf1c7f87028c1869d2a335615 (HEAD -> git-reset-practice)
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:41:16 2025 +0300
+
+    First commit
+
+commit 3be9ee457a039d5b19638eb2e07c3a597b264810
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:40:52 2025 +0300
+
+    rem
+
+commit cc98465c65e6db52348917688a8b3575db98b8e0 (origin/git-reset-practice)
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:32:52 2025 +0300
+
+    Second commit
+
+commit c2961c57b01af51538bb5aa560f3ab40a1b4bdaa
+Author: adbedlam <nyaneev@yandex.ru>
+Date:   Mon Jun 9 20:32:31 2025 +0300
+```
