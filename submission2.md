@@ -123,3 +123,143 @@ Therefore, a **commit** contains the metadata about the snapshot:
 - commit message
 
 ## Task 2
+
+### Soft reset
+
+```bash
+git reset --soft HEAD~1
+```
+
+This command reverts the last commit and unstage changes made in it.
+So now there are only "First commit" and "Second commit" in tree, and staged `file.txt`.
+
+### Hard reset
+
+```bash
+git reset --hard HEAD~1
+```
+
+This command reverts the last commit and clear all staged changes. So now there are only "First commit" in tree, and nothing is staged.
+
+### Recovering
+
+```bash
+git reflog
+```
+
+returns
+
+```text
+ca6d247 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+b9c340a HEAD@{1}: reset: moving to HEAD~1
+befd019 HEAD@{2}: commit: Third commit
+b9c340a HEAD@{3}: commit: Second commit
+ca6d247 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{5}: reset: moving to HEAD~1
+b4df42d HEAD@{6}: reset: moving to HEAD~1
+c98e2bb HEAD@{7}: reset: moving to HEAD~1
+c478519 HEAD@{8}: reset: moving to HEAD
+c478519 HEAD@{9}: reset: moving to HEAD
+c478519 HEAD@{10}: reset: moving to HEAD
+c478519 HEAD@{11}: reset: moving to HEAD
+c478519 HEAD@{12}: reset: moving to HEAD
+c478519 HEAD@{13}: commit: Third commit
+c98e2bb HEAD@{14}: commit: Second commit
+b4df42d HEAD@{15}: commit: First commit
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{16}: checkout: moving from lab2 to git-reset-practice
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{17}: checkout: moving from git-reset-practice to lab2
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{18}: checkout: moving from lab2 to git-reset-practice
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{19}: checkout: moving from git-reset-practice to lab2
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{20}: checkout: moving from lab2 to git-reset-practice
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{21}: checkout: moving from git-reset-practice to lab2
+b312eb3 HEAD@{22}: reset: moving to HEAD
+b312eb3 HEAD@{23}: reset: moving to HEAD
+b312eb3 HEAD@{24}: commit: Third commit
+2ed777c HEAD@{25}: commit: Second commit
+75d7a59 HEAD@{26}: commit: First commit
+1aab261 (origin/lab2, origin/git-reset-practice, lab2) HEAD@{27}: checkout: moving from lab2 to git-reset-practice
+```
+
+which is history of changes in tree.
+
+```bash
+git reset --hard b312eb3
+```
+
+Recovers state after the "Third commit". Now all the commits are in tree and nothing is staged.
+
+### Log
+
+```bash
+git log
+```
+
+returns
+
+```text
+commit b312eb393ea5cc732822484826eeaf539d649770 (HEAD -> git-reset-practice)
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:28:59 2025 +0300
+
+    Third commit
+
+commit 2ed777c45b087e0c96bbde9501fc843494a65411
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:28:59 2025 +0300
+
+    Second commit
+
+commit 75d7a59268634eb08112ca81d04a9bbdabb3a58f
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:28:59 2025 +0300
+
+    First commit
+
+commit 1aab26173ef43ca2c247a7fa57e764819337eb86 (origin/lab2, origin/git-reset-practice, lab2)
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:27:52 2025 +0300
+
+    Add [task1] submission2.md
+
+commit eb1f95a74781f346e337a0f40cec80693bfafca6
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:03:03 2025 +0300
+
+    Add [commit generator] global
+
+commit ea14b4250de45d7e5320338e2bef7877c769d23b
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:02:28 2025 +0300
+
+    Add [nGAyV] random.txt
+
+commit 45371d783799ba13a5572238c5f83f60c12efc32
+Author: dsomni <pro100pro10010@gmail.com>
+Date:   Mon Jun 9 20:02:28 2025 +0300
+
+    Add [tdbdg] random.txt
+
+commit 3dd1718fc2372ae838773f8f780807faa26995bd (origin/master, origin/HEAD, master)
+Author: Dmitriy Creed <creed@soramitsu.co.jp>
+Date:   Thu Jun 5 17:49:49 2025 +0300
+
+    lab2 Git
+
+    Signed-off-by: Dmitriy Creed <creed@soramitsu.co.jp>
+
+commit 0fea98cc519f60820f4c54f514b1596d5bf145b5
+Author: Dmitriy Creed <creed@soramitsu.co.jp>
+Date:   Sun Jun 1 22:25:33 2025 +0300
+
+    lab2 Git
+
+    Signed-off-by: Dmitriy Creed <creed@soramitsu.co.jp>
+
+commit a107866e91af12c22ef78d4c7ad53ae39135ef43
+Author: Dmitriy Creed <creed@soramitsu.co.jp>
+Date:   Thu May 29 20:48:58 2025 +0300
+
+    lab1 Intro
+
+    Signed-off-by: Dmitriy Creed <creed@soramitsu.co.jp>
+```
