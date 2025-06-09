@@ -292,3 +292,11 @@ To https://github.com/adbedlam/Sum25-intro-labs.git
 
 
  Tagging in software development provides clear milestones for versioning, triggers automated CI/CD pipelines, and simplifies release notes by marking specific points in the codebase (e.g., commits, builds, or releases).
+
+
+ ### TASK 5: GitHub Social Interactions
+
+ Social features on GitHub like discussions, reactions collaboration by making communication transparent and engaging, which helps open-source communities and teams coordinate, share feedback, and build momentum around projects. They also encourage contributions by making interactions more accessible and inclusive.
+
+
+
