@@ -24,4 +24,8 @@ for ((i=1; i<=$1; i++)); do
     echo "Added and committed: $random_str"
 done
 
-echo "Done! $1 random strings added and committed."
+git push
+
+
+
+echo "Done! $1 random strings added, committed, and pushed."
