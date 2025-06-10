@@ -1,7 +1,7 @@
-##Task 1: Understanding Version Control Systems
+## Task 1: Understanding Version Control Systems
 
 
-###Get hash commit
+### Get hash commit
 ```sh
 PS D:\VScode> git log
 commit 3883d4c3f482a6793bb8d80305d16d663222917d (HEAD -> master, origin/master, origin/HEAD)
@@ -12,13 +12,13 @@ Date:   Tue Jun 3 02:45:02 2025 +0300
     Merge branch 'inno-devops-labs:master' into master
 ```
 
-###Get hash tree
+### Get hash tree
 ```sh
 PS D:\VScode> git cat-file -p 3883d4c3f482a6793bb8d80305d16d663222917d
 tree 4a6923bf81efde9cc0a11a4129cf47a64a1f298a
 ```
 
-###Get hash blob
+### Get hash blob
 ```sh
 PS D:\VScode> git cat-file -p 4a6923bf81efde9cc0a11a4129cf47a64a1f298a
 100644 blob af7fda8ea32b60578a1103ce061a50d7f6f09a35    README.md
@@ -27,7 +27,7 @@ PS D:\VScode> git cat-file -p 4a6923bf81efde9cc0a11a4129cf47a64a1f298a
 100644 blob abf2a48d82ce2c35574e70e2ed40fda2440fa7ab    submission1.md
 ```
 
-###Get blob
+### Get blob
 ```sh
 PS D:\VScode> git cat-file -p abf2a48d82ce2c35574e70e2ed40fda2440fa7ab
 
@@ -57,7 +57,7 @@ and the complete history helps with code reviews and project understanding.
 ```
 _________________________________________________________________________________________________________________________________________________________________________________________
 
-###Explanation:
+### Explanation:
 - Blob: Stores the actual file content.
 - Tree: Represents a directory and contains references to blobs and other trees (files and folders).
 - Commit: Points to a tree, stores metadata (author, message), and links to parent commits.
@@ -65,7 +65,7 @@ ________________________________________________________________________________
 
 
 
-##Task 2: Practice with Git Reset Command
+## Task 2: Practice with Git Reset Command
 
 ```sh
 PS D:\VScode> git checkout -b git-reset-practice
