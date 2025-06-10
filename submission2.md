@@ -1,6 +1,8 @@
-# Task 1: Understanding Version Control Systems
+# Lab 2 Turgunboev Dadakhon
 
-## Steps and Outputs
+## Task 1: Understanding Version Control Systems
+
+### Steps and Outputs
 
 - Created a test file `test_task1.txt` and made two commits:
 - First commit: "Add test file for Task 1" (hash: 9257cf6)
@@ -48,9 +50,9 @@
 
  Git stores data as a series of objects: commits (metadata), trees (directory structure), and blobs (file contents), all identified by unique SHA-1 hashess
 
-# Task 2: Practice with Git Reset Command
+## Task 2: Practice with Git Reset Command
 
-## Steps and outputs
+### Steps and outputs
 * Crated a series of commits:
      * First commit: 'First commit' (hash:e916d3)
      * Second commit: 'Second commit' (hash:61f27db)
@@ -63,11 +65,44 @@
      61f27db HEAD@{2}: commit: Second commit
      e91b6d3 HEAD@{3}: commit: First commit
 showed the history of HEAD movements, allowing recovery of the "Third commit" state by resetting to b4c9c04.
-
 * Used *git log *
      b4c9c04 (HEAD -> lab2) Third commit
      61f27db Second commit
      e91b6d3 First commit
 
-Conclusion
+**Conclusion**
 git reset --soft keeps changes in the staging area, git reset --hard discards them, and git reflog helps recover lost commits.
+
+## Task 3: Visualizing Git Commit History
+
+### Steps and Outputs
+
+* Created a series of commits on branch lab2:
+     * Commit A (hash: 34ffeb3)
+     * Commit B (hash: 8f8ff35)
+     * Commit C (hash: 5c7db52)
+
+* Created a new branch side-branch and made a commit:
+     * Side branch commit (1cc3d77)
+
+![alt text](image.png)
+* 5c7db52 (HEAD -> lab2) Commit C
+* 8f8ff35 Commit B
+* 34ffeb3 Commit A
+* 8d129c9 (origin/lab2) Update submission2.md with Task 2 steps
+* 9f44fad Update submission2.md with Task 2 steps
+* b4c9c04 Third commit
+* 61f27db Second commit
+* e91b6d3 First commit
+
+![alt text](image-1.png)
+* 1cc3d77 (side-branch) Side branch commit
+* 5c7db52 (HEAD -> lab2) Commit C
+* 8f8ff35 Commit B
+* 34ffeb3 Commit A
+* 8d129c9 (origin/lab2) Update submission2.md with Task 2 steps
+* 9f44fad Update submission2.md with Task 2 steps
+
+Reflection
+
+Visualizing the commit graph helps understand the branching structure and collaboration flow, making it easier to track contributions and resolve merge conflicts in team projects.
