@@ -103,6 +103,25 @@ git reset --soft keeps changes in the staging area, git reset --hard discards th
 * 8d129c9 (origin/lab2) Update submission2.md with Task 2 steps
 * 9f44fad Update submission2.md with Task 2 steps
 
-Reflection
+* List of Commit Messages
 
+     * Commit A
+     * Commit B
+     * Commit C
+     * Side branch commit
+
+Reflection
 Visualizing the commit graph helps understand the branching structure and collaboration flow, making it easier to track contributions and resolve merge conflicts in team projects.
+
+## Task 4: Tagging a Commit
+
+* Steps and Outputs
+     * Tagged the latest commit as v1.0.0:
+     Tag name: v1.0.0 Associated commit hash: b4c9c04
+* Created an additional commit and tagged as v1.1.0:
+     * Tag name: v1.1.0 Associated commit hash: 8d53549
+![alt text](image-2.png)
+v1.0.0
+v1.1.0
+Explanation
+Tagging is valuable in software development for versioning releases, triggering CI/CD pipelines, and maintaining clear release notes.
