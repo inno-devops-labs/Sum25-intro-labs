@@ -63,3 +63,23 @@ After finding a commit hash in a reflog, the state of the branch was reset to th
 
 # Task 4
 
+## Git tag name(s) created:
+
+v0.9.0 — commit with the third task
+v1.0.0 — current commit
+
+## Commands used:
+
+- git tag v0.9.0
+- git push origin v0.9.0
+- git log # to get the hash for the commit
+
+- <git add and git commit>
+- git tag v1.0.0
+- git push origin v1.0.0
+- git log # to get the hash for the commit
+
+## Commit hashes
+
+- 9f42659cb042e495fd39c241a63c2d77cddf930b
+- dunno yet, because this commit has not been committed yet :>
