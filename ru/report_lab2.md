@@ -1,4 +1,6 @@
-# Управление версиями
+# Отчет по выполнению "Лабораторная работа 2: Управление версиями"
+
+Вся документация была указана в "submission2.md" (https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/submission2.md)
 
 ## Задание 1: Понимание систем управления версиями
 
@@ -95,11 +97,6 @@ KZdHeHzsk/tCWpXC8Jye
 =mOXL
 -----END PGP SIGNATURE-----
 ```
-
-2.**Документация**:
-
-* Создайте файл "submission2.md`.
-* Предоставьте выходные данные и краткое объяснение того, что представляет собой каждый объект.
 
 ---
 
@@ -246,20 +243,7 @@ HEAD is now at b2ed6ed part report_lab1_ru.md
 vboxuser@xubu:~/Sum25-intro-labs$
 ```
 
-3.**Документация**:
-
-* Задокументируйте все шаги и отправьте конечное состояние на GitHub.
-* В поле "submission2.md` укажите:
-
-* Шаги, которые вы выполнили для каждой команды сброса.
-* Скриншоты или вывод кода из `git log` и `git reflog`.
-* Краткое объяснение того, что происходило на каждом шаге.
-
----
-
 ## Задача 3: Визуализация истории коммитов Git
-
-**Цель**: Используйте функции журнала Git для визуализации истории коммитов и ветвлений вашего проекта.
 
 1.**Создайте несколько коммитов**:
 
@@ -280,12 +264,134 @@ git commit -m "Commit C"
 
 ```
 
+результат
+
+```
+boxuser@xubu:~/Sum25-intro-labs$ echo "Commit A" > history.txt
+git add history.txt
+git commit -m "Commit A"
+
+echo "Commit B" >> history.txt
+git add history.txt
+git commit -m "Commit B"
+
+echo "Commit C" >> history.txt
+git add history.txt
+git commit -m "Commit C"
+[detached HEAD 5e20b78] Commit A
+ Committer: vboxuser <vboxuser@xubu.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 history.txt
+[detached HEAD 0b6f364] Commit B
+ Committer: vboxuser <vboxuser@xubu.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[detached HEAD 42eaf15] Commit C
+ Committer: vboxuser <vboxuser@xubu.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+vboxuser@xubu:~/Sum25-intro-labs$ git push 
+fatal: You are not currently on a branch.
+To push the history leading to the current (detached HEAD)
+state now, use
+
+    git push origin HEAD:<name-of-remote-branch>
+
+vboxuser@xubu:~/Sum25-intro-labs$ git push --set-upstream origin git-reset-practice
+Branch 'git-reset-practice' set up to track remote branch 'git-reset-practice' from 'origin'.
+Everything up-to-date
+vboxuser@xubu:~/Sum25-intro-labs$ 
+vboxuser@xubu:~/Sum25-intro-labs$ git push origin HEAD:git-reset-practice
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (12/12), 1.42 KiB | 1.42 MiB/s, done.
+Total 12 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (7/7), completed with 1 local object.
+To github.com:Kulikova-A18/Sum25-intro-labs.git
+   4081f85..c2e5d28  HEAD -> git-reset-practice
+
+```
+
+![image](https://github.com/user-attachments/assets/e094fc78-2429-4e98-96d1-9f41c5e8838e)
+
+
 2.**Изучите график фиксации**:
 
 * Запустите следующую команду, чтобы просмотреть простой график фиксации:
 
 ```
 git log --oneline --graph --all
+```
+
+результат:
+
+```
+vboxuser@xubu:~/Sum25-intro-labs$ git log --oneline --graph --all
+* c2e5d28 (HEAD, origin/git-reset-practice) Commit CC
+* 42eaf15 Commit C
+* 0b6f364 Commit B
+* 5e20b78 Commit A
+* 4081f85 (git-reset-practice) Third commit
+* 40b1144 Second commit
+* 0a0290a First commit
+| * 126abb1 (origin/master, origin/HEAD) Update report_lab2.md
+|/  
+* 429a2d4 (master) Update report_lab2.md
+* 80486de Update report_lab2.md
+* 5124489 Create report_lab2.md
+* 3b45527 Create report_lab2.md
+*   abeafaa Merge branch 'inno-devops-labs:master' into master
+|\  
+| * 3dd1718 lab2 Git
+| * 0fea98c lab2 Git
+* | ec7ac92 Delete lab1_ru.md
+* | 33113c8 Update and rename report_lab1_ru.md to report_lab1.md
+* | 87c87ad Create report_lab1.md
+* | 440a0c1 Create readme.md
+* | 5388aa8 Update report_lab1_ru.md
+* | 04f181b My second signed commit message
+* | 17ec118 generate new Update report_lab1_ru.md with screen
+* | 3698218 My signed commit message
+* | b2ed6ed part report_lab1_ru.md
+* | 52c064b part report
+* | 3ad91cf Create report_lab1_ru.md
+* | c93b5a6 Update lab1_ru.md
+* | 27ccd81 Create lab1_ru.md
+|/  
+* a107866 lab1 Intro
 ```
 
 3.**Необязательное ветвление**:
@@ -301,19 +407,68 @@ git checkout main
 git log --oneline --graph --all
 ```
 
-4.**Документация**:
+результат:
 
-* В поле "submission2.md` укажите:
+```
+vboxuser@xubu:~/Sum25-intro-labs$ git checkout -b side-branch
+echo "Branch commit" >> history.txt
+git add history.txt
+git commit -m "Side branch commit"
+git checkout main
+git log --oneline --graph --all
+Switched to a new branch 'side-branch'
+[side-branch 538c180] Side branch commit
+ Committer: vboxuser <vboxuser@xubu.myguest.virtualbox.org>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
 
-* Скопированный фрагмент графика фиксации или фрагмент скриншота.
-* Список сообщений о фиксации.
-* Краткое описание (1-2 предложения) того, как эта визуализация помогает понять взаимодействие и ветвление.
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
 
----
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+error: pathspec 'main' did not match any file(s) known to git
+* 538c180 (HEAD -> side-branch) Side branch commit
+* c2e5d28 (origin/git-reset-practice) Commit CC
+* 42eaf15 Commit C
+* 0b6f364 Commit B
+* 5e20b78 Commit A
+* 4081f85 (git-reset-practice) Third commit
+* 40b1144 Second commit
+* 0a0290a First commit
+| * 126abb1 (origin/master, origin/HEAD) Update report_lab2.md
+|/  
+* 429a2d4 (master) Update report_lab2.md
+* 80486de Update report_lab2.md
+* 5124489 Create report_lab2.md
+* 3b45527 Create report_lab2.md
+*   abeafaa Merge branch 'inno-devops-labs:master' into master
+|\  
+| * 3dd1718 lab2 Git
+| * 0fea98c lab2 Git
+* | ec7ac92 Delete lab1_ru.md
+* | 33113c8 Update and rename report_lab1_ru.md to report_lab1.md
+* | 87c87ad Create report_lab1.md
+* | 440a0c1 Create readme.md
+* | 5388aa8 Update report_lab1_ru.md
+* | 04f181b My second signed commit message
+* | 17ec118 generate new Update report_lab1_ru.md with screen
+* | 3698218 My signed commit message
+* | b2ed6ed part report_lab1_ru.md
+* | 52c064b part report
+* | 3ad91cf Create report_lab1_ru.md
+* | c93b5a6 Update lab1_ru.md
+* | 27ccd81 Create lab1_ru.md
+|/  
+* a107866 lab1 Intro
+
+```
 
 ## Задача 4: Пометить фиксацию
-
-**Цель**: Узнайте, как создать и вставить тег Git для обозначения определенного состояния вашего проекта.
 
 1.**Пометьте текущую фиксацию**:
 
@@ -324,57 +479,18 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
-2.**(Необязательно) Создайте еще один тег**:
+результат
 
-* Сделайте еще одну фиксацию и создайте тег "v1.1.0" для дополнительной практики.
+![image](https://github.com/user-attachments/assets/554017fe-2d6d-4a5b-b04d-f4f4325a3a93)
 
-3.**Документация**:
+Имена тегов, которые вы создали с помощью команды ```git tag```
 
-* В поле "submission2.md` укажите:
+![image](https://github.com/user-attachments/assets/bd4a6d38-8df7-4b88-ba5e-e67877463648)
 
-* Имена тегов, которые вы создали.
-* Используемые команды.
-* Связанные хэши фиксации.
-* Краткое предложение, объясняющее значение тегирования при разработке программного обеспечения (например, управление версиями, триггеры CI/CD, примечания к выпуску).
+## Информация об авторе
 
----
+Отчет был выполнен Куликовой Аленой специально для "Интеграция и автоматизация процесса разработки ПО (углубленный курс)".
 
-## Дополнительное задание: Взаимодействие с социальными сетями на GitHub 🌟
+Если у вас есть вопросы или предложения по улучшению, не стесняйтесь обращаться!
 
-**Цель**: Понять социальные возможности GitHub и внести свой вклад в культуру совместной работы на курсе.
-
-1.**Отметить репозиторий курса**⭐️
-
-* Перейдите на страницу GitHub в хранилище курсов.
-* Нажмите кнопку “Звездочка” в правом верхнем углу.
-
-2.**Следите за своими одноклассниками, преподавателями и профессором**👥
-
-* Посетите профили вашего профессора на GitHub.:
-
-* Ассистенты преподавателя (TAS)
-* Как минимум 3 одноклассника
-* Нажмите кнопку “Подписаться” в каждом профиле.
-
-3.**Обновите `submission2.md`**
-
-* Добавьте раздел под названием**"Задача 3: Социальные взаимодействия на GitHub"**.
-* Включите:
-* 1-2 предложения о том, почему социальные функции на GitHub могут быть полезны в проектах с открытым исходным кодом или в командных проектах.
-
----
-
-## Дополнительные ресурсы
-
-* [Документация по Git](https://git-scm.com/doc)
-* [Профессиональная книга по Git](https://git-scm.com/book/en/v2)
-
----
-
-### Рекомендации
-
-* Используйте правильное форматирование Markdown для файлов документации.
-* Организуйте файлы с соответствующими соглашениями об именовании.
-* Создайте запрос на загрузку в основную ветку репозитория с выполненным лабораторным заданием.
-
-> Примечание: Активно изучайте и документируйте свои результаты, чтобы получить практический опыт работы с Git.
+Ссылка на git: https://github.com/Kulikova-A18
