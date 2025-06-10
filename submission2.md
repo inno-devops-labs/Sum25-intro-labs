@@ -153,3 +153,19 @@ HEAD is now at 2f2a413 Third commit
 
 ### Gitlog output
 ![alt text](gitlog.jpg)
+
+## Task 3: Visualizing Git Commit History
+
+### After adding three commits, the graph of the git-reset branch looks like: 
+
+![alt text](commit_graph_1.jpg)
+
+### After creating a new branch (side-branch) and adding a committee
+
+![alt text](commit_graph_2.jpg)
+
+### Git log output
+
+![alt text](gitlog_2.jpg)
+
+### Visualization of the Git commit graph provides a clear view of how different branches have diverged and merged over time, helping to understand the project's structure and collaboration patterns. It makes it easier to track parallel development, the history of changes, and integration points.
