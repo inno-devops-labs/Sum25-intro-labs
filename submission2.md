@@ -58,9 +58,16 @@
 * Used *git reset --soft HEAD~1*:
      This reset moved the HEAD to the previous commit (61f27db), keeping changes from "Third commit" in the staging area.
 * Used *git reflog* to recover
-     showed the history of HEAD movements, allowing recovery of the "Third commit" state by resetting to b4c9c04.
+     e91b6d3 HEAD@{0}: reset --hard HEAD~1: moving to e91b6d3
+     b4c9c04 HEAD@{1}: commit: Third commit
+     61f27db HEAD@{2}: commit: Second commit
+     e91b6d3 HEAD@{3}: commit: First commit
+showed the history of HEAD movements, allowing recovery of the "Third commit" state by resetting to b4c9c04.
 
+* Used *git log *
+     b4c9c04 (HEAD -> lab2) Third commit
+     61f27db Second commit
+     e91b6d3 First commit
 
 Conclusion
-
 git reset --soft keeps changes in the staging area, git reset --hard discards them, and git reflog helps recover lost commits.
