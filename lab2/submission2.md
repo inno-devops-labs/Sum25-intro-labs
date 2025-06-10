@@ -82,4 +82,4 @@ v1.0.0 — current commit
 ## Commit hashes
 
 - 9f42659cb042e495fd39c241a63c2d77cddf930b
-- dunno yet, because this commit has not been committed yet :>
+- 186c485f837ccc1d5d15da9b56fe0f771494b3a0
