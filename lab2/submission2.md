@@ -55,4 +55,11 @@ After finding a commit hash in a reflog, the state of the branch was reset to th
 
 # Task 3
 
+![](branch_graph_1.png)
+
+![](branch_graph_2.png)
+
+`git log --graph`'s visualization of the commit and branching history helps one understand how repository branches and how these branches later merge together, which can be helpful for a collaborative project. It helps seeing repository's structure and to understand the commit history more clearly.
+
 # Task 4
+
