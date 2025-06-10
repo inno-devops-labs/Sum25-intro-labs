@@ -47,3 +47,20 @@
 ### Conclusion
 
  Git stores data as a series of objects: commits (metadata), trees (directory structure), and blobs (file contents), all identified by unique SHA-1 hashess
+
+# Task 2: Practice with Git Reset Command
+
+## Steps and outputs
+* Crated a series of commits:
+     * First commit: 'First commit' (hash:e916d3)
+     * Second commit: 'Second commit' (hash:61f27db)
+     * Third commit: 'Third commit' (hash:b4c9c04)
+* Used *git reset --soft HEAD~1*:
+     This reset moved the HEAD to the previous commit (61f27db), keeping changes from "Third commit" in the staging area.
+* Used *git reflog* to recover
+     showed the history of HEAD movements, allowing recovery of the "Third commit" state by resetting to b4c9c04.
+
+
+Conclusion
+
+git reset --soft keeps changes in the staging area, git reset --hard discards them, and git reflog helps recover lost commits.
