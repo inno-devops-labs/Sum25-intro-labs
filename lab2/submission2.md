@@ -193,10 +193,12 @@ Commit A
 
 ### 2. View Simple Commit Graph
 **Command:**
-```git log --oneline --graph --all
+```
+git log --oneline --graph --all
 ```
 **Graph snippet:**
-``` * c2c9bea Commit C
+```
+* c2c9bea Commit C
 * 1f6a3bd Commit B
 * 71fe7da Commit A
 * a711acb Third commit
@@ -206,7 +208,8 @@ Commit A
 
 ### 3. Optional Branching
 **Command:**
-```git checkout -b side-branch
+```
+git checkout -b side-branch
 echo "Branch commit" >> history.txt
 git add history.txt
 git commit -m "Side branch commit"
@@ -215,7 +218,8 @@ git checkout master
 
 ### 4. View Commit Graph with Branch
 **Command:**
-```git log --oneline --graph --all | head -n7
+```
+git log --oneline --graph --all | head -n7
 ```
 **Graph snippet:**
 ```
