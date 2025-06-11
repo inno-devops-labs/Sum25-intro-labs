@@ -1,5 +1,5 @@
 # Lab 2 
-# Task 1: Understanding Version Control Systems
+## Task 1: Understanding Version Control Systems
 
 ## Commit Object  
 **Command**  
@@ -102,7 +102,7 @@ We look forward to embarking on this DevOps learning journey together and helpin
 **Explanation**  
 Blob-объект хранит «сырые» данные файла без каких-либо метаданных.
 
-# Task 2: Practice with Git Reset Command
+## Task 2: Practice with Git Reset Command
 ### **git log --oneline после трёх коммитов** 
 ```
 24ea64c Third commit
