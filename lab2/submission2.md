@@ -147,11 +147,25 @@ git reflog
 ```
 **Output:**
 ```
-440ce5b (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD@{2}
-3db9af2 HEAD@{1}: checkout: moving from git-reset-practice to git-reset-practice
-3db9af2 HEAD@{2}: reset: moving to HEAD~1
-440ce5b (HEAD -> git-reset-practice) HEAD@{3}: reset: moving to HEAD~1
-24ea64c HEAD@{4}: commit: Third commit
+0d9a0dc HEAD@{0}: reset: moving to HEAD~1
+56e2277 HEAD@{1}: reset: moving to HEAD~1
+a711acb HEAD@{2}: commit: Third commit
+56e2277 HEAD@{3}: commit: Second commit
+0d9a0dc HEAD@{4}: commit: First commit
 ```
-
- 
+### git reset --hard HEAD@{2}
+**Command:**  
+```
+git reset --hard 'HEAD@{2}'
+```
+**git status**:
+```
+On branch lab2-reset-practice
+nothing to commit, working tree clean
+```
+**git log --oneline** :
+```
+a711acb Third commit
+56e2277 Second commit
+0d9a0dc First commit
+```
