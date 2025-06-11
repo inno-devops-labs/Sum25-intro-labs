@@ -104,32 +104,25 @@ Blob-объект хранит «сырые» данные файла без к�
 
 # Task 2: Practice with Git Reset Command
 ### **git log --oneline после трёх коммитов** 
+```
 24ea64c Third commit
 440ce5b Second commit
 3db9af2 First commit
-
-
-Блок Changes to be committed из git status:
-On branch git-reset-practice
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-    modified:   file.txt
-    
-Первые две строки из git log --oneline (то, что осталось после soft-reset):
-440ce5b Second commit
-3db9af2 First commit
+```
 
 ### **git reflog** 
 
 **Command:**  
-```bash
+```
 git reflog
-
+```
 **Output:**
+```
 440ce5b (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD@{2}
 3db9af2 HEAD@{1}: checkout: moving from git-reset-practice to git-reset-practice
 3db9af2 HEAD@{2}: reset: moving to HEAD~1
 440ce5b (HEAD -> git-reset-practice) HEAD@{3}: reset: moving to HEAD~1
 24ea64c HEAD@{4}: commit: Third commit
+```
 
  
