@@ -1,0 +1,15 @@
+default: true  # enable all rules by default
+
+MD013: false  # disable line length rule (MD013)
+MD041: false  # disable first line heading check (MD041)
+MD033: false  # disable inline HTML check (MD033)
+MD024: false  # disable unordered list indentation check (MD024)
+MD025: false  # disable list item prefix check (MD025)
+
+
+MD007:
+  indent: 4    # Customize unordered list indentation to 4 spaces
+
+MD022:         # Customize heading blank lines before and after
+  lines_above: 1
+  lines_below: 1
