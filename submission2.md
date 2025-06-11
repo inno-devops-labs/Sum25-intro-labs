@@ -165,3 +165,60 @@ In this task, I practiced using `git reset` with `--soft` and `--hard` flags and
     5d01d48 feat: Add submission3.md for Task 1
     ```
     The commit was successfully recovered, demonstrating the power of the reflog.
+
+## Task 3: Visualizing Git Commit History
+
+In this task, I used `git log --graph` to visualize the project's branching structure.
+
+### Commit Graph Output
+
+Here is the output from `git log --oneline --graph --all` after creating a side branch:
+```
+* 31d5283 (side-branch) feat: Add a commit in a side branch
+* edeb54d (HEAD -> lab2) feat: Add Commit C for graph visualization
+* 6ff9288 feat: Add Commit B for graph visualization
+* 8d3cfe5 feat: Add Commit A for graph visualization
+*   4918536 Merge branch 'master' into lab2
+|\  
+| * 3dd1718 (upstream/master, origin/master, origin/HEAD, master) lab2 Git
+* | 3313a1d (origin/lab2) feat: added report for task#2
+* | 4c4ceb3 feat: Third commit (restored)
+* | eb3e7eb feat: second commit
+* | 20bfa6c feat: (first commit) added file for test the reset command
+* | db505ec doc: added report for task#1
+* | 5d01d48 feat: Add submission3.md for Task 1
+* | efc6877 (origin/lab1, lab1) Edit pull request settings
+* | 8d404b7 Edit pull request settings
+* | fa54adf Demonstrate SSH *signed* commit
+* | d2cc200 Demonstrate SSH signed commit
+|/  
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+
+### Commit Messages
+
+- `feat: Add Commit A for graph visualization`
+- `feat: Add Commit B for graph visualization`
+- `feat: Add Commit C for graph visualization`
+- `feat: Add a commit in a side branch`
+
+### Reflection
+
+Visualizing the commit history as a graph instantly shows how different lines of development relate to each other. This makes it much easier to understand the context of changes and plan merges, especially in a collaborative environment with many active branches.
+
+## Task 4: Tagging a Commit
+
+I learned how to tag specific commits to mark important points in history, such as software releases.
+
+- **Tag Name:** `v1.0.0`
+- **Command Used:** `git tag v1.0.0` и `git push origin v1.0.0`
+- **Associated Commit Hash:** `edeb54d`
+
+Tagging is invaluable in software development for creating clear, permanent markers for releases. This helps in managing versions, generating release notes, and triggering automated CI/CD pipelines.
+
+## Task 5: GitHub Social Interactions
+
+I have starred the course repository and followed several classmates and instructors.
+
+Social features on GitHub, like starring repositories and following other developers, are crucial for building a community and professional network. They allow developers to discover new projects, stay updated on technologies they care about, and find opportunities for collaboration in the open-source world.
