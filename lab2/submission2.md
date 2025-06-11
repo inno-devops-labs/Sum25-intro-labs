@@ -284,3 +284,15 @@ Tagging specific commits creates immutable "milestones" in your project’s hist
 - Release notes map directly to tagged versions.
 
   
+## Bonus Task: GitHub Social Interactions 
+
+**Starred:**  
+- https://github.com/inno-devops-labs/Sum25-intro-labs
+
+**Followed:**  
+- Professor: Cre-eD 
+- TAs: I couldn't find it in the course description or in "People"
+- Classmates: Luzinsan, Samatgator, dadaxonEnigma
+
+**Why social interactions matter:**  
+GitHub’s social features like stars and follows help you stay updated on important course repositories and collaborators, facilitate networking and trigger notifications for new releases or discussions.
