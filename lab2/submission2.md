@@ -230,6 +230,7 @@ git log --oneline --graph --all | head -n7
 * a711acb Third commit
 * 56e2277 Second commit
 * 0d9a0dc First commit
+
 ```
 
 ### 5. Reflection
