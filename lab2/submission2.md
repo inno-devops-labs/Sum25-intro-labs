@@ -234,3 +234,41 @@ git log --oneline --graph --all | head -n7
 
 ### 5. Reflection
 Visualizing history with the --graph flag allows you to quickly see which commits were made on the main branch and which were made on branches, making it easier to analyze branches and merges when collaborating.
+
+## Task 4: Tagging a Commit
+### 1. Create and Push v1.0.0
+
+**Tag name:** `v1.0.0`  
+**Commit hash:** `c2c9bea270e6b382108e5fe6f4fac34e0735a9fd`  
+
+**Commands:**  
+```
+git checkout lab2-reset-practice
+git rev-parse HEAD               # outputs c2c9bea270e6b382108e5fe6f4fac34e0735a9fd
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+### 2. Create a New Commit and Tag v1.1.0
+**Commands:**  
+```
+echo "Practice v1.1.0 update" >> history.txt
+git add history.txt
+git commit -m "Practice update for v1.1.0"
+git rev-parse HEAD               # outputs 8d9344be41572bf644f89e6cea80a6336ddc8b20
+git tag v1.1.0
+git push origin v1.1.0
+```
+Tag name: v1.1.0
+Commit hash: 8d9344be41572bf644f89e6cea80a6336ddc8b20
+
+### 3. Why Tagging Matters
+Tagging specific commits creates immutable "milestones" in your project’s history.
+
+- It makes it easy to reference and check out exact release points.
+
+- CI/CD systems can trigger pipelines based on tags.
+
+- Release notes map directly to tagged versions.
+
+  
