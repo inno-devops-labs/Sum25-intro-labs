@@ -122,7 +122,22 @@ Changes to be committed:
 56e2277 Second commit
 0d9a0dc First commit
 ```
+### git reset --hard HEAD~1
+**Command:**  
+```
+git reset --hard HEAD~1
+```
 
+**git status**:
+```
+On branch lab2-reset-practice
+nothing to commit, working tree clean
+```
+
+**git log --oneline** :
+```
+0d9a0dc First commit
+```
 
 ### **git reflog** 
 
