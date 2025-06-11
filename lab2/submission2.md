@@ -56,3 +56,32 @@ I added a title to the `submission2.md` file and commited that change.
 # Version Control
 ```
 ````
+
+### Commit
+
+- A snapshot of the tree
+- The parent commit(s)
+- Author/committer info and commit message
+
+My last commit was `add: tree part`
+
+```
+❯ git log --oneline
+57fb092 (HEAD -> lab2) add: tree part
+01c20d8 add: blob part
+1b1f11b add: submission2.md title
+```
+
+The contents of `57fb092` commit
+
+```
+tree 8dbe3e3202f9739ee0e0e9afbbd76f96fd7045cf
+parent 01c20d8696d3702618fa540ab16b412e02cf9329
+author Samat Gatin <gatin-05@bk.ru> 1749667735 +0300
+committer Samat Gatin <gatin-05@bk.ru> 1749667735 +0300
+gpgsig -----BEGIN SSH SIGNATURE-----
+ ...<some signature>...
+ -----END SSH SIGNATURE-----
+
+add: tree part
+```
