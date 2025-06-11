@@ -67,3 +67,105 @@ git cat-file -p af7fda8ea32b60578a1103ce061a50d7f6f09a35
 #### *File content*
 
 ## Task 2: Practice with Git Reset Command
+
+### Created 3 commits
+
+```bash
+echo "First commit" > file.txt
+git add file.txt
+git commit -m "First commit"
+
+echo "Second commit" >> file.txt
+git add file.txt
+git commit -m "Second commit"
+
+echo "Third commit" >> file.txt
+git add file.txt
+git commit -m "Third commit"
+```
+
+### Reset
+
+```bash
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+```
+
+#### --soft - deletes commit but does not roll back the changes
+#### --hard - deletes commit and roll back the changes
+
+
+```bash
+git reset --soft HEAD~1 # roll back to Second commit
+git reset --soft HEAD~1 # roll back to First commit
+git reset --hard HEAD~1 # roll back to original state
+```
+
+#### HEAD~1 means a rollback of 1 commit below the last one
+
+### Output
+```bash
+HEAD is now at a5b0fd0 Merge pull request #3 from VAlikV/master
+```
+
+#### The first two reset did not change file.txt, and the last one deleted it, since it was not in original state.
+
+### To return to the last commit again, you can use 
+
+```bash
+git reflog
+git reset --hard <reflog_hash>
+```
+
+#### reflog - reference logs for the Git repository. It contains records of all pointer movements in the repository, such as branches and commits, even if these movements are not visible in the normal commit history.
+
+### reflog output
+
+```bash
+a5b0fd0 (HEAD -> git-reset, origin/dev, dev) HEAD@{0}: reset: moving to HEAD~1
+b8d9346 HEAD@{1}: reset: moving to HEAD~1
+6aa193a HEAD@{2}: reset: moving to HEAD~1
+2f2a413 (origin/git-reset) HEAD@{3}: commit: Third commit
+6aa193a HEAD@{4}: commit: Second commit
+b8d9346 HEAD@{5}: commit: First commit
+a5b0fd0 (HEAD -> git-reset, origin/dev, dev) HEAD@{6}: checkout: moving from dev to git-reset
+a5b0fd0 (HEAD -> git-reset, origin/dev, dev) HEAD@{7}: pull --tags origin dev: Fast-forward
+dba88ff HEAD@{8}: commit: rename sub
+9c815ae HEAD@{9}: pull --tags origin dev: Fast-forward
+eec89c5 HEAD@{10}: checkout: moving from dev to dev
+eec89c5 HEAD@{11}: reset: moving to HEAD~1
+```
+
+### To roll back to the desired commite, select reflog_hash.
+
+```bash
+git reset --hard 2f2a413
+```
+
+### Output
+
+```bash 
+HEAD is now at 2f2a413 Third commit
+```
+
+### Reflog output
+![alt text](reflog.jpg)
+
+### Gitlog output
+![alt text](gitlog.jpg)
+
+## Task 3: Visualizing Git Commit History
+
+### After adding three commits, the graph of the git-reset branch looks like: 
+
+![alt text](commit_graph_1.jpg)
+
+### After creating a new branch (side-branch) and adding a committee
+
+![alt text](commit_graph_2.jpg)
+
+### Git log output
+
+![alt text](gitlog_2.jpg)
+
+### Visualization of the Git commit graph provides a clear view of how different branches have diverged and merged over time, helping to understand the project's structure and collaboration patterns. It makes it easier to track parallel development, the history of changes, and integration points.
