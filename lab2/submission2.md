@@ -22,7 +22,7 @@ gpgsig -----BEGIN SSH SIGNATURE-----
 Test SSH signature  
 ```  
 **Explanation**  
-Commit-объект хранит ссылку на tree-объект, метаданные (автор, дата) и сообщение коммита.
+The commit object stores a reference to the tree object, metadata (author, date), and a commit message.
 
 ---
 
@@ -39,7 +39,7 @@ git cat-file -p d1c28b8c52dae6527b82f13ffaba103fd52b6e85
 100644 blob 2f55474cb16ac9d18a31bdfaa6b15e9ed5d29343	submission1.md  
 ```  
 **Explanation**  
-Tree-объект содержит список файлов в каталоге и их blob-хеши.
+The Tree object contains a list of files in the directory and their blob hashes.
 
 ---
 
@@ -100,10 +100,10 @@ It's essential to submit your lab results on time to maximize your grading. Late
 
 We look forward to embarking on this DevOps learning journey together and helping you build valuable skills for your career. 
 **Explanation**  
-Blob-объект хранит «сырые» данные файла без каких-либо метаданных.
+A blob object stores the raw data of a file without any metadata.
 
 ## Task 2: Practice with Git Reset Command
-### **git log --oneline после трёх коммитов** 
+### **git log --oneline** 
 ```
 a711acb Third commit
 56e2277 Second commit
@@ -169,3 +169,64 @@ a711acb Third commit
 56e2277 Second commit
 0d9a0dc First commit
 ```
+## Task 3: Visualizing Git Commit History
+
+### 1. Create Several Commits
+**Commands:**  
+```
+echo "Commit A" > history.txt
+git add history.txt
+git commit -m "Commit A"
+
+echo "Commit B" >> history.txt
+git add history.txt
+git commit -m "Commit B"
+
+echo "Commit C" >> history.txt
+git add history.txt
+git commit -m "Commit C"
+```
+**Commit messages:** 
+Commit C
+Commit B
+Commit A
+
+### 2. View Simple Commit Graph
+**Command:**
+```git log --oneline --graph --all
+```
+**Graph snippet:**
+``` * c2c9bea Commit C
+* 1f6a3bd Commit B
+* 71fe7da Commit A
+* a711acb Third commit
+* 56e2277 Second commit
+* 0d9a0dc First commit
+```
+
+### 3. Optional Branching
+**Command:**
+```git checkout -b side-branch
+echo "Branch commit" >> history.txt
+git add history.txt
+git commit -m "Side branch commit"
+git checkout master
+```
+
+### 4. View Commit Graph with Branch
+**Command:**
+```git log --oneline --graph --all | head -n7
+```
+**Graph snippet:**
+```
+* fd2476c Side branch commit
+* c2c9bea Commit C
+* 1f6a3bd Commit B
+* 71fe7da Commit A
+* a711acb Third commit
+* 56e2277 Second commit
+* 0d9a0dc First commit
+```
+
+### 5. Reflection
+Visualizing history with the --graph flag allows you to quickly see which commits were made on the main branch and which were made on branches, making it easier to analyze branches and merges when collaborating.
