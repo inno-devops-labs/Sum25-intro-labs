@@ -215,6 +215,17 @@ git add history.txt
 git commit -m "Side branch commit"
 git checkout master
 ```
+**Graph snippet after branching:** 
+
+```
+* fd2476c Side branch commit
+* c2c9bea Commit C
+* 1f6a3bd Commit B
+* 71fe7da Commit A
+* a711acb Third commit
+* 56e2277 Second commit
+* 0d9a0dc First commit
+```
 
 ### 4. View Commit Graph with Branch
 **Command:**
