@@ -209,3 +209,7 @@ commit b1fce090f8739324449825a85654c861ddcfb464
 commit 29426acb3a997d3e56ab2bda2a9aca794d4fc644
 
 ### Tagging in software development marks specific points in the codebase - such as releases or stable versions - facilitating version management, triggering CI/CD pipelines, and generating release notes
+
+## Bonus task: GitHub Social Interactions
+
+### Social features on GitHub - such as issues, pull requests, discussions, and stars - foster collaboration, knowledge sharing, and community engagement in open source and team-based projects. They help coordinate work, gather feedback, and attract contributors.
