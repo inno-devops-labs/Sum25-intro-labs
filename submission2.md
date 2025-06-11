@@ -149,23 +149,63 @@ HEAD is now at 2f2a413 Third commit
 ```
 
 ### Reflog output
-![alt text](reflog.jpg)
+![alt text](images/reflog.jpg)
 
 ### Gitlog output
-![alt text](gitlog.jpg)
+![alt text](images/gitlog.jpg)
 
 ## Task 3: Visualizing Git Commit History
 
 ### After adding three commits, the graph of the git-reset branch looks like: 
 
-![alt text](commit_graph_1.jpg)
+![alt text](images/commit_graph_1.jpg)
 
 ### After creating a new branch (side-branch) and adding a committee
 
-![alt text](commit_graph_2.jpg)
+![alt text](images/commit_graph_2.jpg)
 
 ### Git log output
 
-![alt text](gitlog_2.jpg)
+![alt text](images/gitlog_2.jpg)
 
 ### Visualization of the Git commit graph provides a clear view of how different branches have diverged and merged over time, helping to understand the project's structure and collaboration patterns. It makes it easier to track parallel development, the history of changes, and integration points.
+
+## Task 4: Tagging a Commit
+
+### Create first tag using:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+#### Create tag v1.0.0 and push it
+
+### Create another comit and tag
+
+```bash
+git tag v1.1.0 -m "my version 1.1.0"
+git push origin v1.1.0
+```
+
+### Now I can use the ``git show`` command to view the tag data along with the commit:
+
+```bash
+git show v1.1.0
+```
+
+#### Output
+
+![alt text](images/git_show_1.jpg)
+
+#### Git log output
+
+![alt text](images/gitlog_3.jpg)
+
+#### Commits hashes:
+
+commit b1fce090f8739324449825a85654c861ddcfb464
+
+commit 29426acb3a997d3e56ab2bda2a9aca794d4fc644
+
+### Tagging in software development marks specific points in the codebase - such as releases or stable versions - facilitating version management, triggering CI/CD pipelines, and generating release notes
