@@ -1,2 +1,2 @@
 @main def m(args: String*) =
-    args.foreach(arg => println(arg))
+    args.foreach(println)
