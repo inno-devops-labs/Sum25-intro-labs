@@ -115,3 +115,55 @@ ea2e0d2 First commit
 ```
 **Explanation:**
 `git reflog` shows a log of where HEAD and branch references have been. You can use it to recover lost commits. Here, we used `git reset --hard e2a135e` to recover the 'Third commit'.
+
+# Task 3: Visualizing Git Commit History
+
+## Created several commits
+```
+echo "Commit A" > history.txt
+git add history.txt
+git commit -m "Commit A"
+echo "Commit B" >> history.txt
+git add history.txt
+git commit -m "Commit B"
+echo "Commit C" >> history.txt
+git add history.txt
+git commit -m "Commit C"
+```
+
+## Commit graph
+```
+git log --oneline --all --decorate --graph | head -n 10
+* fa74a14 (side-branch) Side branch commit
+* 4012e01 (HEAD -> master) Commit C
+* c5235c2 Commit B
+* 86630c4 Commit A
+* 2b78673 (origin/master, origin/HEAD) task2
+| * 4cb37e9 (origin/git-reset-practice, git-reset-practice) task2
+| * e2a135e Third commit
+| * d5f6f8d Second commit
+| * ea2e0d2 First commit
+|/  
+```
+
+## Commit messages
+```
+Side branch commit
+Commit C
+Commit B
+Commit A
+task2
+Third commit
+Second commit
+First commit
+task 1
+task 1 commit
+lab 1
+lab 1
+lab2 Git
+lab2 Git
+lab1 Intro
+```
+
+## Reflection
+This visualization helps understand how different branches diverge and merge, making it easier to track collaboration and parallel development in a project. It provides a clear overview of the project's history and structure.
