@@ -293,3 +293,7 @@ Visualization tools are clearly applicable for following cases:
 - Onboarding: It is easy to show how a good workflow looks on a commit tree - it shows commits with their comments, the branches, and how they merge.
 - Diagnostics: It is easier to find a problem when all problems are mapped out on a map.
 - Statistics: I use different visualization tools (Github Insights) to gather high-level statistics, such as storypoints done per sprint in a Github project.
+
+# Task 4
+## Tagging a commit
+The commit with which the task 4 has been pushed is tagged as `v1.0.0`. Further elaborations for this task are tagged as `v1.1.0`.
