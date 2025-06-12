@@ -167,3 +167,14 @@ lab1 Intro
 
 ## Reflection
 This visualization helps understand how different branches diverge and merge, making it easier to track collaboration and parallel development in a project. It provides a clear overview of the project's history and structure.
+
+# Task 4
+![alt text](image-2.png)
+
+I used commands
+```
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Tagging is valuable in software development because it marks specific points in the project history, such as releases, making it easier to manage versioning, automate CI/CD pipelines, and generate release notes.
