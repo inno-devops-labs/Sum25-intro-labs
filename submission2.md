@@ -169,7 +169,6 @@ lab1 Intro
 This visualization helps understand how different branches diverge and merge, making it easier to track collaboration and parallel development in a project. It provides a clear overview of the project's history and structure.
 
 # Task 4
-![alt text](image-2.png)
 
 I used commands
 ```
