@@ -123,3 +123,138 @@ HEAD is now at f161276 Third commit
 ```
 
 As we can see, we have managed to restore the history of the repository back to the **Third commit**. As we used another hard reset, the index file was cleared and the working tree reassembled as it was before the sequence of resets had begun. However, any uncommited changes made to the files between the two hard resets are now also lost.
+
+# Task 3: Git Commit History
+
+### Commit graph
+
+#### 1. lab2 branch
+
+```
+$ git log --oneline --graph --all
+* d9b8d6a (HEAD -> lab2) Commit C
+* 6d7677f Commit B
+* f136997 Commit A
+*   536eef1 (origin/lab2) Task 2 completed
+|\
+| * cd3c25d (git-reset-practice) Documentation for task 2
+| * f161276 Third commit
+| * a1355b4 Second commit
+| * dae6f16 First commit
+|/
+* e47495a Task 1 complete
+* e1ba46e for loop in Scala
+* daf1f91 even shorter arg printer
+* 9cd3f5d Even shorter arg printer
+* 780fd79 Prettier version of scala while printer
+* 1fa3b54 Tested Scala while loop
+* bcaea0b Added scala script accepting args
+*   3a15a3e Add gitignore to lab2, as it needs it
+|\
+| * 5ee1861 (origin/master, origin/HEAD, master) Added gitignore for artifacts from Scala compilation
+* | 34fcd5c commit 1 - scala hello, world
+|/
+* 3dd1718 (upstream/master) lab2 Git
+* 0fea98c lab2 Git
+| * fcb4f7c (origin/lab1, lab1) Added git merge strategies comparison
+| * 42a1d18 Will it sign or will it not?
+|/
+* a107866 lab1 Intro
+(END)
+```
+
+#### 2. After the side-branch
+
+```
+$ git log --oneline --graph --all
+*   cead78c (refs/stash) WIP on side-branch: 82e7591 Side branch commit
+|\
+| * 8471aac index on side-branch: 82e7591 Side branch commit
+|/
+* 82e7591 (side-branch) Side branch commit
+* d9b8d6a (lab2) Commit C
+* 6d7677f Commit B
+* f136997 Commit A
+*   536eef1 (origin/lab2) Task 2 completed
+|\
+| * cd3c25d (git-reset-practice) Documentation for task 2
+| * f161276 Third commit
+| * a1355b4 Second commit
+| * dae6f16 First commit
+|/
+* e47495a Task 1 complete
+* e1ba46e for loop in Scala
+* daf1f91 even shorter arg printer
+* 9cd3f5d Even shorter arg printer
+* 780fd79 Prettier version of scala while printer
+* 1fa3b54 Tested Scala while loop
+* bcaea0b Added scala script accepting args
+*   3a15a3e Add gitignore to lab2, as it needs it
+|\
+| * 5ee1861 (HEAD -> master, origin/master, origin/HEAD) Added gitignore for artifacts from Scala compilation
+* | 34fcd5c commit 1 - scala hello, world
+|/
+* 3dd1718 (upstream/master) lab2 Git
+* 0fea98c lab2 Git
+| * fcb4f7c (origin/lab1, lab1) Added git merge strategies comparison
+| * 42a1d18 Will it sign or will it not?
+|/
+* a107866 lab1 Intro
+```
+
+### List of commit messages
+
+```
+$ git log --pretty=format:"%s"
+Commit C
+Commit B
+Commit A
+Task 2 completed
+Documentation for task 2
+Third commit
+Second commit
+First commit
+Task 1 complete
+for loop in Scala
+even shorter arg printer
+Even shorter arg printer
+Prettier version of scala while printer
+Tested Scala while loop
+Added scala script accepting args
+Add gitignore to lab2, as it needs it
+Added gitignore for artifacts from Scala compilation
+commit 1 - scala hello, world
+lab2 Git
+lab2 Git
+lab1 Intro
+```
+
+### How this visualization helps understand collaboration and branching?
+
+This visualization makes it easier to understand how collaborators contribute in parallel, showing where branches diverge and merge. The commit graph clearly reveals the chronological and structural flow of work, making it easy to track side branches, stashes, and integration points.
+
+# Task 4: Tagging a Commit
+
+**Objective**: Learn how to create and push a Git tag to mark a specific state of your project.
+
+1. **Tag the Current Commit**:
+
+   * On your current branch (e.g., `main`), tag the latest commit as `v1.0.0`:
+
+     ```sh
+     git tag v1.0.0
+     git push origin v1.0.0
+     ```
+
+2. **(Optional) Create Another Tag**:
+
+   * Make one more commit and create a `v1.1.0` tag for additional practice.
+
+3. **Documentation**:
+
+   * In `submission2.md`, include:
+
+     * The tag name(s) you created.
+     * The command(s) used.
+     * The associated commit hash(es).
+     * A short sentence explaining the value of tagging in software development (e.g., versioning, CI/CD triggers, release notes).
