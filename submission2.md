@@ -235,26 +235,32 @@ This visualization makes it easier to understand how collaborators contribute in
 
 # Task 4: Tagging a Commit
 
-**Objective**: Learn how to create and push a Git tag to mark a specific state of your project.
+### Commands used:
 
-1. **Tag the Current Commit**:
+1. Tagging the latest commit
+```
+git tag v1.0.0
+git push origin v1.0.0
+```
 
-   * On your current branch (e.g., `main`), tag the latest commit as `v1.0.0`:
+2. Making another commit
+```
+git add submission2.md
+git commit -m "Task 3 commit"
+```
 
-     ```sh
-     git tag v1.0.0
-     git push origin v1.0.0
-     ```
+3. Tagging the new latest commit
+```
+git tag v1.1.0
+git push origin v1.1.0
+```
 
-2. **(Optional) Create Another Tag**:
+4. Associated commit hashes
+```
+$ git show-ref --tags
+a4c72e4a76e00b302571876e3e3dc1be4278e871 refs/tags/v1.0.0
+b1f4d22cde21571ac16a7cd191fa2ebc57305a1f refs/tags/v1.1.0
+```
 
-   * Make one more commit and create a `v1.1.0` tag for additional practice.
-
-3. **Documentation**:
-
-   * In `submission2.md`, include:
-
-     * The tag name(s) you created.
-     * The command(s) used.
-     * The associated commit hash(es).
-     * A short sentence explaining the value of tagging in software development (e.g., versioning, CI/CD triggers, release notes).
+### Why tagging matters:
+Tags allow developers to mark specific commits as stable release points. This enables versioning, helps CI/CD systems identify when to deploy, and allows users and collaborators to reference meaningful project milestones without relying on arbitrary commit hashes.
