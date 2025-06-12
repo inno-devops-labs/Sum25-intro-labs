@@ -231,3 +231,65 @@ a311ade HEAD@{9}: commit: First commit
 7818ad5 HEAD@{14}: commit: adding submission1.md with a signed commit
 0fea98c HEAD@{15}: clone: from github.com:JustSomeDude2001/Sum25-intro-labs.git
 ```
+
+# Task 3
+## Exploring a commit graph
+After adding commits from the example, the tree now contains. The tree also shows the branch for task 2, and a branch I made by mistake - `main`, while trying to switch to `master`.
+```
+git log --oneline --graph --all
+```
+```
+* 47dd6d0 (HEAD -> master) Commit C
+* 72179ad Commit B
+* e1e0606 Commit A
+* caf432f (origin/master, origin/HEAD) Fulfilling task 2 of lab 2
+| * 4a71f84 (main, git-reset-practice) Third commit
+| * 5d4ddae Second commit
+| * a311ade First commit
+|/
+* 4eb6faa Fulfilling task 1 of lab 2
+*   3ab61a8 Merge branch 'master' of github.com:JustSomeDude2001/Sum25-intro-labs Pulling changes to lab 2
+|\
+| *   2a0b7ac Merge branch 'inno-devops-labs:master' into master
+| |\
+| | * 3dd1718 (upstream/master) lab2 Git
+* | | 120e06d fulfilling task 2 of lab 1
+|/ /
+* / 7818ad5 adding submission1.md with a signed commit
+|/
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+## Optional Branching
+Added the branch and its commits. They reflect properly on the tree made by the `git log`. Note that `side-branch` stays on the same vertical as `master` because master had no additional commits, and `git-reset-practice` goes off to the side because there were commits for the `master` branch not on it.
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git log --oneline --graph --all
+```
+```
+* a2deb53 (side-branch) Side branch commit
+* 47dd6d0 (HEAD -> master) Commit C
+* 72179ad Commit B
+* e1e0606 Commit A
+* caf432f (origin/master, origin/HEAD) Fulfilling task 2 of lab 2
+| * 4a71f84 (main, git-reset-practice) Third commit
+| * 5d4ddae Second commit
+| * a311ade First commit
+|/
+* 4eb6faa Fulfilling task 1 of lab 2
+*   3ab61a8 Merge branch 'master' of github.com:JustSomeDude2001/Sum25-intro-labs Pulling changes to lab 2
+|\
+| *   2a0b7ac Merge branch 'inno-devops-labs:master' into master
+| |\
+| | * 3dd1718 (upstream/master) lab2 Git
+* | | 120e06d fulfilling task 2 of lab 1
+|/ /
+* / 7818ad5 adding submission1.md with a signed commit
+|/
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+## Reflection
+Visualization tools are clearly applicable for following cases:
+- Onboarding: It is easy to show how a good workflow looks on a commit tree - it shows commits with their comments, the branches, and how they merge.
+- Diagnostics: It is easier to find a problem when all problems are mapped out on a map.
+- Statistics: I use different visualization tools (Github Insights) to gather high-level statistics, such as storypoints done per sprint in a Github project.
