@@ -300,7 +300,7 @@ The commit with which the task 4 has been pushed is tagged as `v1.0.0`. Further 
 ## Documentation
 - Created tag names: `v1.0.0`, `v1.1.0`
 - Commands used: `git add`, `git commit`, `git tag`, `git push`
-- Asociated commit hashes: 
+- Asociated commit hashes: `0266a42`, `0ade057`
 - Value of tagging: helps keep track of history of changes in an easily human-readable way (versions), triggers CI/CD for checks if set up (e.g. on: push: tags: -'v*'), release documentation (example by DeepSeek `git tag -a v1.4.0 -m "Added user analytics dashboard"`), or easy rollbacks to old versions (example by DeepSeek `git checkout v1.3.5  # Revert to last stable release`).
 
 
