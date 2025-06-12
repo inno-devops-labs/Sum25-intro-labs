@@ -199,3 +199,20 @@ Tagging is valuable in software development for:
 - **CI/CD Integration**: Triggering automated deployments and builds
 - **Release Management**: Creating clear reference points for release notes and rollbacks
 - **Historical Reference**: Providing stable references to specific project states
+
+---
+
+## Bonus Task: GitHub Social Interactions
+
+### Actions Completed
+1. **Repository Starring** ⭐️: Starred the course repository
+2. **Following Network** 👥: Followed professor, TAs, and classmates
+
+### Value of GitHub Social Features
+GitHub's social features enhance open source and team-based projects by:
+- **Community Building**: Creating networks of developers with shared interests
+- **Knowledge Sharing**: Facilitating discovery of useful projects and learning from others' code
+- **Collaboration**: Building professional relationships that lead to contributions and opportunities
+- **Project Visibility**: Increasing awareness and adoption of open source projects
+
+These features transform GitHub from a simple code repository into a collaborative platform that fosters learning and professional development.
