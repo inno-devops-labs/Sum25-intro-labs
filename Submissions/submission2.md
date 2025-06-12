@@ -113,4 +113,20 @@ echo "Commit A" > history.txt
 
 ![img.png](img.png)
 
+3. Optional Branching
+
+После выполнения команд:
+
+```commandline
+git checkout -b side-branch
+echo "Branch commit" >> history.txt
+git add history.txt
+git commit -m "Side branch commit"
+git checkout main
+git log --oneline --graph --all
+```
+
+Получился следующий граф:
+
+![img_1.png](img_1.png)
 
