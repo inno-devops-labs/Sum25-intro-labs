@@ -1,0 +1,23 @@
+[33m70bbaf4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mgit-reset-practice[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m46e3e55[m HEAD@{1}: reset: moving to HEAD~1
+[33mf15cf50[m HEAD@{2}: commit: Third commit
+[33m46e3e55[m HEAD@{3}: commit: Second commit
+[33m70bbaf4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mgit-reset-practice[m[33m)[m HEAD@{4}: commit: First commit
+[33m94fc09d[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{5}: checkout: moving from master to git-reset-practice
+[33m94fc09d[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{6}: commit: Append third line to test.txt
+[33m47e0bcd[m HEAD@{7}: commit: Append second line to test.txt
+[33me12444f[m HEAD@{8}: commit: Add test.txt с приветствием
+[33mf74a5a1[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{9}: commit: Added submission1.md: Lab 1 report
+[33m0fea98c[m HEAD@{10}: reset: moving to HEAD~1
+[33m83f4f64[m HEAD@{11}: commit: Added submission1.md: Lab 1 report
+[33m0fea98c[m HEAD@{12}: reset: moving to HEAD~1
+[33m625fed4[m HEAD@{13}: checkout: moving from lab-1 to master
+[33m625fed4[m HEAD@{14}: merge master: Fast-forward
+[33m0fea98c[m HEAD@{15}: checkout: moving from master to lab-1
+[33m625fed4[m HEAD@{16}: commit: Added submission1.md: Lab 1 report
+[33m0fea98c[m HEAD@{17}: reset: moving to HEAD~1
+[33m9f7cb8d[m HEAD@{18}: commit: Added submission1.md: Lab 1 report
+[33m0fea98c[m HEAD@{19}: reset: moving to HEAD~1
+[33m8b9239b[m HEAD@{20}: checkout: moving from master to master
+[33m8b9239b[m HEAD@{21}: commit: Added submission1.md: Lab 1 report
+[33m0fea98c[m HEAD@{22}: reset: moving to HEAD~1
