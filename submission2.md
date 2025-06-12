@@ -66,3 +66,168 @@ git cat-file -p <blob_hash>
 git cat-file -p <tree_hash>
 git cat-file -p <commit_hash>
 ```
+
+# Task 2
+
+## Difference between soft and hard reset
+
+`git reset -h` eplains the following difference:
+```
+    --soft                reset only HEAD
+    --hard                reset HEAD, index and working tree
+```
+That means while soft reset only resets the git commits, the hard resets also resets changes applied by said commits.
+
+### Experimentation
+Initial state of the branch:
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ cat file.txt
+```
+```
+First commit
+Second commit
+Third commit
+```
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git log --oneline
+```
+```
+c19e9ae (HEAD -> git-reset-practice) Third commit
+5d4ddae Second commit
+a311ade First commit
+4eb6faa (origin/master, origin/HEAD, master) Fulfilling task 1 of lab 2
+3ab61a8 Merge branch 'master' of github.com:JustSomeDude2001/Sum25-intro-labs Pulling changes to lab 2
+120e06d fulfilling task 2 of lab 1
+2a0b7ac Merge branch 'inno-devops-labs:master' into master
+7818ad5 adding submission1.md with a signed commit
+3dd1718 (upstream/master) lab2 Git
+0fea98c lab2 Git
+a107866 lab1 Intro
+```
+
+So, first let's test the soft reset:
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git reset --soft HEAD~1
+```
+The result: commit has been reset, but the changes of that commit have not.
+
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ cat file.txt
+```
+```
+First commit
+Second commit
+Third commit
+```
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git log --oneline
+```
+```
+5d4ddae (HEAD -> git-reset-practice) Second commit
+a311ade First commit
+4eb6faa (origin/master, origin/HEAD, master) Fulfilling task 1 of lab 2
+3ab61a8 Merge branch 'master' of github.com:JustSomeDude2001/Sum25-intro-labs Pulling changes to lab 2
+120e06d fulfilling task 2 of lab 1
+2a0b7ac Merge branch 'inno-devops-labs:master' into master
+7818ad5 adding submission1.md with a signed commit
+3dd1718 (upstream/master) lab2 Git
+0fea98c lab2 Git
+a107866 lab1 Intro
+```
+
+Next (after going back to initial state), hard reset:
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git reset --hard HEAD~1
+```
+```
+HEAD is now at 5d4ddae Second commit
+```
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ cat file.txt
+```
+```
+First commit
+Second commit
+```
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git log --oneline
+```
+```
+5d4ddae (HEAD -> git-reset-practice) Second commit
+a311ade First commit
+4eb6faa (origin/master, origin/HEAD, master) Fulfilling task 1 of lab 2
+3ab61a8 Merge branch 'master' of github.com:JustSomeDude2001/Sum25-intro-labs Pulling changes to lab 2
+120e06d fulfilling task 2 of lab 1
+2a0b7ac Merge branch 'inno-devops-labs:master' into master
+7818ad5 adding submission1.md with a signed commit
+3dd1718 (upstream/master) lab2 Git
+0fea98c lab2 Git
+a107866 lab1 Intro
+```
+## Usage of reflog
+For that, I have not put the branch back into initial state before experimentation with reset. `git reflog` shows history of my work with commits and resetting them:
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git reflog
+```
+```
+5d4ddae (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+2d22201 HEAD@{1}: commit: Third commit
+5d4ddae (HEAD -> git-reset-practice) HEAD@{2}: reset: moving to HEAD~1
+c19e9ae HEAD@{3}: reset: moving to HEAD
+c19e9ae HEAD@{4}: commit: Third commit
+5d4ddae (HEAD -> git-reset-practice) HEAD@{5}: reset: moving to HEAD~1
+4a71f84 HEAD@{6}: commit: Third commit
+5d4ddae (HEAD -> git-reset-practice) HEAD@{7}: commit: Second commit
+a311ade HEAD@{8}: commit: First commit
+4eb6faa (origin/master, origin/HEAD, master) HEAD@{9}: checkout: moving from master to git-reset-practice
+4eb6faa (origin/master, origin/HEAD, master) HEAD@{10}: commit: Fulfilling task 1 of lab 2
+3ab61a8 HEAD@{11}: pull: Merge made by the 'ort' strategy.
+120e06d HEAD@{12}: commit: fulfilling task 2 of lab 1
+7818ad5 HEAD@{13}: commit: adding submission1.md with a signed commit
+0fea98c HEAD@{14}: clone: from github.com:JustSomeDude2001/Sum25-intro-labs.git
+```
+I'll recover initial state of the branch before any resets using `git reset --hard 4a71f84`
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git reset --hard 4a71f84
+```
+```
+HEAD is now at 4a71f84 Third commit
+```
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git log --oneline
+```
+```
+4a71f84 (HEAD -> git-reset-practice) Third commit
+5d4ddae Second commit
+a311ade First commit
+4eb6faa (origin/master, origin/HEAD, master) Fulfilling task 1 of lab 2
+3ab61a8 Merge branch 'master' of github.com:JustSomeDude2001/Sum25-intro-labs Pulling changes to lab 2
+120e06d fulfilling task 2 of lab 1
+2a0b7ac Merge branch 'inno-devops-labs:master' into master
+7818ad5 adding submission1.md with a signed commit
+3dd1718 (upstream/master) lab2 Git
+0fea98c lab2 Git
+a107866 lab1 Intro
+```
+`git reflog` now reflects this reset back to initial state.
+```
+justsomedude@DESKTOP-VD06QG9:~/Sum25-intro-labs$ git reflog
+```
+```
+4a71f84 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to 4a71f84
+5d4ddae HEAD@{1}: reset: moving to HEAD~1
+2d22201 HEAD@{2}: commit: Third commit
+5d4ddae HEAD@{3}: reset: moving to HEAD~1
+c19e9ae HEAD@{4}: reset: moving to HEAD
+c19e9ae HEAD@{5}: commit: Third commit
+5d4ddae HEAD@{6}: reset: moving to HEAD~1
+4a71f84 (HEAD -> git-reset-practice) HEAD@{7}: commit: Third commit
+5d4ddae HEAD@{8}: commit: Second commit
+a311ade HEAD@{9}: commit: First commit
+4eb6faa (origin/master, origin/HEAD, master) HEAD@{10}: checkout: moving from master to git-reset-practice
+4eb6faa (origin/master, origin/HEAD, master) HEAD@{11}: commit: Fulfilling task 1 of lab 2
+3ab61a8 HEAD@{12}: pull: Merge made by the 'ort' strategy.
+120e06d HEAD@{13}: commit: fulfilling task 2 of lab 1
+7818ad5 HEAD@{14}: commit: adding submission1.md with a signed commit
+0fea98c HEAD@{15}: clone: from github.com:JustSomeDude2001/Sum25-intro-labs.git
+```
