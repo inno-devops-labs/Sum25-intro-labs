@@ -303,4 +303,19 @@ The commit with which the task 4 has been pushed is tagged as `v1.0.0`. Further 
 - Asociated commit hashes: `0266a42`, `0ade057`
 - Value of tagging: helps keep track of history of changes in an easily human-readable way (versions), triggers CI/CD for checks if set up (e.g. on: push: tags: -'v*'), release documentation (example by DeepSeek `git tag -a v1.4.0 -m "Added user analytics dashboard"`. Also auto-generated releases are stored on tags tab in github), or easy rollbacks to old versions (example by DeepSeek `git checkout v1.3.5  # Revert to last stable release`).
 
+# Task 5: GitHub Social Interactions (Bonus Task)
+Github social features are useful for any form of collaboration:
+- Pings using `@` function a lot like telegram pings, that alert people of stuff they are responsible for
+- Comments function like non-fungible communication akin to email, but faster
+- Starring repos/branches can help developers show each other what solutions are best at the moment
+- Following functionality allows people to track announcements by leaders of open-source projects or just industry experts
 
+## Proof of following/starring
+Could not find github accounts of our TAs. However, followed the following users:
+- Cre-eD - professor of the course.
+- HvostchedUser - a student from ML track I know
+- Samatgator - a student from SE track I discussed Industrial Projects with
+- Anntorkot - a student from SE track I consulted on Industrial projects' presentation
+
+You'll see all the mentioned users in [my following list](https://github.com/JustSomeDude2001?tab=following).
+The repo has been starred. You'll see it in [my list of starred repos](https://github.com/JustSomeDude2001?tab=stars).
