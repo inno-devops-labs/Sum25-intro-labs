@@ -83,3 +83,34 @@ git commit -m "Third commit"
 При помощи команды `git reflog` определили хеш нужного коммита
 
 И при помощи команды `git reset --hard df350e4` вернулись к нужному коммиту
+
+
+## Task 3
+
+1. Создание коммитов
+
+При помощи команд:
+
+```commandline
+echo "Commit A" > history.txt
+ git add history.txt
+ git commit -m "Commit A"
+
+ echo "Commit B" >> history.txt
+ git add history.txt
+ git commit -m "Commit B"
+
+ echo "Commit C" >> history.txt
+ git add history.txt
+ git commit -m "Commit C"
+```
+
+Были созданы три коммита и записана история в файл `history.txt`
+
+2. Simple commit graph
+
+При помощи команды `git log --oneline --graph --all` был создан граф 
+
+![img.png](img.png)
+
+
