@@ -57,3 +57,118 @@ Some info for commit
 ```
 
 And after inspecting of blob we can get change that blob carries
+
+# Task 2: Practice with Git Reset Command
+
+1) First of all I've created a branch and switched to it:
+```bash
+$ git checkout -b git-reset-practice
+Switched to a new branch 'git-reset-practice'
+```
+
+2) Then i created three commits (I'm a little lazy, so i made it by script):
+```sh
+#!/bin/bash
+echo "First commit" > file.txt
+git add file.txt
+git commit -m "First commit"
+
+echo "Second commit" >> file.txt
+git add file.txt
+git commit -m "Second commit"
+
+echo "Third commit" >> file.txt
+git add file.txt
+git commit -m "Third commit"
+```
+So it looked like:
+```bash
+$ ./script.sh 
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+[git-reset-practice ac44572] First commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+[git-reset-practice 0c58fc2] Second commit
+ 1 file changed, 1 insertion(+)
+warning: in the working copy of 'file.txt', LF will be replaced by CRLF the next time Git touches it
+[git-reset-practice f645d31] Third commit
+ 1 file changed, 1 insertion(+)
+ ```
+
+3) Then I've explored `git reset --soft`:
+```bash
+$ git reset --soft HEAD~1
+
+$ git status
+On branch git-reset-practice
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   submission2.md
+
+$ git log
+commit 0c58fc2bf2c5a13a2a50aacccd1dfbdcd294d3f1 (HEAD -> git-reset-practice)
+Author: Dm1stry <BattleshipWriter@yandex.ru>
+Date:   Fri Jun 13 16:40:24 2025 +0300
+
+    Second commit
+
+commit ac44572d77b10f0d3f140e5866e5a280cf76ffaa
+Author: Dm1stry <BattleshipWriter@yandex.ru>
+Date:   Fri Jun 13 16:40:23 2025 +0300
+
+    First commit
+
+$ git reflog
+0c58fc2 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+f645d31 HEAD@{1}: commit: Third commit
+0c58fc2 (HEAD -> git-reset-practice) HEAD@{2}: commit: Second commit
+ac44572 HEAD@{3}: commit: First commit
+314f020 (origin/master, origin/HEAD, master) HEAD@{4}: checkout: moving from master to git-reset-practice
+```
+
+So after `git reset --soft` changes remin staged and just HEAD moved back/
+
+Then I've tried `git reset --hard`:
+```bash
+$ git status
+On branch git-reset-practice
+nothing to commit, working tree clean
+
+$ git log
+commit ac44572d77b10f0d3f140e5866e5a280cf76ffaa (HEAD -> git-reset-practice)
+Author: Dm1stry <BattleshipWriter@yandex.ru>
+Date:   Fri Jun 13 16:40:23 2025 +0300
+
+    First commit
+
+$ git reflog
+ac44572 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+0c58fc2 HEAD@{1}: reset: moving to HEAD~1
+f645d31 HEAD@{2}: commit: Third commit
+0c58fc2 HEAD@{3}: commit: Second commit
+ac44572 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit
+314f020 (origin/master, origin/HEAD, master) HEAD@{5}: checkout: moving from master to git-reset-practice
+```
+
+So after `git reset --hard` changes are completely erased from files too
+
+4) Then i've recovered commits using reflog:
+```bash
+$ git reflog
+ac44572 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+0c58fc2 HEAD@{1}: reset: moving to HEAD~1
+f645d31 HEAD@{2}: commit: Third commit
+0c58fc2 HEAD@{3}: commit: Second commit
+ac44572 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit
+314f020 (origin/master, origin/HEAD, master) HEAD@{5}: checkout: moving from master to git-reset-practice
+
+$ git reset --hard f645d31
+HEAD is now at f645d31 Third commit
+```
+
+And all changes are back, so even after git reset --hard it's possible to get your changes back
