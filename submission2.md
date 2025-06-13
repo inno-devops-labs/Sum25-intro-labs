@@ -90,11 +90,11 @@ We have seen the contents of this file.
     git add file.txt
     git commit -m "First commit"
 
-    echo "Second commit" >> file.txt
+    echo "Second commit" > file.txt
     git add file.txt
     git commit -m "Second commit"
 
-    echo "Third commit" >> file.txt
+    echo "Third commit" > file.txt
     git add file.txt
     git commit -m "Third commit"
     ```
