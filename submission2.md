@@ -235,3 +235,16 @@ Using `git log --oneline --graph --all` provides a clear visual representation o
     ```
     Then I pushed this tag to Git using command `git push origin v1.0.0`
 
+2. I created another tag of another commit using command `git tag v1.1.0`. Hash of this commit is:
+    ```sh
+    bcba67c993b9825b688f81ee2afc2f21839ef8bf
+    ```
+    Then I pushed this tag to Git using command `git push origin v1.1.0`
+
+Tagging a commit helps to mark important points in the project history, such as releases or final versions. It makes it easier to reference and share specific versions of the codebase without worrying about branch changes.
+
+## Bonus Task: GitHub Social Interactions 🌟
+
+**Objective**: Understand GitHub’s social features and contribute to the course's collaborative culture.
+
+Social features on GitHub, such as stars, forks, pull requests, and discussions, help foster collaboration and community engagement in open source and team-based projects. They make it easier to share ideas, review contributions, and attract new contributors to the project.
