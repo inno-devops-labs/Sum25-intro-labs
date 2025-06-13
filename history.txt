@@ -1,3 +1,4 @@
 Commit A
 Commit B
 Commit C
+Branch commit
