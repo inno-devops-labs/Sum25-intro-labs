@@ -224,3 +224,14 @@ We have seen the contents of this file.
     ```
 
 Using `git log --oneline --graph --all` provides a clear visual representation of the project history, making it easier to understand how different branches diverge and merge. This helps to track collaboration efforts and how contributions from different team members integrate into the main project.
+
+## Task 4: Tagging a Commit
+
+**Objective**: Learn how to create and push a Git tag to mark a specific state of your project.
+
+1. I tagged the current commit with command `git tag v1.0.0`. Hash of this commit is:
+    ```sh
+    513aee506d67d0a6f7aac3b86de5053a9b71b3de
+    ```
+    Then I pushed this tag to Git using command `git push origin v1.0.0`
+
