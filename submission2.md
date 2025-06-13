@@ -75,3 +75,76 @@ test
 ```
 
 We have seen the contents of this file.
+
+---
+
+## Task 2: Practice with Git Reset Command
+
+**Objective**: Practice using different ways to use the `git reset` command.
+
+1. I created a new branch for the task with command `git checkout -b git-reset-practice`.
+
+    Then I created three commits with changes to `file.txt`:
+    ```sh
+    echo "First commit" > file.txt
+    git add file.txt
+    git commit -m "First commit"
+
+    echo "Second commit" >> file.txt
+    git add file.txt
+    git commit -m "Second commit"
+
+    echo "Third commit" >> file.txt
+    git add file.txt
+    git commit -m "Third commit"
+    ```
+
+    We can see commit history after creating three commits with command `git log --oneline`. Output:
+    ```sh
+    1ac9672 (HEAD -> git-reset-practice) Third commit
+    480da15 Second commit
+    dd35df1 First commit
+    ```
+
+2. After using command `git reset --soft HEAD~1` we can see with command `git log --oneline` next output:
+    ```sh
+    480da15 (HEAD -> git-reset-practice) Second commit
+    dd35df1 First commit
+    ```
+
+    **Conclusion**: The last commit was removed from history, but the changes are still staged.
+
+3. After using command `git reset --hard HEAD~1` we can see with command `git log --oneline` next output:
+    ```sh
+    dd35df1 (HEAD -> git-reset-practice) First commit
+    ```
+    **Conclusion**: The last commit was removed from history and the working directory was reset.
+
+4. After using command `git reflog` we can see next output:
+    ```sh
+    dd35df1 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+    480da15 HEAD@{1}: reset: moving to HEAD~1
+    1ac9672 HEAD@{2}: commit: Third commit
+    480da15 HEAD@{3}: commit: Second commit
+    dd35df1 (HEAD -> git-reset-practice) HEAD@{4}: commit: First commit
+    d5222a5 (lab2-solution) HEAD@{5}: checkout: moving from lab2-solution to git-reset-practice
+    ```
+
+    `git reflog` records movements of HEAD. It allows us to recover commits that are no longer visible in `git log`, such as after a reset or rebase.
+    
+    We can recover our commits with command `git reset --hard <reflog_hash>`. Let's restore our commits using the commands:
+    ```sh
+    # Restore Second commit
+    git reset --hard 480da15
+
+    # Restore Third commit
+    git reset --hard 1ac9672
+    ```
+
+    Let's see on output of `git log --oneline` command:
+    ```sh
+    1ac9672 (HEAD -> git-reset-practice) Third commit
+    480da15 Second commit
+    dd35df1 First commit
+    ```
+    We can see that our commits have been restored.
