@@ -171,4 +171,4 @@ $ git reset --hard f645d31
 HEAD is now at f645d31 Third commit
 ```
 
-And all changes are back, so even after git reset --hard it's possible to get your changes back
+And all changes are back, so even after `git reset --hard` it's possible to get your changes back
