@@ -36,12 +36,12 @@ tempuser@Vostro-3500:~/Sum25-intro-labs$ git cat-file -p af7fda8ea32b60578a1103c
 ```
 
 ## 2. Практика с Git Reset Command
-   1. Создание новой ветки
+**1. Создание новой ветки**
 ```
 tempuser@Vostro-3500:~/Sum25-intro-labs$ git checkout -b git-reset-practice
 Переключились на новую ветку «git-reset-practice»
 ```
-   2. Создание коммитов
+**2. Создание коммитов**
 
 ```
 tempuser@Vostro-3500:~/Sum25-intro-labs$ git log --oneline
@@ -94,7 +94,8 @@ e40a93d Second commit
 ```
 
 ## 3. Визуализация истории коммитов
-    * Создаем в текущей ветке файл и 3 коммита
+
+* Создаем в текущей ветке файл и 3 коммита
 
 ```
 tempuser@Vostro-3500:~/Sum25-intro-labs$ echo "Commit A" > history.txt
@@ -118,7 +119,7 @@ ce3aed4 (HEAD -> git-reset-practice) Commit C
 1f54cbc Commit B
 464db32 Commit A
 ```
-    * Вывод истории коммитов в виде текстового графа командой `git log --oneline --graph --all`.
+* Вывод истории коммитов в виде текстового графа командой `git log --oneline --graph --all`.
 
 ```
 tempuser@Vostro-3500:~/Sum25-intro-labs$ git log --oneline --graph --all
@@ -148,7 +149,7 @@ tempuser@Vostro-3500:~/Sum25-intro-labs$ git log --oneline --graph --all
 * a107866 lab1 Intro
 ```
  
-    * Необязательное ветвление
+* Необязательное ветвление
 
 ```
 tempuser@Vostro-3500:~/Sum25-intro-labs$ git log --oneline --graph --all
