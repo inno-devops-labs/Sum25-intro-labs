@@ -148,3 +148,79 @@ We have seen the contents of this file.
     dd35df1 First commit
     ```
     We can see that our commits have been restored.
+
+## Task 3: Visualizing Git Commit History
+
+**Objective**: Use Git’s log features to visualize your project’s commit history and branching.
+
+1. I created three new commits in my current branch using commands:
+    ```sh
+    echo "Commit A" > history.txt
+    git add history.txt
+    git commit -m "Commit A"
+
+    echo "Commit B" >> history.txt
+    git add history.txt
+    git commit -m "Commit B"
+
+    echo "Commit C" >> history.txt
+    git add history.txt
+    git commit -m "Commit C"
+    ```
+
+2. I run the `git log --oneline --graph --all` command to view a simple commit graph and got the next output:
+    ```sh
+    * 26d5d84 (HEAD -> lab2-solution) Commit C
+    * 9693882 Commit B
+    * c2dd2e9 Commit A
+    *   c6fe13c Merge branch 'master' into lab2-solution New changes in lab2.md from main repository of this course
+    |\  
+    | * 3dd1718 (upstream/master, master) lab2 Git
+    * | e228ed8 Small changes in Task2
+    * | 9e487e6 Done Task2
+    * | 1ac9672 (git-reset-practice) Third commit
+    * | 480da15 Second commit
+    * | dd35df1 First commit
+    * | d5222a5 Created submission file for lab2 and done first task
+    * | c56dc28 Added first commit for lab2
+    * | 1b6f9d5 (origin/lab1-solution, lab1-solution) Added info about merge strategies
+    * | 33ce7b8 Added info about importance of signed commits
+    |/  
+    * 0fea98c (origin/master, origin/HEAD) lab2 Git
+    * a107866 lab1 Intro
+    ```
+
+3. I created a new branch, make a commit, and view the log again:
+    ```sh
+    git checkout -b side-branch
+    echo "Branch commit" >> history.txt
+    git add history.txt
+    git commit -m "Side branch commit"
+    git checkout lab2-solution
+    git log --oneline --graph --all
+    ```
+
+    Output:
+    ```sh
+    * dbe163f (side-branch) Side branch commit
+    * 26d5d84 (HEAD -> lab2-solution) Commit C
+    * 9693882 Commit B
+    * c2dd2e9 Commit A
+    *   c6fe13c Merge branch 'master' into lab2-solution New changes in lab2.md from main repository of this course
+    |\  
+    | * 3dd1718 (upstream/master, master) lab2 Git
+    * | e228ed8 Small changes in Task2
+    * | 9e487e6 Done Task2
+    * | 1ac9672 (git-reset-practice) Third commit
+    * | 480da15 Second commit
+    * | dd35df1 First commit
+    * | d5222a5 Created submission file for lab2 and done first task
+    * | c56dc28 Added first commit for lab2
+    * | 1b6f9d5 (origin/lab1-solution, lab1-solution) Added info about merge strategies
+    * | 33ce7b8 Added info about importance of signed commits
+    |/  
+    * 0fea98c (origin/master, origin/HEAD) lab2 Git
+    * a107866 lab1 Intro
+    ```
+
+Using `git log --oneline --graph --all` provides a clear visual representation of the project history, making it easier to understand how different branches diverge and merge. This helps to track collaboration efforts and how contributions from different team members integrate into the main project.
