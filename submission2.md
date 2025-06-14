@@ -78,6 +78,5 @@ a107866 HEAD@{9}: clone: from https://github.com/inno-devops-labs/Sum25-intro-la
 
 Были использованы команды `git tag`, `git add`, `git commit`
 
-
 ## 5. GitHub Social Interactions
 Социальные взаимодействия на гитхаб важны для развития проектов: привлечение новых колабораторов, инвестиций, придания огласки аудитории
