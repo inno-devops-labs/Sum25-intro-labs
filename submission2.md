@@ -312,3 +312,4 @@ To github.com:Dm1stry/Sum25-intro-labs.git
  * [new tag]         lab1 -> lab1
 ```
 
+Tagging is useful for versioning in projects
