@@ -244,3 +244,24 @@ But those only after git add and git commit (cause we tag the current commit)
 Why that important? Because the versioning is important overall, it's like names of products. Not all of the commits are some specific changes that entirely change the behaviour of the system, sometime one version is several commits. We just want to refernce them as we can. 
 From my experience it's importnat to tag them to help with compatability. For example one library is working with the other one only in version 2.1.X. So when someone pulls the first library the can git clone using tags, whih helps the overall process
 
+Here are the commits hashes
+
+```sh
+
+:~/Sum25-intro-labs$ git log
+commit bc10fc780933a49281648cac61c1bd6ad580c7cb (HEAD -> master, tag: v1.1.0)
+Author: KirilinAD <a.kirilin@innopolis.university>
+Date:   Sat Jun 14 10:57:59 2025 +0300
+
+    task 4 pre
+
+commit da7dd4d1a6460383659929831eb4be0d3f086137 (tag: v1.0.0)
+Author: KirilinAD <a.kirilin@innopolis.university>
+Date:   Sat Jun 14 10:49:27 2025 +0300
+
+    task3 lab2 completed
+```
+
+# Task 5
+
+Like, share and subscribe. Why important? Because you cannot do the open-source projects of great size unless you are a [genius schizo](https://en.wikipedia.org/wiki/Terry_A._Davis). Because you want to know how trustable some projects. We live in society and we need to have community features that help us to interact. 
