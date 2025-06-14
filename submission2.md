@@ -172,3 +172,121 @@ HEAD is now at f645d31 Third commit
 ```
 
 And all changes are back, so even after `git reset --hard` it's possible to get your changes back
+
+# Task 3: Visualizing Git Commit History
+0) I've created a new branch and moved to it
+```bash
+$ git checkout -b lab2-task3
+Switched to a new branch 'lab2-task3'
+```
+
+1) I've created commits:
+```sh
+#!/bin/bash
+
+echo "Commit A" > history.txt
+git add history.txt
+git commit -m "Commit A"
+
+echo "Commit B" >> history.txt
+git add history.txt
+git commit -m "Commit B"
+
+echo "Commit C" >> history.txt
+git add history.txt
+git commit -m "Commit C"
+```
+
+```bash
+$ ./script.sh 
+warning: in the working copy of 'history.txt', LF will be replaced by CRLF the next time Git touches it
+[lab2-task3 9a10c85] Commit A
+ 1 file changed, 1 insertion(+)
+ create mode 100644 history.txt
+warning: in the working copy of 'history.txt', LF will be replaced by CRLF the next time Git touches it
+[lab2-task3 5ce3886] Commit B
+ 1 file changed, 1 insertion(+)
+warning: in the working copy of 'history.txt', LF will be replaced by CRLF the next time Git touches it
+[lab2-task3 9363617] Commit C
+ 1 file changed, 1 insertion(+)
+```
+
+2) Then i've explored the Commit Graph:
+> Yeah, i've needed to fix some stuff between the steps
+
+```bash
+$ git log --oneline --graph --all
+* 9ad261a (HEAD -> lab2-task3) small fix
+* 9363617 Commit C
+* 5ce3886 Commit B
+* 9a10c85 Commit A
+*   e9c331f (origin/master, origin/HEAD, master) Lab2 Task 2 Git reset practice complete (#3)
+|\
+| * 2a03b7d (origin/git-reset-practice, git-reset-practice) file.txt deleted and submission2.md updated
+| * f645d31 Third commit
+| * 0c58fc2 Second commit
+| * ac44572 First commit
+|/
+*   314f020 Lab2 Task 1 complete (#2)
+|\
+| * b4a3fca (origin/lab2, lab2) Task 1 in Lab2 complete
+| * 0d9bfa4 Some commit
+|/
+*   533b4c2 Lab 1[homework] Merge strategies summary added and commit are signed (#1)
+|\
+| * 586a4fd (origin/homework, homework) Submission 1 file created and summary written
+|/
+* 3dd1718 lab2 Git
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+
+3) Then following the task I created a new branch to see what changes would appear in the commit graph
+
+```bash
+$ git checkout -b side-branch
+Switched to a new branch 'side-branch'
+
+$ echo "Branch commit" >> history.txt
+
+$ git add history.txt
+
+$ git commit -m "Side branch commit"
+[side-branch 37b9cc2] Side branch commit
+ 1 file changed, 1 insertion(+)
+
+$ git checkout lab2-task3
+M       submission2.md
+Switched to branch 'lab2-task3'
+```
+
+4) And then I again displayed commit history:
+```bash
+$ git log --oneline --graph --all
+* 37b9cc2 (side-branch) Side branch commit
+* 9ad261a (HEAD -> lab2-task3) small fix
+* 9363617 Commit C
+* 5ce3886 Commit B
+* 9a10c85 Commit A
+*   e9c331f (origin/master, origin/HEAD, master) Lab2 Task 2 Git reset practice complete (#3)
+|\
+| * 2a03b7d (origin/git-reset-practice, git-reset-practice) file.txt deleted and submission2.md updated
+| * f645d31 Third commit
+| * 0c58fc2 Second commit
+| * ac44572 First commit
+|/
+*   314f020 Lab2 Task 1 complete (#2)
+|\
+| * b4a3fca (origin/lab2, lab2) Task 1 in Lab2 complete
+| * 0d9bfa4 Some commit
+|/
+*   533b4c2 Lab 1[homework] Merge strategies summary added and commit are signed (#1)
+|\
+| * 586a4fd (origin/homework, homework) Submission 1 file created and summary written
+|/
+* 3dd1718 lab2 Git
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+
+Visualization of branching and histrory helps to understand work in better way and reduce errors.
