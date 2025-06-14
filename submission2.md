@@ -211,3 +211,36 @@ a107866 HEAD@{16}: clone: from github.com:Lumiwarum/Sum25-intro-labs.git
 Here is the tree after the first commits
 
 ![alt text](sub_2_git_tree.png)
+
+here is the tree after creating the side-branch
+
+![alt text](image.png)
+
+One funny moment in the list of commit messages - everything was smooth until it tried to checkout to the main, which is called master on my machine. 
+
+```sh
+
+Switched to a new branch 'side-branch'
+[side-branch c003857] Side branch commit
+ 1 file changed, 1 insertion(+)
+error: pathspec 'main' did not match any file(s) known to git
+```
+But in the end the visualisation is pretty much the same. At least I see how my interaction with the main repository (from which I forked) is going on. It can help to understand better how all the commits are connected and where are the cnahges that I need to consider taking into my repo.
+
+# Task 4
+
+So I commited the previous tasks with tag 1.0.0 and I'm going to pass the commit with this task with tag 1.1.0
+
+The commands are as simple as in the template
+
+```sh
+
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+But those only after git add and git commit (cause we tag the current commit)
+
+Why that important? Because the versioning is important overall, it's like names of products. Not all of the commits are some specific changes that entirely change the behaviour of the system, sometime one version is several commits. We just want to refernce them as we can. 
+From my experience it's importnat to tag them to help with compatability. For example one library is working with the other one only in version 2.1.X. So when someone pulls the first library the can git clone using tags, whih helps the overall process
+
