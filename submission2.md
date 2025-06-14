@@ -290,3 +290,25 @@ $ git log --oneline --graph --all
 ```
 
 Visualization of branching and histrory helps to understand work in better way and reduce errors.
+
+# Task 4: Tagging a Commit
+
+1) Created tag v1.0.0 from task by using:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+2) Created tag for Lab1
+```bash
+$ git tag -a lab1 533b4c235 -m "Lab1"
+
+$ git push origin lab1
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 374 bytes | 374.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:Dm1stry/Sum25-intro-labs.git
+ * [new tag]         lab1 -> lab1
+```
+
