@@ -148,3 +148,55 @@ a107866 lab1 Intro
 
 III) Визуализация истории 
 
+Результат работы команды git log --oneline --graph --all 
+
+* 77743f9 (HEAD -> git-reset-practice, origin/git-reset-practice) Commit C
+* 2321f97 Commit B
+* 86c2c53 Commit A
+* 611efc7 Third commit
+* 897fff7 Second commit
+* 0415329 First commit
+* a0b033c (origin/master, origin/HEAD, master) add new data to submission1
+* 8994ad9 My signed commit message
+* 3dd1718 lab2 Git
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+
+![alt text](image.png)
+
+После добавления новой ветки и коммита 
+
+* 982b128 (side-branch) Side branch commit
+* 77743f9 (origin/git-reset-practice, git-reset-practice) Commit C
+* 2321f97 Commit B
+* 86c2c53 Commit A
+* 611efc7 Third commit
+* 897fff7 Second commit
+* 0415329 First commit
+* a0b033c (HEAD -> master, origin/master, origin/HEAD) add new data to submission1
+* 8994ad9 My signed commit message
+* 3dd1718 lab2 Git
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+
+![alt text](image-1.png)
+
+Как будто-бы я сделал что-то не то, наверное должно было быть разветвление. Подобное ожидаемым мной картинкам получилось увидеть использую git GUI 
+
+![alt text](image-2.png)
+
+С попомщью подобных визуализацей удобнее понимать в какой момент отделаьные ветки раздялись и сливались это позволяет лучше понимать с чего началась и кончилась каждая конкретная ветка и какие у нее могут быть особенности. 
+
+IV)
+
+Создал тег 1.0.0
+
+команды 
+git tag v1.0.0
+git push origin v1.0.0
+
+62959c0 (HEAD -> master, tag: v1.0.0) save marckdown - строка коммита с хешем
+
+Версионирование — метки (теги) типа v1.2.3 дают четкие точки для отслеживания изменений.
+CI/CD — теги могут триггерить сборку, деплой или публикацию артефактов.
+Релизы — на GitHub/GitLab теги привязываются к описанию версии (Release Notes).
