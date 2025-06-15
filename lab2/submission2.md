@@ -84,3 +84,17 @@ Moving back to branch `lab2`:
 The graph from `git log --oneline --graph --all` shows where each branch starts and how commits flow. It clearly shows what was worked on, when, and on which branch—especially useful for multi-feature projects.
 
 For example, in the graph we see the commits `"Commit A"`, `"Commit B"` and `"Commit C"` made on the `lab2` branch and then a new branch (`side-branch`) created from there, starting with `"Side branch commit"`.
+
+## Tagging a Commit
+
+* **tagging the latest commit on branch `lab2`:**
+
+  ![tag](src/tagging.png)
+  
+  ![tag on remote](src/tag-remote.png)
+
+* **The associated commit hash:**
+
+  ![tag's commit hash](src/commit-hash-tag.png)
+
+Tagging in git provides a clear and consistent way to mark specific points in a project's history, such as releases or milestones, making it easier to keep track of the versions of the app, collaboration, and integration with CI/CD pipelines.
