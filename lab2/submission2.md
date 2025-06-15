@@ -12,11 +12,12 @@
   * Parent commits
   * Metadata like the author, timestamp, ...
 
-  Commits are how Git tracks changes and project history.
+  Commits are how git tracks changes and project history.
 
 * **Tree (`git cat-file -p <tree_hash>`):**
   
   ![cat-file tree](src/tree-hash.png)
+
   A **[tree](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects)** object represents a **directory**.  
   It contains a list of entries, each with:
   * A filename
@@ -55,7 +56,7 @@
 
   ![git reflog](src/logref-1.png)
 
-  ![recover](src/reset-commit.png)
+  ![recover](src/reset-commit-reset.png)
 
   We went back to the the commit we specified and all the changes we made are back.
 
