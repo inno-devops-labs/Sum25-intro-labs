@@ -5,22 +5,7 @@ on:
   push:
     branches:
       - lab3
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'warning'
-      tags:
-        description: 'Test scenario tags'
-
-  
-  
-  
+  workflow_dispatch:  
 
 jobs:
   build:
