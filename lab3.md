@@ -7,6 +7,7 @@ In this lab, you will explore continuous integration and continuous deployment (
 **Objective**: Set up a basic GitHub Actions workflow and observe its execution.
 
 1. **Read the Official Guide**:
+
    - Follow the official GitHub Actions [quickstart guide](https://docs.github.com/en/actions/quickstart).
    - Document all your observations, key concepts, and steps you followed in a Markdown file named `submission3.md` in the lab folder.
 
@@ -19,6 +20,7 @@ In this lab, you will explore continuous integration and continuous deployment (
 **Objective**: Extend your workflow to include manual triggering and system information gathering.
 
 1. **Configure a Manual Trigger**:
+
    - Extend your existing GitHub Actions workflow to include a [manual trigger](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows).
    - Inputs for manually triggered workflows are not needed, so you can skip them.
    - Document the changes made to the workflow file in the same `submission3.md` file.
