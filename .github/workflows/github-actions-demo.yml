@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-<<<<<<< HEAD
     - uses: actions/checkout@v4
 
     - name: Run a one-line script
@@ -38,8 +37,3 @@ jobs:
         echo "Runner Arch: $RUNNER_ARCH"
         echo "Runner Temp: $RUNNER_TEMP"
         echo "Runner Workspace: $GITHUB_WORKSPACE"
-=======
-
-      - run: echo "Task 2.1 ${{ github.event_name }} event."
-      
->>>>>>> cf36fd93d776761e9df8ce7373b639a858462979
