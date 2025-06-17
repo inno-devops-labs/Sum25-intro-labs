@@ -21,3 +21,14 @@
 
 # Task 2
 
+## Changes
+
+- `workflow_dispatch` was added for manual startup
+- `Show system info` step was added to display runner information
+- Workflow file was uploaded into the master branch in order for Workflow Dispatch to work
+
+## Observations
+
+- Manual lauch works
+- System information was gathered and displayed
+- No runtime errors in the final version (errors due to incorrect commands for the runner were encountered in one of the iterations) 
