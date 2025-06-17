@@ -2,9 +2,9 @@
 name: CI/CD Test Workflow
 
 on:
-  push:
-    branches:
-      - lab3
+  #push:
+  #  branches:
+  #    - lab3
   workflow_dispatch:
     inputs:
       environment:
