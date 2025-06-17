@@ -44,3 +44,78 @@ Publish lab3 CI
 
 Signed-off-by: Dmitriy Creed <creed@soramitsu.co.jp>
 ```
+
+# Task 2: Practice with Git Reset Command
+
+1. Created a series of three commits on a new branch. Obtained the file file.txt:
+```text
+First commit
+Second commit
+Third commit
+
+```
+
+
+2. `git reset --soft HEAD~1`
+Moves the branch pointer back to the previous commit (Second commit), but keeps both the staging area and working directory unchanged. The changes from the Third commit appear as staged but uncommitted changes.
+```sh
+git reflog
+132cf5f (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+b0ba3ec HEAD@{1}: commit: Third commit
+132cf5f (HEAD -> git-reset-practice) HEAD@{2}: commit: Second commit
+97bf35e HEAD@{3}: commit: First commit
+da07dab (lab02) HEAD@{4}: checkout: moving from lab02 to git-reset-practice
+...
+```
+```sh
+git log
+commit 132cf5f542db42e238063fd7386f1dc2258b7273 (HEAD -> git-reset-practice)
+Author: Vladimir Makharev <v.makharev@yandex.ru>
+Date:   Tue Jun 17 21:26:19 2025 +0300
+
+    Second commit
+
+commit 97bf35e12f7a71503642855076396bd441b47aba
+Author: Vladimir Makharev <v.makharev@yandex.ru>
+Date:   Tue Jun 17 21:26:12 2025 +0300
+
+    First commit
+
+commit da07dab406b114011568bb781b3e0270934d3f7c (lab02)
+Author: Vladimir Makharev <v.makharev@yandex.ru>
+Date:   Tue Jun 17 21:23:18 2025 +0300
+
+    task 01 commit
+...
+```
+3. `git reset --hard HARD~1`
+Resets the branch pointer to the First commit and forcibly updates both the staging area and working directory to match this commit. All changes from the Second and Third commits are discarded.
+```sh
+git reflog
+97bf35e HEAD@{3}: reset: moving to HEAD~1
+132cf5f HEAD@{4}: reset: moving to HEAD~1
+b0ba3ec (HEAD -> git-reset-practice) HEAD@{5}: commit: Third commit
+132cf5f HEAD@{6}: commit: Second commit
+97bf35e HEAD@{7}: commit: First commit
+da07dab (lab02) HEAD@{8}: checkout: moving from lab02 to git-reset-practice
+```
+```sh
+git log
+commit 97bf35e12f7a71503642855076396bd441b47aba
+Author: Vladimir Makharev <v.makharev@yandex.ru>
+Date:   Tue Jun 17 21:26:12 2025 +0300
+
+    First commit
+
+commit da07dab406b114011568bb781b3e0270934d3f7c (lab02)
+Author: Vladimir Makharev <v.makharev@yandex.ru>
+Date:   Tue Jun 17 21:23:18 2025 +0300
+
+    task 01 commit
+```
+4. Returning back to "Third commit"
+Moves the branch pointer directly to the Third commit (by its hash) and updates the staging area and working directory to exactly match this commit state. Restores all changes from the Third commit.
+```sh
+git reset --hard b0ba3ec
+HEAD is now at b0ba3ec Third commit
+```
