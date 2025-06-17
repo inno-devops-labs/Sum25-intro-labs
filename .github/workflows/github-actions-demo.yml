@@ -17,9 +17,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Runner OS information:
+      - name: Runner OS information
         run: uname -a
-      - name: Hardware specification:
+      - name: Hardware specification
         run: |
           echo "CPU info:"
           lscpu
@@ -29,7 +29,7 @@ jobs:
           echo ""
           echo "Disk info:"
           df -h
-      - name: Other runner details:
+      - name: Other runner details
         run: |
           echo "Runner Name: $RUNNER_NAME"
           echo "Runner OS: $RUNNER_OS"
