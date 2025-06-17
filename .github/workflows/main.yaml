@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - lab3
+  Workflow_dispatch:
 
 jobs:
   build:
@@ -13,6 +14,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Show system info
+        run: |
+          echo "OS Info:"
+          uname -a
+          echo "CPU Info:"
+          lscpu
+          echo "Memory Info:"
+          free -h
 
       - name: Run a simple script
         run: echo "Hello, GitHub Actions!"
