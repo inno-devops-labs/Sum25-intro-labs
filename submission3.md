@@ -2,7 +2,7 @@
 Nikita Yaneev n.yaneev@innopolis.unversity
 
 
-### TASK 1
+### TASK 1.1
 
 #### Key Concepts
 
@@ -14,3 +14,8 @@ Nikita Yaneev n.yaneev@innopolis.unversity
 #### Results
 
 ![alt text](image.png)
+
+#### TASK 1.2
+![alt text](image-1.png)
+
+As a result we can see, changed yaml file, which tell us a information about task 1.2 
