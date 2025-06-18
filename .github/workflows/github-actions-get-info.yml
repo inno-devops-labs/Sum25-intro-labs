@@ -19,10 +19,11 @@ jobs:
       - name: Gather system info
         run: |
           echo "=== 🖥️ System Information ==="
-          echo "OS: $(uname -a)"
-          echo "CPU: $(nproc) cores"
-          echo "Memory: $(free -h | grep Mem | awk '{print $2}') RAM"
+          echo "OS: $(lsb_release -d | cut -f2)"
+          echo "Kernel: $(uname -a)"
+          echo "CPU: $(nproc) cores, $(lscpu | grep 'Model name' | cut -d':' -f2 | xargs)"
+          echo "RAM: $(free -h | grep Mem | awk '{print $2}')"
           echo "Disk: $(df -h | grep -vE 'tmpfs|udev' | awk '{print $1 " " $4}')"
-          echo "GitHub Runner: ${{ runner.name }}"
+          echo "Runner: ${{ runner.os }} (${{ runner.name }})"
           echo "============================"
       - run: echo "🍏 This job's status is ${{ job.status }}."
