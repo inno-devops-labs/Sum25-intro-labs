@@ -1,46 +1,55 @@
-# Лаборатория CI/CD - GitHub Actions
+# CI Lab/CD - GitHub Actions
 
-В этой лабораторной работе вы изучите методы непрерывной интеграции и непрерывного развертывания (CI/CD) с использованием GitHub Actions. GitHub Actions предоставляет мощный инструмент автоматизации рабочих процессов для оптимизации процессов разработки и развертывания. Вы будете выполнять различные задачи, связанные с настройкой конвейеров CI/CD и сбором системной информации с помощью GitHub Actions. Следуйте приведенным ниже заданиям, чтобы выполнить лабораторное задание.
+As part of the first task, I successfully set up the basic GitHub Actions workflow.
 
-## Задача 1: Создайте свой первый конвейер GitHub Actions.
+The steps I followed for task "Task 1: Creating the first GitHub Actions Pipeline":
 
-** Цель**: Настроить базовый рабочий процесс действий на GitHub и наблюдать за его выполнением.
+1. Created a configuration file for the workflow in YAML format.
+2. Set up a trigger to automatically start the workflow when making changes to the main branch.
+3. Added steps to verify the source code and output the message.
 
-1. **Прочитайте официальное руководство**:
-   - Следуйте официальным инструкциям на GitHub [краткое руководство по началу работы](https://docs.github.com/en/actions/quickstart).
-   - Задокументируйте все свои наблюдения, ключевые концепции и шаги, которые вы выполнили, в файле Markdown с именем `submission3.md` в папке lab.
+git action: 
 
-2. **Понаблюдайте за выполнением рабочего процесса**:
-   - Внесите некоторые изменения в свой репозиторий и понаблюдайте за выполнением рабочего процесса GitHub Actions.
-   - Задокументируйте результаты, любые обнаруженные ошибки и любые наблюдения в том же файле "submission3.md`.
+-   https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/.github/workflows/test.yml
 
-## Задача 2: Сбор системной информации и запуск вручную.
+![image](https://github.com/user-attachments/assets/10f9370e-79ae-4ade-8604-fbd95e72e738)
 
-** Цель **: Расширить рабочий процесс, включив в него ручной запуск и сбор системной информации.
+![image](https://github.com/user-attachments/assets/74788463-ace3-473a-9217-e746e36a83ce)
 
-1. **Настроить ручной запуск**:
-   - Расширить существующий рабочий процесс GitHub Actions, включив в него [ручной trigger](https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows).
-   - Входные данные для рабочих процессов, запускаемых вручную, не требуются, поэтому вы можете пропустить их.
-   - Документируйте изменения, внесенные в файл рабочего процесса, в том же файле `submission3.md`.
-   - Обратитесь к [официальной документации] (https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow), если у вас возникнут какие-либо проблемы.
+The steps I have completed for the task "Task 2: Collecting system information and running manually":
 
-2. **Сбор системной информации**:
-   - Измените свой рабочий процесс, включив в него дополнительный шаг для сбора системной информации.
-   - Используйте соответствующие действия для сбора информации о программе запуска, технических характеристиках оборудования и сведениях об операционной системе.
-   - Задокументируйте изменения, внесенные в файл рабочего процесса, и собранную системную информацию в одном файле `submission3.md`.
+1. I enabled a trigger to manually start the workflow, which allowed me to run it as needed.
+2. Added steps to collect system information and operating system characteristics.
 
-### Документация
+git action: 
 
-- **Создайте файл `submission3.md"**:
-  - Укажите свои наблюдения, ключевые понятия и шаги, описанные в руководстве по быстрому запуску.
-  - Задокументируйте результаты выполнения рабочего процесса, все обнаруженные ошибки и замечания.
-  - Задокументируйте изменения, внесенные для включения ручного запуска.
-  - Укажите собранную системную информацию и используемые команды.
+-   https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/.github/workflows/manual-trigger.yml
 
-### Рекомендации
+![image](https://github.com/user-attachments/assets/d7db351b-29a1-4829-b96e-bbe9f7430ecf)
 
-- Используйте правильное форматирование и структуру Markdown для файлов документации.
-- Упорядочивайте файлы в папке lab, используя соответствующие соглашения об именовании.
-- Создайте запрос на извлечение в основную ветку репозитория с выполненным лабораторным заданием.
+In addition, a separate repository was created, where the c++ code is assembled, as well as running tests.:
 
-> Примечание: Активно изучайте действия GitHub и методы CI/CD, чтобы улучшить свои рабочие процессы разработки и развертывания. Используйте официальное руководство и документацию в качестве отправной точки и документируйте свои наблюдения по ходу работы.
+- successful completion of the test
+- a test that crashes on purpose and fails with an error
+
+the repository:
+
+-   https://github.com/Kulikova-A18/test_pull_req
+
+git action: 
+
+-   [https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/.github/workflows/manual-trigger.yml
+](https://github.com/Kulikova-A18/test_pull_req/blob/main/.github/workflows/ci.yml)
+
+![image](https://github.com/user-attachments/assets/d9bb04a3-7e12-4776-b9e6-9a39da086a13)
+
+![image](https://github.com/user-attachments/assets/4874241d-e9b8-4519-822a-319ca6c02da2)
+
+![image](https://github.com/user-attachments/assets/9a7ca01b-12d3-4e40-bf85-d061e650abbb)
+
+## Information about the author
+The report was made by Kulikova Alyona specifically for "Integration and automation of the software development process (advanced course)".
+
+If you have any questions or suggestions for improvement, do not hesitate to contact us!
+
+Link to git: https://github.com/Kulikova-A18
