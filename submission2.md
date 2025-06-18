@@ -165,3 +165,7 @@ git push origin v1.0.0
  * [new tag]         v1.0.0 -> v1.0.0
  ```
 Tagging commits help to trigger actions in CI/CD pipeline by special keywords in the tag.
+
+# Task Optional: Github Social Interactions
+
+Social features on Github such as stars and followers are help to exchange the experience between developers in the world-wide community. These features can be also used as a way to save and recognize nice repositories and solutions in the community.
