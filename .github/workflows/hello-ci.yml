@@ -1,0 +1,26 @@
+name: Hello CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Проверка исходного кода
+        uses: actions/checkout@v2
+
+      - name: Вывод сообщения
+        run: echo "hello CI/CD - GitHub Actions"
+
+      - name: Сбор информации о системе
+        run: |
+          echo "Информация о системе:"
+          uname -a
+          echo "Версия Node.js:"
+          node -v
+          echo "Версия npm:"
+          npm -v
