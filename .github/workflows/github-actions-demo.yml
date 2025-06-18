@@ -1,7 +1,9 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
-workflow_dispatch: 
+on:
+  push:
+    branches: [ "Lab3" ]  # Автозапуск при push в main
+  workflow_dispatch:      # Ручной запуск из интерфейса GitHub
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
