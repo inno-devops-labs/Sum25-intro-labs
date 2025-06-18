@@ -151,3 +151,17 @@ git log --oneline --graph --all
 ```
 
 This graph shows the commit history, including commit hashes, messages, and their order. It also visualizes branches with their names and lines indicating their origin. Pointers like HEAD (local) and origin/master, origin/HEAD, master (remote) mark the current positions.
+
+# Task 4: Tagging a Commit
+
+1. On the current branch (lab02) I tagged latest commit (of previous task) with `v1.0.0` using command:
+```sh
+git tag v1.0.0
+```
+2. Pushed the changes with new tag using command:
+```sh
+git push origin v1.0.0
+...
+ * [new tag]         v1.0.0 -> v1.0.0
+ ```
+Tagging commits help to trigger actions in CI/CD pipeline by special keywords in the tag.
