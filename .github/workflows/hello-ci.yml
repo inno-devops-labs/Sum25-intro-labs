@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Добавляем триггер для ручного запуска
 
 jobs:
   echo-job:
@@ -24,3 +25,22 @@ jobs:
           node -v
           echo "Версия npm:"
           npm -v
+
+  additional-job: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Проверка исходного кода
+        uses: actions/checkout@v2
+
+      - name: Запуск тестов
+        run: |
+          echo "Запуск тестов..."
+          # Здесь вы можете добавить команды для запуска ваших тестов
+          # Например, если у вас есть тесты на JavaScript, вы можете использовать:
+          # npm test
+
+      - name: Установка зависимостей
+        run: |
+          echo "Установка зависимостей..."
+          npm install
