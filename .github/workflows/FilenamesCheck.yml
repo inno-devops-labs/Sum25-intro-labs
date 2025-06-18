@@ -1,0 +1,28 @@
+name: Check Submission Filenames
+
+on:
+  push:
+    paths:
+      - 'Submissions/**'
+  pull_request:
+    paths:
+      - 'Submissions/**'
+
+jobs:
+  check-submissions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check filenames in Submissions directory
+        run: |
+          invalid_files=$(find Submissions/ -type f ! -name '*submission*')
+
+          if [ -n "$invalid_files" ]; then
+            echo "❌ Found invalid files:"
+            echo "$invalid_files"
+            exit 1
+          else
+            echo "✅ All files are correctly named."
+          fi
