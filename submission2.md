@@ -47,7 +47,7 @@ Signed-off-by: Dmitriy Creed <creed@soramitsu.co.jp>
 
 # Task 2: Practice with Git Reset Command
 
-1. Created a series of three commits on a new branch. Obtained the file file.txt:
+1. Created a series of three commits on a new branch. Obtained the file `file.txt`:
 ```text
 First commit
 Second commit
@@ -119,3 +119,35 @@ Moves the branch pointer directly to the Third commit (by its hash) and updates 
 git reset --hard b0ba3ec
 HEAD is now at b0ba3ec Third commit
 ```
+
+# Task 3: Visualizing Git Commit History
+
+1. Created a series of three commits on a new branch. Obtained the file `history.txt`:
+```text
+Commit A
+Commit B
+Commit C
+
+```
+2. Visualising commit history graph:
+```sh
+git log --oneline --graph --all
+* a5dd262 (HEAD -> lab02) Commit C
+* f697901 Commit B
+* f5da185 Commit A
+* 3a32799 task 02 commit
+| * b0ba3ec (git-reset-practice) Third commit
+| * 132cf5f Second commit
+| * 97bf35e First commit
+|/  
+* da07dab task 01 commit
+| * f28f91c (origin/lab01, lab01) feat: signed commit with merging strategies comparison
+| * d47189e feat: first signed commit
+|/  
+* e97e227 (origin/master, origin/HEAD, master) Publish lab3 CI
+* 3dd1718 lab2 Git
+* 0fea98c lab2 Git
+* a107866 lab1 Intro
+```
+
+This graph shows the commit history, including commit hashes, messages, and their order. It also visualizes branches with their names and lines indicating their origin. Pointers like HEAD (local) and origin/master, origin/HEAD, master (remote) mark the current positions.
