@@ -8,6 +8,29 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Get runner info
+        run: |
+          echo "Runner name: ${{ runner.name }}"
+          echo "Runner architecture: ${{ runner.arch }}"
+          echo "GitHub workspace: ${{ github.workspace }}"
+
+      - name: Get system info
+        run: |
+          echo "System info:"
+          uname -a
+          echo "CPU info:"
+          lscpu
+          echo "Memory info:"
+          free -h
+          echo "Disk info:"
+          df -h
+
+      - name: Get OS info
+        run: |
+          echo "OS info:"
+          cat /etc/*release*
+
       - name: Check out repository code
         uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
