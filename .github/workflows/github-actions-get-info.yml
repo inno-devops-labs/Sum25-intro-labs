@@ -1,7 +1,6 @@
 name: GitHub get info
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  push:
   workflow_dispatch:      # Ручной запуск из интерфейса GitHub
 jobs:
   Explore-GitHub-Actions:
