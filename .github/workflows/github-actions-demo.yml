@@ -2,7 +2,6 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
-  workflow_dispatch:      # Ручной запуск из интерфейса GitHub
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -17,13 +16,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Gather system info
-        run: |
-          echo "=== 🖥️ System Information ==="
-          echo "OS: $(uname -a)"
-          echo "CPU: $(nproc) cores"
-          echo "Memory: $(free -h | grep Mem | awk '{print $2}') RAM"
-          echo "Disk: $(df -h | grep -vE 'tmpfs|udev' | awk '{print $1 " " $4}')"
-          echo "GitHub Runner: ${{ runner.name }}"
-          echo "============================"
       - run: echo "🍏 This job's status is ${{ job.status }}."
