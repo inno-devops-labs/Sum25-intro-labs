@@ -17,17 +17,17 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Get Runner Details
-      - run: |
+        run: |
           echo "Runner OS: ${{ runner.os }}"
           echo "Runner Name: ${{ runner.name }}"
           echo "Runner Architecture: ${{ runner.arch }}"
           echo "GitHub Workspace: ${{ github.workspace }}"
       - name: Get OS Details
-      - run: |
+        run: |
           lsb_release -a
           uname -a
       - name: Get Hardware Details
-      - run: |
+        run: |
           echo "CPU Cores: $(nproc)"
           echo "Memory:"
           free -h
