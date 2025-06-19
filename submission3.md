@@ -34,3 +34,5 @@ into the newly-created file.
 > At this stage you don't need to understand the details of this workflow.
 
 Thank you, GitHub, very cool.
+4. I commited the changes to the local lab3 branch and pushed the changes to origin.
+5. After searching and failing to find my workflow in the GitHub Actions interface, I retraced my steps and found the issue - I forgot to put the workflows directory between .github and .yml file. I fixed that and once again pushed to origin.
