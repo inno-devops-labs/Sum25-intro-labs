@@ -125,3 +125,13 @@ v1.0.0
 v1.1.0
 Explanation
 Tagging is valuable in software development for versioning releases, triggering CI/CD pipelines, and maintaining clear release notes.
+
+## Bonus Task: GitHub Social Interactions 🌟
+
+* Steps and Outputs
+
+     * Starred the course repository inno-devops-labs/Sum25-intro.
+     * Followed the professor, TAs, and at least 3 classmates on GitHub.
+
+Reflection
+GitHub's social features, like starring and following, foster collaboration by connecting developers, helping discover projects, and building a community in open source or team-based projects.
