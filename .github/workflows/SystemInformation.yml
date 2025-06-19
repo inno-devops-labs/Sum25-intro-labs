@@ -1,6 +1,7 @@
 name: Gather System Information
 
 on:
+  push:
   workflow_dispatch: 
 
 jobs:
