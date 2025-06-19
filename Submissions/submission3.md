@@ -108,7 +108,7 @@ Second output:
 name: Gather System Information
 
 on:
-  workflow_dispatch:  # Ручной запуск
+  workflow_dispatch:  # manual trigger
 
 jobs:
   system-info:
@@ -140,3 +140,5 @@ jobs:
           echo "---- Environment Variables ----"
           env | sort
 ```
+
+[OutputLink](https://github.com/fabulargirl/Sum25-intro-labs/actions/runs/15755771482/job/44410756723)
