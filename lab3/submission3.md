@@ -57,3 +57,22 @@ The outputs that we expect in the jobs execution log:
 ![alt text](image4.png)
 
 I hope this reflects the core concepts and steps I followed
+
+---
+
+## Task 2: Gathering System Information and Manual Triggering
+
+### 2.1 Add a Manual Trigger
+
+1. Put on workflow_dispatch in the `ci.yml` file
+2. Commit, push
+3. In GitHub Actions / CI, see Run workflow button.
+
+![alt text](image5.png)
+
+We can run it manually now, too.
+
+![alt text](image6.png)
+
+^^^
+This one's been run on workflow_dispatch.
