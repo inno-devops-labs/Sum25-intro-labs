@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - lab3
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,3 +15,10 @@ jobs:
 
       - name: Run a simple command
         run: echo "Hello, GitHub Actions!"
+
+      - name: Gather System Information
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "CPU Info: $(lscpu)"
+          echo "Memory Info: $(free -h)"
+          echo "Disk Info: $(df -h)"
