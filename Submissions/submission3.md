@@ -47,3 +47,107 @@ Submissions/img_1.png
 Error: Process completed with exit code 1.
 ```
 
+After checking, it was discovered that there were images in the `/Submissions` directory. I created a separate directory for the images and moved the files. Let's test the script after the changes.
+
+Second output:
+
+```commandline
+✅ All files are correctly named.
+```
+
+# Task 2: Gathering System Information and Manual Triggering
+
+1. Configure a Manual Trigger:
+
+    Add `workflow_dispatch`. It allows you to run workflow manually from the Actions tab on GitHub.
+    
+    ```yml
+    name: Check Submission Filenames
+    
+    on:
+      push:         
+      workflow_dispatch:  # manual trigger
+    
+    jobs:
+      check-submissions:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+    
+          - name: Check filenames in Submissions directory
+            run: |
+              echo "🔍 Checking files in Submissions/..."
+              invalid_files=$(find Submissions/ -type f ! -name '*Submission*')
+    
+              if [ -n "$invalid_files" ]; then
+                echo "❌ Found invalid files:"
+                echo "$invalid_files"
+                exit 1
+              else
+                echo "✅ All filenames are valid."
+              fi
+    ```
+   
+2. Gather System Information
+    
+    Added Gather system information, which executes commands:
+
+    `uname -a` - OS and kernel 
+
+    `lscpu` - information about CPU
+    
+    `free -h` - memory information
+    
+    `df -h` - disk information
+    
+    `env` - runner environment variables
+        
+
+    ```yml
+   name: Check Submission Filenames and System Info
+    
+    on:
+      push:
+      workflow_dispatch:
+    
+    jobs:
+      check-submissions:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+    
+          - name: Check filenames in Submissions directory
+            run: |
+              echo "🔍 Checking files in Submissions/..."
+              invalid_files=$(find Submissions/ -type f ! -name '*Submission*')
+    
+              if [ -n "$invalid_files" ]; then
+                echo "❌ Found invalid files:"
+                echo "$invalid_files"
+                exit 1
+              else
+                echo "✅ All filenames are valid."
+              fi
+    
+          - name: Gather system information
+            run: |
+              echo "🖥️ System Information:"
+              echo "---- uname -a ----"
+              uname -a
+    
+              echo "---- CPU Info ----"
+              lscpu
+    
+              echo "---- Memory Info ----"
+              free -h
+    
+              echo "---- Disk Info ----"
+              df -h
+    
+              echo "---- Environment ----"
+              env | sort
+   ```
+   
