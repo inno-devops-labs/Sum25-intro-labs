@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
-  workflow_dispatch:   # Manual trigger added
+  workflow_dispatch:
 
 jobs:
   Explore-GitHub-Actions:
@@ -21,10 +21,16 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          
-      - run: echo "🍏 This job's status is ${{ job.status }}."
       
-      # Additional step to show manual trigger recognition
+      - name: Gather system info
+        run: |
+          echo "Runner OS: $(uname -a)"
+          echo "CPU Info: $(lscpu | grep 'Model name')"
+          echo "Memory: $(free -h | grep Mem)"
+          echo "Disk Space: $(df -h / | grep -v Filesystem)"
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
       - name: Manual Trigger Check
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
