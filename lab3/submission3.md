@@ -10,8 +10,8 @@ https://docs.github.com/en/actions/quickstart
 2. The workflow logs show built-in variables `${{ github.actor }}` (my GitHub username) and `${{ runner.os }}` (the runner operating system, here “Ubuntu”).
 
 ### Key Concepts
-- …
-- …
+1. A GitHub Actions workflow is defined in a YAML file with `on`, `jobs` and `steps` sections.
+2. The `actions/checkout@v4` action checks out your repository code into the runner workspace.
 
 ### Steps Followed
 1. …
