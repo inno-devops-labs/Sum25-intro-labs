@@ -141,4 +141,4 @@ jobs:
           env | sort
 ```
 
-[OutputLink](https://github.com/fabulargirl/Sum25-intro-labs/actions/runs/15755771482/job/44410756723)
+[Output Link](https://github.com/fabulargirl/Sum25-intro-labs/actions/runs/15755771482/job/44410756723)
