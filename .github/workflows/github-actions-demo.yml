@@ -1,6 +1,6 @@
-name: GitHub Actions Demo
+name: GitHub Actions Demo (Modified)
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -16,3 +16,25 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Get Runner Details
+      - run: |
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Runner Name: ${{ runner.name }}"
+          echo "Runner Architecture: ${{ runner.arch }}"
+          echo "GitHub Workspace: ${{ github.workspace }}"
+      - name: Get OS Details
+      - run: |
+          lsb_release -a
+          uname -a
+      - name: Get Hardware Details
+      - run: |
+          echo "CPU Cores: $(nproc)"
+          echo "Memory:"
+          free -h
+          echo "Storage:"
+          df -h
+          # Detailed Hardware (if available)
+          echo -e "\n### CPU DETAILS ###"
+          lscpu || echo "lscpu not available"
+          echo -e "\n### MEMORY DETAILS ###"
+          grep MemTotal /proc/meminfo || echo "/proc/meminfo not accessible"
