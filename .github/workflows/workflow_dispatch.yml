@@ -1,0 +1,38 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show event, OS, repo info
+        run: |
+          echo "🎉 Triggered by ${{ github.event_name }}"
+          echo "🐧 Running on ${{ runner.os }}"
+          echo "🔎 Branch: ${{ github.ref }}, Repository: ${{ github.repository }}"
+
+      - name: List files
+        run: ls ${{ github.workspace }}
+
+      - name: Show system information 🧠
+        run: |
+          echo "=== UNAME ==="
+          uname -a
+
+          echo "=== CPU ==="
+          lscpu
+
+          echo "=== MEMORY ==="
+          free -h
+
+          echo "=== DISK ==="
+          df -h
