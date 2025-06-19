@@ -68,11 +68,28 @@ I hope this reflects the core concepts and steps I followed
 2. Commit, push
 3. In GitHub Actions / CI, see Run workflow button.
 
-![alt text](image5.png)
+![image](https://hackmd.io/_uploads/rJMKKcWEel.png)
 
 We can run it manually now, too.
 
-![alt text](image6.png)
+![image](https://hackmd.io/_uploads/S1kAF9WEle.png)
 
 ^^^
 This one's been run on workflow_dispatch.
+
+### 2.2 Gather System Information
+
+1. Added the gather system info step into the workflow .ci file:
+
+![image](https://hackmd.io/_uploads/BkU5icW4lg.png)
+
+2. Commit, push
+
+3. Log output
+
+![image](https://hackmd.io/_uploads/HkEJ2qbNel.png)
+
+4. Observations
+
+The runner is an Ubuntu 24.04.1 LTS server, kernel 6.11.0-1015-azure. It has 15 GiB of RAM and a 4 GiB for swap. The main disk `/dev/root` is 72 GiB with about 25 GiB free. The CPU model is an AMD EPYC 7763 "64-Core Processor" with 4 vCPUs active in this VM. All vulnerability checks reported as Not affected.
+
