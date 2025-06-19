@@ -1,14 +1,24 @@
-name: First CI Pipeline
+name: Basic CI Pipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - lab3
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Say Hello
+      - name: Run a simple command
         run: echo "Hello, GitHub Actions!"
+
+      - name: Gather System Information
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "CPU Info: $(lscpu)"
+          echo "Memory Info: $(free -h)"
+          echo "Disk Info: $(df -h)"
