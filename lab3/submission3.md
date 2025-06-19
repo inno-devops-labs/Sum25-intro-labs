@@ -68,11 +68,11 @@ I hope this reflects the core concepts and steps I followed
 2. Commit, push
 3. In GitHub Actions / CI, see Run workflow button.
 
-![image](https://hackmd.io/_uploads/rJMKKcWEel.png)
+![alt text](image5.png)
 
 We can run it manually now, too.
 
-![image](https://hackmd.io/_uploads/S1kAF9WEle.png)
+![alt text](image6.png)
 
 ^^^
 This one's been run on workflow_dispatch.
@@ -81,13 +81,13 @@ This one's been run on workflow_dispatch.
 
 1. Added the gather system info step into the workflow .ci file:
 
-![image](https://hackmd.io/_uploads/BkU5icW4lg.png)
+![alt text](image7.png)
 
 2. Commit, push
 
 3. Log output
 
-![image](https://hackmd.io/_uploads/HkEJ2qbNel.png)
+![alt text](image8.png)
 
 4. Observations
 
