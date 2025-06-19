@@ -16,3 +16,5 @@ https://docs.github.com/en/actions/quickstart
 ### Steps Followed
 1. Created the file `.github/workflows/github-actions-demo.yml`, pasted the example workflow from the quickstart guide, and committed it to branch `lab3`.
 2. Pushed branch `lab3` to GitHub, then opened the Actions tab to confirm the workflow ran and viewed the step-by-step logs.
+
+<!-- Triggering CI/CD workflow for Task 1 -->
