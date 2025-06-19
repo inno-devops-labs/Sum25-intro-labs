@@ -31,7 +31,6 @@ Run echo Add other actions to build,
 Add other actions to build,
 test, and deploy your project.
 ```
-```
 - **Errors encountered:** none
 - **Additional observation:** Workflow completed in ~4s on ubuntu-latest runner.
 ## Task 2: Gathering System Information and Manual Triggering
