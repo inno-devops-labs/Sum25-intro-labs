@@ -35,4 +35,4 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
           echo "🚀 This workflow was manually triggered by ${{ github.actor }}"
-          echo "⏱️ Triggered at: ${{ github.event.workflow_dispatch.created_at }}"
+          echo "⏱️ Triggered at: $(date -d '${{ github.event.created_at }}' '+%Y-%m-%d %H:%M:%S %Z')"
