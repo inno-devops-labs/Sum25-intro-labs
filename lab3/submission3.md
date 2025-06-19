@@ -34,5 +34,5 @@ test, and deploy your project.
 - **Errors encountered:** none
 - **Additional observation:** Workflow completed in ~4s on ubuntu-latest runner.
 ## Task 2: Gathering System Information and Manual Triggering
-
+<!-- test system info step -->
 
