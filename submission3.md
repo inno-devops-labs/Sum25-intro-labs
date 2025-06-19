@@ -62,4 +62,28 @@ on:
   workflow_dispatch:
 ```
 I did not define any inputs since they were not required for this task.
-After pushing the change to the lab3 branch, I was able to manually run the workflow by navigating to the Actions tab -> selecting the workflow -> clicking "Run workflow".
+- After pushing the change to the lab3 branch, I wasn't able to manually run the workflow as the button did not appear in the GitHub interface.
+- Rewriting the yaml file to
+```
+on: [push, workflow_dispatch]
+```
+also did not fix the issue.
+- Then I tried merging `lab3` with workflow features into `master`, as I found this advice on a similar Stackoverflow question.
+- After merging my `lab3` branch, and removing the unnecessary `submission3.md` from `main`, I was able to manually run the workflow on `lab3` by navigating to the Actions tab -> selecting the workflow -> clicking "Run workflow".
+
+#### Part 2: Gathering System Information:
+To gather runner system information, I added a new step in the `steps:` section of the workflow:
+```
+- name: Gather system information
+  run: |
+    echo "System Information:"
+    uname -a
+    lscpu
+    free -h
+    df -h /
+```
+These commands collect:
+- `uname -a`: Kernel version and OS architecture
+- `lscpu`: Detailed CPU info (model, cores, threads)
+- `free -h`: RAM size and usage
+- `df -h /`: Disk usage on the root filesystem
