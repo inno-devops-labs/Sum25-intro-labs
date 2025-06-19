@@ -1,0 +1,24 @@
+name: Manual CI Pipeline
+
+on:
+  push:
+    branches:
+      - lab3
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run a simple command
+        run: echo "Lab3 Tas 1 &2"
+
+      - name: Gather System Information
+        run: |
+          echo "CPU Info: $(lscpu)"
+          echo "Runner OS: $RUNNER_OS"
+          echo "Memory Info: $(free -h)"
+          echo "Disk Info: $(df -h)"
