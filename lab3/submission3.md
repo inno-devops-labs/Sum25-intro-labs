@@ -22,20 +22,8 @@ https://docs.github.com/en/actions/quickstart
 ### Execution Results
 - **Workflow run status:** Success  
 - **Output snippet:**  
-``` Operating System: Linux pkrvmxyh4eaekms 6.11.0-1015-azure #15~24.04.1-Ubuntu SMP Thu May 1 02:52:08 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-CPU info:
-Architecture: x86_64
-CPU op-mode(s): 32-bit, 64-bit
-Address sizes: 48 bits physical, 48 bits virtual
-Byte Order: Little Endian
-CPU(s): 4
-Memory info:
-total used free shared buff/cache available
-Mem: 15Gi 870Mi 14Gi 39Mi 1.0Gi 14Gi
-```
-- **Errors encountered:** none
-- **Run a one-line script**
-- **Run a multi-line script**
+**Run a one-line script**
+**Run a multi-line script**
 ```
 Run echo Hello, world!
 Hello, world!
@@ -43,7 +31,9 @@ Run echo Add other actions to build,
 Add other actions to build,
 test, and deploy your project.
 ```
-
+```
+- **Errors encountered:** none
+- **Additional observation:** Workflow completed in ~4s on ubuntu-latest runner.
 ## Task 2: Gathering System Information and Manual Triggering
 
 
