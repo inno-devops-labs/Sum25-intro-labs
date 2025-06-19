@@ -91,7 +91,7 @@ Second output:
    
 2. Gather System Information
     
-    Added Gather system information, which executes commands:
+    Added Gather system information `.yml` file, which executes commands:
 
     `uname -a` - OS and kernel 
 
@@ -104,50 +104,39 @@ Second output:
     `env` - runner environment variables
         
 
-    ```yml
-   name: Check Submission Filenames and System Info
-    
-    on:
-      push:
-      workflow_dispatch:
-    
-    jobs:
-      check-submissions:
-        runs-on: ubuntu-latest
-    
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v3
-    
-          - name: Check filenames in Submissions directory
-            run: |
-              echo "🔍 Checking files in Submissions/..."
-              invalid_files=$(find Submissions/ -type f ! -name '*Submission*')
-    
-              if [ -n "$invalid_files" ]; then
-                echo "❌ Found invalid files:"
-                echo "$invalid_files"
-                exit 1
-              else
-                echo "✅ All filenames are valid."
-              fi
-    
-          - name: Gather system information
-            run: |
-              echo "🖥️ System Information:"
-              echo "---- uname -a ----"
-              uname -a
-    
-              echo "---- CPU Info ----"
-              lscpu
-    
-              echo "---- Memory Info ----"
-              free -h
-    
-              echo "---- Disk Info ----"
-              df -h
-    
-              echo "---- Environment ----"
-              env | sort
-   ```
-   
+```yml
+name: Gather System Information
+
+on:
+  workflow_dispatch:  # Ручной запуск
+
+jobs:
+  system-info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Display system information
+        run: |
+          echo "🖥️ System Information:"
+          echo "---- uname -a ----"
+          uname -a
+          
+          echo ""
+          echo "---- CPU Info ----"
+          lscpu
+          
+          echo ""
+          echo "---- Memory Info ----"
+          free -h
+          
+          echo ""
+          echo "---- Disk Info ----"
+          df -h
+          
+          echo ""
+          echo "---- Environment Variables ----"
+          env | sort
+```
