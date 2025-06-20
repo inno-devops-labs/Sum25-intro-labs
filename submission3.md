@@ -11,3 +11,9 @@ Github action - платформа для автоматизации билда,
 При коммите workflow файлов автоматически производится их выполнение, его результат можно проверить на вкладке Actions. Никаких ошибок не произошло, значит, все выполнено верно.
 ![alt text](screenshots/workflow1.png)
 ![alt text](screenshots/workflow2.png)
+
+## Task 2 - Gathering System Information and Manual Triggering
+
+Сначала я включил ручной запуск workflow путем добавления в раздел `on` `.yml` файла раздела `workflow_dispatch`.
+![alt text](screenshots/workflow3.png)
+![alt text](screenshots/workflow4.png)

@@ -19,3 +19,14 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Gather runner info
+      - run: |
+           echo "## GitHub runner context"
+           echo "Runner: ${{ runner.name }}, OS: ${{ runner.os }} ${{ runner.arch }}"
+           echo "## Kernel & distro"
+           uname -a
+           lsb_release -a || true     # не на всех дистрибутивах есть
+           echo "## CPU"
+           lscpu
+           echo "## Memory"
+           free -h
