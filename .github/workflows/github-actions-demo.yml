@@ -3,12 +3,12 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   workflow_dispatch:
     inputs:
-        logLevel:
-          description: 'Log level'     
-          required: true
-          default: 'warning'
-        tags:
-          description: 'Test scenario tags'  
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
