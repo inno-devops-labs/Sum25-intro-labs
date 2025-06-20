@@ -17,3 +17,19 @@ Github action - платформа для автоматизации билда,
 Сначала я включил ручной запуск workflow путем добавления в раздел `on` `.yml` файла раздела `workflow_dispatch`.
 ![alt text](screenshots/workflow3.png)
 ![alt text](screenshots/workflow4.png)
+
+Для получения системной информации о запуске был добавлен ряд команд в файл workflow:
+```
+echo "## GitHub runner context"
+echo "Runner: ${{ runner.name }}, OS: ${{ runner.os }} ${{ runner.arch }}"
+echo "## Kernel & distro"
+uname -a
+lsb_release -a || true     # не на всех дистрибутивах есть
+echo "## CPU"
+lscpu
+echo "## Memory"
+free -h
+```
+
+Вывод дает информацию о процессоре, памяти, ядре и самом runner
+![alt text](screenshots/workflow5.png)
