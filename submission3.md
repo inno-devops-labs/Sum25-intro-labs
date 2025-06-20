@@ -16,7 +16,7 @@ So with the help of LLMs I created a new action that triggers on workflow dispat
 
 Basically what was needed - to add the new trigger "workflow_dispatch" to on. Then merge the workflows directory to the default bracnh (master). Now it is possible to rerun (cause it always runs whe I push) directly from github. Adding the if statement that checks the name of the trigger allows to print the needed data only on the manual runs. As it can be seen here, on the first picture the script skipped the part with systems chars because it was triggered by the push. However on the second, manuall run it did print out. 
 
-![alt text](image.png)
+![alt text](image1_lab3.png)
 
-![alt text](image-1.png)
+![alt text](image2_lab3.png)
 
