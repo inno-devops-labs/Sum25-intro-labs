@@ -30,8 +30,8 @@ jobs:
 
       - name: Print Inputs
         run: |
-        echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Tags: ${{ github.event.inputs.tags }}"
+          echo "Log level: ${{ github.event.inputs.logLevel }}"
+          echo "Tags: ${{ github.event.inputs.tags }}"
 
       - name: System Info
         uses: kenchan0130/actions-system-info@master
