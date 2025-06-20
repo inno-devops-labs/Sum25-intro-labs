@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Run a simple command
+      run: echo "Hello, GitHub Actions!"
+    - name: Gather system info
+      run: |
+        echo "### System Information ###"
+        echo "OS: $(uname -a)"
+        echo "CPU: $(lscpu | grep 'Model name')"
+        echo "Memory: $(free -h)"
+        echo "Disk: $(df -h)"
