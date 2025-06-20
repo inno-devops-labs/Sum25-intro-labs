@@ -214,7 +214,7 @@ Here is the tree after the first commits
 
 here is the tree after creating the side-branch
 
-![alt text](image.png)
+![alt text](image1_lab2.png)
 
 One funny moment in the list of commit messages - everything was smooth until it tried to checkout to the main, which is called master on my machine. 
 
