@@ -12,7 +12,8 @@ And added the python workflow for testing [Actions](https://github.com/Slauva/de
 
 ### Task 2
 
-Added the manual trigger with system information parts:
+Added the manual trigger with system information parts [Actions](https://github.com/Slauva/devops-course/actions/runs/15782746760)
+:
 
 ~~~yaml
       - name: Manual Trigger Check
