@@ -1,6 +1,8 @@
 name: CI Pipeline
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -11,3 +13,10 @@ jobs:
     
     - name: Run a simple command
       run: echo "Hello, GitHub Actions!"
+    - name: Gather system info
+      run: |
+        echo "### System Information ###"
+        echo "OS: $(uname -a)"
+        echo "CPU: $(lscpu | grep 'Model name')"
+        echo "Memory: $(free -h)"
+        echo "Disk: $(df -h)"
