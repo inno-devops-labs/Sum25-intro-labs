@@ -1,18 +1,40 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
-jobs:
-  Explore-GitHub-Actions:
+# name: GitHub Actions Demo
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# on: [push]
+# jobs:
+#   Explore-GitHub-Actions:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+#       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+#       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+#       - name: Check out repository code
+#         uses: actions/checkout@v4
+#       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+#       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+#       - name: List files in the repository
+#         run: |
+#           ls ${{ github.workspace }}
+#       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:  # добавляем ручной запуск
+
+  jobs:
+  print-tag:
     runs-on: ubuntu-latest
+    if: ${{ inputs.print_tags }} 
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - name: Gather system information
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          echo "🖥️ Hostname: $(hostname)"
+          echo "🧠 CPU Info:"
+          lscpu
+          echo "💾 Memory Info:"
+          free -h
+          echo "📀 Disk Info:"
+          df -h
+          echo "🧰 OS Info:"
+          uname -a
