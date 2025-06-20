@@ -20,7 +20,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Gather runner info
-      - run: |
+        run: |
            echo "## GitHub runner context"
            echo "Runner: ${{ runner.name }}, OS: ${{ runner.os }} ${{ runner.arch }}"
            echo "## Kernel & distro"
