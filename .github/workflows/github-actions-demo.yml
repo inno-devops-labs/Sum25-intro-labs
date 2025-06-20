@@ -3,6 +3,13 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   push:
   workflow_dispatch:
+    inputs:
+        logLevel:
+          description: 'Log level'     
+          required: true
+          default: 'warning'
+        tags:
+          description: 'Test scenario tags'  
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -20,6 +27,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Print Inputs
+        run: |
+        echo "Log level: ${{ github.event.inputs.logLevel }}"
+        echo "Tags: ${{ github.event.inputs.tags }}"
 
       - name: System Info
         uses: kenchan0130/actions-system-info@master
