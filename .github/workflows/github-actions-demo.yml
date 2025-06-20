@@ -22,19 +22,18 @@ on:
     branches: [ master ]
   workflow_dispatch:  # добавляем ручной запуск
 
-  jobs:
-  print-tag:
-    runs-on: ubuntu-latest
-    if: ${{ inputs.print_tags }} 
-    steps:
-      - name: Gather system information
-        run: |
-          echo "🖥️ Hostname: $(hostname)"
-          echo "🧠 CPU Info:"
-          lscpu
-          echo "💾 Memory Info:"
-          free -h
-          echo "📀 Disk Info:"
-          df -h
-          echo "🧰 OS Info:"
-          uname -a
+jobs:
+print-tag:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Gather system information
+      run: |
+        echo "🖥️ Hostname: $(hostname)"
+        echo "🧠 CPU Info:"
+        lscpu
+        echo "💾 Memory Info:"
+        free -h
+        echo "📀 Disk Info:"
+        df -h
+        echo "🧰 OS Info:"
+        uname -a
