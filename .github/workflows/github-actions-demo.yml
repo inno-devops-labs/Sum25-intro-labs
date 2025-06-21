@@ -1,0 +1,13 @@
+name: lab3 actions test
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: System info
+        run: |
+          echo "$(uname -a)"
+          echo "$(lscpu)"
