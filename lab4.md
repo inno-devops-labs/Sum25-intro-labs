@@ -76,13 +76,13 @@ In this lab, you'll analyze operating system fundamentals including boot perform
 1. **Traceroute Execution**:
 
    ```sh
-   traceroute example.com
+   traceroute github.com
    ```
 
 2. **DNS Resolution Check**:
 
    ```sh
-   dig example.com
+   dig github.com
    ```
 
 ### 2.2: Packet Capture
@@ -98,8 +98,8 @@ In this lab, you'll analyze operating system fundamentals including boot perform
 1. **Perform PTR Lookups**:
 
    ```sh
-   dig -x 8.8.8.8  # Google DNS
-   dig -x 1.1.1.1  # Cloudflare DNS
+   dig -x 8.8.4.4
+   dig -x 1.1.2.2
    ```
 
 ### Documentation for Networking Analysis
