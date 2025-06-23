@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - lab3
+<<<<<<< HEAD
   workflow_dispatch:  
 
 jobs:
@@ -25,4 +26,5 @@ jobs:
           wmic memorychip get capacity,manufacturer,partnumber,speed
 
       - name: Run a simple script
+<<<<<<< HEAD
         run: echo "Hello, GitHub Actions!"
