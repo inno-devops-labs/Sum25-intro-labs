@@ -1,0 +1,54 @@
+name: System Analysis
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Analyze Boot Performance
+        run: |
+          echo "=== Boot Performance ==="
+          echo "Systemd Analyze:"
+          systemd-analyze
+          echo "Blame:"
+          systemd-analyze blame
+          echo "Uptime:"
+          uptime
+          echo "Current Users:"
+          w
+
+      - name: Process Expertise
+        run: |
+          echo "=== Resource-Intensive Processes ==="
+          echo "Top Memory Consumers:"
+          ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 6
+          echo "Top CPU Consumers:"
+          ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -n 6
+
+      - name: Service Dependencies
+        run: |
+          echo "=== Service Dependencies ==="
+          systemctl list-dependencies
+          systemctl list-dependencies multi-user.target
+
+      - name: User Sessions Audit
+        run: |
+          echo "=== User Sessions ==="
+          who -a
+          last -n 5
+
+      - name: Memory Analysis
+        run: |
+          echo "=== Memory Allocation ==="
+          free -h
+          echo "Memory Info:"
+          cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable
