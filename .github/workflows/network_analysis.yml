@@ -22,12 +22,12 @@ jobs:
       - name: Traceroute to github.com
         run: |
           echo "=== Traceroute ==="
-          traceroute github.com
+          traceroute github.com || echo "Error occurred during Traceroute step"
 
       - name: DNS Resolution for github.com
         run: |
           echo "=== DNS Resolution ==="
-          dig github.com
+          dig github.com || echo "Error occurred during DNS Resolution step"
 
   packet_capture:
     runs-on: ubuntu-latest
@@ -39,10 +39,10 @@ jobs:
       - name: Capture DNS Traffic
         run: |
           echo "=== Generating DNS Traffic ==="
-          dig github.com  # Генерация DNS-запроса
+          dig github.com || echo "Error occurred during DNS Traffic Generation step"
           
           echo "=== Packet Capture ==="
-          sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn
+          sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn || echo "Error occurred during Packet Capture step"
           
   reverse_dns_lookup:
     runs-on: ubuntu-latest
@@ -59,9 +59,8 @@ jobs:
       - name: Reverse DNS Lookup for 8.8.4.4
         run: |
           echo "=== Reverse DNS Lookup ==="
-          dig -x 8.8.4.4
+          dig -x 8.8.4.4 || echo "Error occurred during Reverse DNS Lookup for 8.8.4.4 step"
 
       - name: Reverse DNS Lookup for 1.1.1.1
         run: |
-          dig -x 1.1.1.1
-
+          dig -x 1.1.1.1 || echo "Error occurred during Reverse DNS Lookup for 1.1.1.1 step"
