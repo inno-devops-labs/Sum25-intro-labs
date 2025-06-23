@@ -1,123 +1,178 @@
-# Лабораторная работа по операционным системам и сетям
+# Lab on Operating Systems and Networks
 
-В этой лабораторной работе вы проанализируете основы операционной системы, включая производительность загрузки, использование ресурсов и зависимости служб, а также проведете диагностику сети с помощью трассировки пути, проверки DNS и захвата пакетов для развития основных навыков инфраструктуры DevOps.
+## Task 1: Operating System Analysis
 
-## Задача 1: Анализ операционной системы
+For the task, system_analysis.yml was created (https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/.github/workflows/system_analysis.yml)
 
-**Цель**: Проанализировать ключевые компоненты ОС, включая производительность загрузки, использование ресурсов, службы, сеансы и управление памятью.
+```
+name: System Analysis
 
-### 1.1: Производительность загрузки
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
-1. **Анализ времени загрузки системы**:
+jobs:
+  boot_performance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-```sh
-systemd-analyze
-systemd-analyze blame
+      - name: Analyze Boot Performance
+        run: |
+          echo "=== Boot Performance ==="
+          echo "Systemd Analyze:"
+          systemd-analyze
+          echo "Blame:"
+          systemd-analyze blame
+          echo "Uptime:"
+          uptime
+          echo "Current Users:"
+          w
+
+  resource_intensive_processes:
+    runs-on: ubuntu-latest
+    needs: boot_performance
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Process Expertise
+        run: |
+          echo "=== Resource-Intensive Processes ==="
+          echo "Top Memory Consumers:"
+          ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 6
+          echo "Top CPU Consumers:"
+          ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -n 6
+
+  service_dependencies:
+    runs-on: ubuntu-latest
+    needs: resource_intensive_processes
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Service Dependencies
+        run: |
+          echo "=== Service Dependencies ==="
+          systemctl list-dependencies
+          systemctl list-dependencies multi-user.target
+
+  user_sessions_audit:
+    runs-on: ubuntu-latest
+    needs: service_dependencies
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: User Sessions Audit
+        run: |
+          echo "=== User Sessions ==="
+          who -a
+          last -n 5
+
+  memory_analysis:
+    runs-on: ubuntu-latest
+    needs: user_sessions_audit
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Memory Analysis
+        run: |
+          echo "=== Memory Allocation ==="
+          free -h
+          echo "Memory Info:"
+          cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable
 ```
 
-2. **Проверка загрузки системы**:
+![image](https://github.com/user-attachments/assets/4b3ac868-877a-4602-bcd0-59e701cdd14b)
 
-```sh
-uptime
-w
+Submission4.md will describe the key observations, answer the question "Identify the process consuming the most memory", and note the resource usage patterns
+
+## Task 2: Network Analysis
+
+A network_analysis.yml was created for the task (https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/.github/workflows/network_analysis.yml)
+
+```
+name: Network Analysis
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  traceroute_and_dns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install traceroute
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y traceroute
+
+      - name: Traceroute to github.com
+        run: |
+          echo "=== Traceroute ==="
+          traceroute github.com || echo "Error occurred during Traceroute step"
+
+      - name: DNS Resolution for github.com
+        run: |
+          echo "=== DNS Resolution ==="
+          dig github.com || echo "Error occurred during DNS Resolution step"
+
+  packet_capture:
+    runs-on: ubuntu-latest
+    needs: traceroute_and_dns
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Capture DNS Traffic
+        run: |
+          echo "=== Generating DNS Traffic ==="
+          dig github.com || echo "Error occurred during DNS Traffic Generation step"
+          
+          echo "=== Packet Capture ==="
+          sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn || echo "Error occurred during Packet Capture step"
+          
+  reverse_dns_lookup:
+    runs-on: ubuntu-latest
+    needs: packet_capture
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dnsutils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dnsutils
+
+      - name: Reverse DNS Lookup for 8.8.4.4
+        run: |
+          echo "=== Reverse DNS Lookup ==="
+          dig -x 8.8.4.4 || echo "Error occurred during Reverse DNS Lookup for 8.8.4.4 step"
+
+      - name: Reverse DNS Lookup for 1.1.1.1
+        run: |
+          dig -x 1.1.1.1 || echo "Error occurred during Reverse DNS Lookup for 1.1.1.1 step"
 ```
 
-### 1.2: Экспертиза процессов
+![image](https://github.com/user-attachments/assets/a6cdcb2c-90d3-47c9-b26d-7fd323dcfdb7)
 
-1. **Определение ресурсоемких процессов**:
+Submission4.md will cover network path information, DNS query/response patterns, comparing reverse lookup results, IP address sanitization in packet captures (replace last octet with XXX) when documenting sensitive networks.
+## Information about the author
 
-```sh
-ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 6
-ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -n 6
-```
+The report was made by Kulikova Alyona specifically for "Integration and automation of the software development process (advanced course)".
 
-### 1.3: Зависимости служб
+If you have any questions or suggestions for improvement, do not hesitate to contact us!
 
-1. **Сопоставление отношений служб**:
-
-```sh
-systemctl list-dependencies
-systemctl list-dependencies multi-user.target
-```
-
-### 1.4: Сеансы пользователей
-
-1. **Аудит активности входа в систему**:
-
-```sh
-who -a
-last -n 5
-```
-
-### 1.5: Анализ памяти
-
-1. **Проверка выделения памяти**:
-
-```sh
-free -h
-cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable
-```
-
-### Документация для анализа ОС
-
-- Создайте `submission4.md` со всеми выводами команд
-- Для каждого
-- Включите ключевые наблюдения
-- Ответьте на конкретные вопросы (например, «Определите процесс, потребляющий больше всего памяти»)
-- Отметьте закономерности использования ресурсов
-
-## Задача 2: Анализ сети
-
-**Цель**: Выполнить диагностику сети, включая трассировку пути, проверку DNS, захват пакетов и обратный поиск.
-
-### 2.1: Трассировка сетевого пути
-
-1. **Выполнение трассировки**:
-
-```sh
-traceroute github.com
-```
-
-2. **Проверка разрешения DNS**:
-
-```sh
-dig github.com
-```
-
-### 2.2: Захват пакетов
-
-1. **Захват трафика DNS**:
-
-```sh
-sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn
-```
-
-### 2.3: Обратный DNS
-
-1. **Выполнение поиска PTR**:
-
-```sh
-dig -x 8.8.4.4
-dig -x 1.1.2.2
-```
-
-### Документация по сетевому анализу
-
-- Добавить выходные данные в `submission4.md`
-- Для каждого
-- Включить сведения о сетевые пути
-- Анализируйте шаблоны запросов/ответов DNS
-- Сравните результаты обратного поиска
-- Очищайте IP-адреса в захватах пакетов (замените последний октет на XXX) при документировании конфиденциальных сетей
-
-## Руководство
-
-- Используйте заголовки Markdown для организации в `submission4.md`
-- Включайте как выходные данные команд, так и письменный анализ
-- Для захвата пакетов (2.2) документируйте пример запроса DNS 1
-- Создайте PR в основную ветку по завершении
-
-> **Примечания по безопасности**
->
-> 1. Очищайте IP-адреса в выходных данных захвата пакетов
-> 2. Избегайте включения в документацию имен конфиденциальных процессов
+Link to git: https://github.com/Kulikova-A18
