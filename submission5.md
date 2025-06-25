@@ -7,10 +7,10 @@ In this lab, you will learn how to deploy a virtual machine (VM) using VirtualBo
 VirtualBox has been installed. Program information:
 
 > VirtualBox GUI
-> Version 7.0.4 r154605 (Qt5.15.2)
-> Copyright © 2022 Oracle and/or its affiliates.
 
-![image](https://github.com/user-attachments/assets/ab2215fe-5c23-4100-9365-625aa35ceb46)
+> Version 7.0.4 r154605 (Qt5.15.2)
+
+> Copyright © 2022 Oracle and/or its affiliates.
 
 Deploying a virtual machine:
 
