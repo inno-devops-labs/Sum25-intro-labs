@@ -144,3 +144,14 @@ traceroute to github.com (140.82.114.3), 30 hops max, 60 byte packets
 7 mow-b5-link.ip.twelve99.net (62.115.135.108) 14.151 ms 14.097 ms 14.042 ms
 8 sto-bb2-link.ip.twelve99.net (62.115.141.22) 31.677 ms 31.658 ms 31.639 ms
 ```
+### 2.1 DNS Resolution Check
+
+**Command:** `dig github.com`  
+**Output:*
+```
+; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> github.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47216
+;; flags: qr rd ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+```
