@@ -108,7 +108,7 @@
 
     The command `git log --oneline --graph --all` был создан граф 
     
-    ![img.png](img.png)
+    ![img.png](image/img.png)
 
 3. Optional Branching
 
@@ -123,7 +123,7 @@
 
     The following graph was obtained:
     
-    ![img_1.png](img_1.png)
+    ![img_1.png](image/img_1.png)
 
 This visualization clearly illustrates how multiple contributors can work on separate branches simultaneously, making independent changes without interfering with each other. It also highlights how branches eventually merge, demonstrating the flow of collaborative development and integration.
 
