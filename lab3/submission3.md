@@ -156,3 +156,32 @@ on: [push]
 - [x] Configure a Manual Trigger
 - [x] Gather System Information
 
+## Gather System Information with Neofetch
+
+Steps added:
+
+```yaml
+- name: 🧠 Install Neofetch
+    run: |
+        sudo apt-get update
+        sudo apt-get install -y neofetch
+
+- name: 🖥️ Display System Info
+    run: |
+        neofetch
+```
+
+| Change Type | Description                            |
+| ----------- | -------------------------------------- |
+| ✅ New Step  | `Install Neofetch` using `apt-get`     |
+| ✅ New Step  | `Display System Info` using `neofetch` |
+
+### Step: 🖥️ Display System Info
+
+Runs neofetch, which prints a visually appealing summary of:
+
+- OS and kernel version
+- CPU and memory usage
+- Uptime
+- Shell and terminal
+- Desktop environment (if applicable)
