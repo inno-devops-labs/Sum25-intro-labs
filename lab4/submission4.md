@@ -163,3 +163,17 @@ traceroute to github.com (140.82.114.3), 30 hops max, 60 byte packets
 22:30:05.916964 eth0 Out IP 172.21.38.33.54496 > 172.21.32.1.53: 47057+ [1au] A? github.com. (51)
 22:30:05.920217 eth0 In IP 172.21.32.1.53 > 172.21.38.33.54496: 47057-$ 1/0/0 A 140.82.113.4 (54)
 ```
+### 2.3 Reverse DNS
+
+**Command:** `dig -x 8.8.4.4`  
+**Output:**  
+```
+;; ANSWER SECTION:
+4.4.8.8.in-addr.arpa. 0 IN PTR dns.google.
+```
+**Command:** `dig -x 1.1.2.2`  
+**Output:**  
+```
+;; AUTHORITY SECTION:
+1.in-addr.arpa. 3599 IN SOA ns.apnic.net. read-txt-record-of-zone-first-dns-admin.apnic.net. 22228 7200 1800 604800 3600
+```
