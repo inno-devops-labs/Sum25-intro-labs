@@ -1,4 +1,4 @@
-# OS & Networking Lab
+# Operating Systems & Networking Lab
 
 ## Task 1: Operating System Analysis
 
@@ -32,4 +32,56 @@ graphical.target reached after 1.100s in userspace.
 21:28:05 up 12 min, 1 user, load average: 0.00, 0.00, 0.00
 USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT
 anntorko pts/1 - 21:15 12:42 0.00s ? -bash
+```
+### 1.2: Process Forensics
+Identify Resource-Intensive Processes:
+**Top 6 processes by memory usage:** 
+```
+PID PPID CMD %MEM %CPU
+211 1 /usr/bin/python3 /usr/share 0.2 0.0
+52 1 /usr/lib/systemd/systemd-jo 0.1 0.0
+1 0 /sbin/init 0.1 0.0
+108 1 /usr/lib/systemd/systemd-re 0.1 0.0
+183 1 /usr/libexec/wsl-pro-servic 0.1 0.0
+```
+
+**Top 6 processes by CPU usage:**  
+```
+PID PPID CMD %MEM %CPU
+1 0 /sbin/init 0.1 0.0
+52 1 /usr/lib/systemd/systemd-jo 0.1 0.0
+171 1 @dbus-daemon --system --add 0.0 0.0
+270 269 /init 0.0 0.0
+275 270 -bash 0.0 0.0
+```
+
+### 1.3 Service Dependencies
+
+**Command:** `systemctl list-dependencies | head -n 10`  
+**Output:**  
+```
+default.target
+○ ├─display-manager.service
+○ ├─systemd-update-utmp-runlevel.service
+○ ├─wslg.service
+● └─multi-user.target
+○ ├─apport.service
+● ├─console-setup.service
+● ├─cron.service
+● ├─dbus.service
+○ ├─dmesg.service
+```
+
+**Command:** `systemctl list-dependencies multi-user.target | head -n 10`  
+**Output:** 
+```multi-user.target
+○ ├─apport.service
+● ├─console-setup.service
+● ├─cron.service
+● ├─dbus.service
+○ ├─dmesg.service
+○ ├─e2scrub_reap.service
+○ ├─landscape-client.service
+○ ├─networkd-dispatcher.service
+● ├─rsyslog.service
 ```
