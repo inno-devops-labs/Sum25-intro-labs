@@ -85,3 +85,26 @@ default.target
 ○ ├─networkd-dispatcher.service
 ● ├─rsyslog.service
 ```
+### 1.4 User Sessions
+
+**Command:** `who -a`  
+**Output:**  
+```
+   system boot  2025-06-26 21:15
+    run-level 5  2025-06-26 21:15
+```
+```
+LOGIN console 2025-06-26 21:15 189 id=cons
+LOGIN tty1 2025-06-26 21:15 205 id=tty1
+anntorkot - pts/1 2025-06-26 21:15 00:32 355
+```
+
+**Command:** `last -n 5`  
+**Output:** 
+```
+reboot system boot 6.6.87.2-microso Thu Jun 26 21:15 still running
+reboot system boot 6.6.87.2-microso Thu Jun 26 21:05 still running
+reboot system boot 6.6.87.2-microso Thu Jun 26 21:02 still running
+reboot system boot 6.6.87.2-microso Thu Jun 26 20:59 still running
+wtmp begins Thu Jun 26 20:59:18 2025
+```
