@@ -185,3 +185,51 @@ Runs neofetch, which prints a visually appealing summary of:
 - Uptime
 - Shell and terminal
 - Desktop environment (if applicable)
+
+### **Display System Info** Output
+
+```bash
+Run neofetch
+25l7l            .-/+oossssoo+/-.
+        `:+ssssssssssssssssss+:`
+      -+ssssssssssssssssssyyssss+-
+    .ossssssssssssssssssdMMMNysssso.
+   /ssssssssssshdmmNNmmyNMMMMhssssss/
+  +ssssssssshmydMMMMMMMNddddyssssssss+
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.
++sssshhhyNMMNyssssssssssssyNMMMysssssss+
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso
++sssshhhyNMMNyssssssssssssyNMMMysssssss+
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/
+  +sssssssssdmydMMMMMMMMddddyssssssss+
+   /ssssssssssshdmNNNNmyNMMMMhssssss/
+    .ossssssssssssssssssdMMMNysssso.
+      -+sssssssssssssssssyyyssss+-
+        `:+ssssssssssssssssss+:`
+            .-/+oossssoo+/-.
+999Drunner@pkrvmbietmlfzoi 
+---------------------- 
+OS: Ubuntu 24.04.2 LTS x86_64 
+Host: Virtual Machine 7.0 
+Kernel: 6.11.0-1015-azure 
+Uptime: 1 min 
+Packages: 1281 (dpkg) 
+Shell: bash 5.2.21 
+Resolution: 1024x768 
+Terminal: Runner.Worker 
+CPU: AMD EPYC 7763 (4) @ 3.217GHz 
+GPU: 00:08.0 Microsoft Corporation Hyper-V virtual VGA 
+Memory: 592MiB / 15995MiB 
+
+
+
+
+
+
+
+
+25h7h
+```
