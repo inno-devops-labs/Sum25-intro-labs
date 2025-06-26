@@ -127,3 +127,20 @@ MemTotal: 7990464 kB
 MemAvailable: 7478368 kB
 SwapTotal: 2097152 kB
 ```
+## Task 2: Networking Analysis
+
+### 2.1 Network Path Tracing
+
+**Command:** `traceroute github.com`  
+**Output:**  
+```
+traceroute to github.com (140.82.114.3), 30 hops max, 60 byte packets
+1 kazan-ntb006.mshome.net (172.21.32.1) 1.173 ms 1.207 ms 1.293 ms
+2 192.168.0.1 (192.168.0.1) 1.908 ms 1.885 ms 2.941 ms
+3 * * *
+4 lag-4-435.bbr01.nn.ertelecom.ru (109.194.184.18) 3.153 ms 3.750 ms 3.730 ms
+5 ertelekom-ic-389478.ip.twelve99-cust.net (62.115.145.221) 13.379 ms 13.459 ms 13.859 ms
+6 mow-b2-link.ip.twelve99.net (62.115.145.220) 12.709 ms 12.220 ms 12.164 ms
+7 mow-b5-link.ip.twelve99.net (62.115.135.108) 14.151 ms 14.097 ms 14.042 ms
+8 sto-bb2-link.ip.twelve99.net (62.115.141.22) 31.677 ms 31.658 ms 31.639 ms
+```
