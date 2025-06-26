@@ -429,6 +429,15 @@
 
     It runs a `tcpdump` network traffic analyzer with port 53 (DNS) filtering, but with a few additional conditions.
 
+    ```sh
+    22:38:36.099878 wlp4s0 Out IP 192.168.31.32.48453 > 192.168.31.1.53: 56053+ [1au] PTR? 17.31.168.192.in-addr.arpa. (55)
+    ```
+    - wlp4s0 - interface WIFI
+    - Source host - 192.168.31.32.48453
+    - DNS server - 192.168.31.1.53
+    - Query type - PTR
+    - Requested domain - 17.31.168.192.in-addr.arpa
+    - DNS-query length: 55 byte
 
 
 ### 2.3: Reverse DNS
@@ -463,9 +472,81 @@
     ;; MSG SIZE  rcvd: 73
     ```
 
+    ```sh
+    ; <<>> DiG 9.18.30-0ubuntu0.22.04.2-Ubuntu <<>> -x 140.82.121.4
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 17755
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 65494
+    ;; QUESTION SECTION:
+    ;4.121.82.140.in-addr.arpa.	IN	PTR
+
+    ;; ANSWER SECTION:
+    4.121.82.140.in-addr.arpa. 2951	IN	PTR	lb-140-82-121-4-fra.github.com.
+
+    ;; Query time: 1 msec
+    ;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+    ;; WHEN: Thu Jun 26 23:21:17 MSK 2025
+    ;; MSG SIZE  rcvd: 98
+    ```
+
     #### What does it mean?
 
     The command performs a reverse DNS lookup for the IP address 8.8.4.4. A reverse DNS query allows you to find out which domain name corresponds to the IP address.
 
     - 8.8.4.4 - dns.google
     - 140.82.121.4 - lb-140-82-121-4-fra.github.com.
+
+    #### Repeating direct dns queries
+
+    ```sh 
+    dig dns.google
+
+    ; <<>> DiG 9.18.30-0ubuntu0.22.04.2-Ubuntu <<>> dns.google
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3736
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 65494
+    ;; QUESTION SECTION:
+    ;dns.google.			IN	A
+
+    ;; ANSWER SECTION:
+    dns.google.		452	IN	A	8.8.4.4
+    dns.google.		452	IN	A	8.8.8.8
+
+    ;; Query time: 3 msec
+    ;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+    ;; WHEN: Fri Jun 27 00:41:07 MSK 2025
+    ;; MSG SIZE  rcvd: 71
+    ```
+
+    ```sh
+    dig lb-140-82-121-4-fra.github.com
+
+    ; <<>> DiG 9.18.30-0ubuntu0.22.04.2-Ubuntu <<>> lb-140-82-121-4-fra.github.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 7817
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 65494
+    ;; QUESTION SECTION:
+    ;lb-140-82-121-4-fra.github.com.	IN	A
+
+    ;; ANSWER SECTION:
+    lb-140-82-121-4-fra.github.com.	3600 IN	A	140.82.121.4
+
+    ;; Query time: 84 msec
+    ;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+    ;; WHEN: Fri Jun 27 00:42:14 MSK 2025
+    ;; MSG SIZE  rcvd: 75
+    ```
+
+    It can be seen that DNS ans IP matches for forward and reverse requests.
