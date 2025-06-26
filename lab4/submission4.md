@@ -108,3 +108,22 @@ reboot system boot 6.6.87.2-microso Thu Jun 26 21:02 still running
 reboot system boot 6.6.87.2-microso Thu Jun 26 20:59 still running
 wtmp begins Thu Jun 26 20:59:18 2025
 ```
+### 1.5 Memory Analysis
+
+**Command:** `free -h`  
+**Output:**  
+```
+  total        used        free      shared  buff/cache   available
+```
+```
+Mem: 7.6Gi 494Mi 7.1Gi 3.4Mi 147Mi 7.1Gi
+Swap: 2.0Gi 0B 2.0Gi
+```
+
+**Command:** `cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable`  
+**Output:**  
+```
+MemTotal: 7990464 kB
+MemAvailable: 7478368 kB
+SwapTotal: 2097152 kB
+```
