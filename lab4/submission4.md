@@ -23,3 +23,13 @@ graphical.target reached after 1.100s in userspace.
 ```
 **Command:** `uptime`  
 **Output:**
+```
+21:27:35 up 11 min, 1 user, load average: 0.00, 0.00, 0.00
+```
+**Command:** `w`  
+**Output:**
+```
+21:28:05 up 12 min, 1 user, load average: 0.00, 0.00, 0.00
+USER TTY FROM LOGIN@ IDLE JCPU PCPU WHAT
+anntorko pts/1 - 21:15 12:42 0.00s ? -bash
+```
