@@ -63,9 +63,9 @@ In this lab, you'll analyze operating system fundamentals including boot perform
 
 - Create `submission4.md` with all command outputs
 - For each
-  - Include key observations
-  - Answer specific questions (e.g., "Identify top memory-consuming process")
-  - Note resource utilization patterns
+    - Include key observations
+    - Answer specific questions (e.g., "Identify top memory-consuming process")
+    - Note resource utilization patterns
 
 ## Task 2: Networking Analysis
 
@@ -106,10 +106,10 @@ In this lab, you'll analyze operating system fundamentals including boot perform
 
 - Add outputs to `submission4.md`
 - For each
-  - Include insights on network paths
-  - Analyze DNS query/response patterns
-  - Compare reverse lookup results
-  - Sanitize IPs in packet captures (replace last octet with XXX) if documenting sensitive networks
+    - Include insights on network paths
+    - Analyze DNS query/response patterns
+    - Compare reverse lookup results
+    - Sanitize IPs in packet captures (replace last octet with XXX) if documenting sensitive networks
 
 ## Guidelines
 
