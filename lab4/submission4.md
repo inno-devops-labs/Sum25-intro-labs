@@ -155,3 +155,11 @@ traceroute to github.com (140.82.114.3), 30 hops max, 60 byte packets
 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47216
 ;; flags: qr rd ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
 ```
+### 2.2 Packet Capture
+
+**Command:** `sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn`  
+**Example DNS query/response:**  
+```
+22:30:05.916964 eth0 Out IP 172.21.38.33.54496 > 172.21.32.1.53: 47057+ [1au] A? github.com. (51)
+22:30:05.920217 eth0 In IP 172.21.32.1.53 > 172.21.38.33.54496: 47057-$ 1/0/0 A 140.82.113.4 (54)
+```
