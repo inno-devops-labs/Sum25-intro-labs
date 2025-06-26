@@ -822,3 +822,182 @@ SwapTotal:       8388604 kB
 - Applications are using **9.2 GB** of RAM
 - OS is using **13 GB** of RAM for `buff/cache`, so there is heavy caching (which is good)
 - The swap space is completely unused
+
+## Task 2.1: Network Path Tracing
+
+_Command:_
+
+```bash
+traceroute github.com
+```
+
+_Output:_
+
+```bash
+traceroute to github.com (140.82.114.4), 30 hops max, 60 byte packets
+ 1  10.8.X.X (10.8.X.X)  59.672 ms  59.602 ms  59.589 ms
+ 2  172.29.X.X (172.29.X.X)  60.473 ms  60.483 ms  60.468 ms
+ 3  10.0.0.1 (10.0.0.1)  60.454 ms  60.440 ms  60.427 ms
+ 4  * * *
+ 5  146.0.72.232 (146.0.72.232)  60.352 ms  60.335 ms 146.0.72.234 (146.0.72.234)  60.300 ms
+ 6  port-channel4.switch1.ams1.he.net (184.104.204.37)  62.590 ms  60.208 ms  60.159 ms
+ 7  port-channel1.core1.ams1.he.net (184.104.198.118)  60.135 ms port-channel8.core3.lon2.he.net (72.52.92.213)  67.666 ms port-channel1.core1.ams1.he.net (184.104.198.118)  61.323 ms
+ 8  port-channel8.core3.lon2.he.net (72.52.92.213)  66.595 ms * *
+ 9  * * *
+10  eqix-dc5.github-1.com (206.126.237.27)  138.013 ms  138.029 ms port-channel11.core1.ash1.he.net (184.105.222.190)  137.990 ms
+11  eqix-dc5.github-2.com (206.126.237.205)  137.977 ms  137.967 ms  138.670 ms
+12  * * *
+13  * * *
+14  * * *
+15  * * *
+16  * * *
+17  * * *
+18  * * *
+19  * * *
+20  * * *
+21  * * *
+22  * * *
+23  * * *
+24  * * *
+25  * * *
+26  * * *
+27  * * *
+28  * * *
+29  * * *
+30  * * *
+```
+
+_Command:_
+
+```bash
+dig github.com
+```
+
+_Output:_
+
+```bash
+; <<>> DiG 9.18.36 <<>> github.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 56935
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;github.com.                    IN      A
+
+;; ANSWER SECTION:
+github.com.             26      IN      A       140.82.114.4
+
+;; Query time: 1 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Jun 27 01:56:50 MSK 2025
+;; MSG SIZE  rcvd: 55
+```
+
+**Key Observations:**
+
+- Both `dig` and `traceroute` commands shows the same address for `github.com`: `140.82.114.4`
+- The trace begins within a private network (VPN). The first three hops (`10.8.X.X`, `172.29.X.X`, `10.0.0.1`) are private IPs, and the initial latency is high and stable at **~60ms** (which is characteristic of a VPN tunnel)
+- The traffic goes through Hurricane Electric's (`he.net`) network, with hops in Amsterdam (`ams1`), then London (`lon2`) and Ashburn, US (`ash1`)
+- There is significant latency jump when crssing the Atlantic from London to US
+
+## Task 2.2: Packet Capture
+
+_Command:_
+
+```bash
+sudo timeout 10 tcpdump -c 5 -i any port 53 -nn
+```
+
+_Output:_
+
+```bash
+tcpdump: WARNING: any: That device doesn\'t support promiscuous mode
+(Promiscuous mode not supported on the "any" device)
+dropped privs to tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+02:15:12.871423 amn0  Out IP 10.8.1.15.51818 > 1.1.1.1.53: 15563+ [1au] AAAA? gigacode.ru. (40)
+02:15:12.960807 amn0  In  IP 1.1.1.1.53 > 10.8.1.15.51818: 15563 0/0/1 (40)
+02:15:17.106609 amn0  Out IP 10.8.1.15.39076 > 1.1.1.1.53: 59806+ [1au] AAAA? main.vscode-cdn.net. (48)
+02:15:17.106708 amn0  Out IP 10.8.1.15.44844 > 1.1.1.1.53: 42212+ [1au] A? main.vscode-cdn.net. (48)
+02:15:17.176176 amn0  In  IP 1.1.1.1.53 > 10.8.1.15.44844: 42212 5/0/1 CNAME vscode-cdn.z01.azurefd.net., CNAME star-azurefd-prod.trafficmanager.net., CNAME shed.dual-low.s-part-0039.t-0009.t-msedge.net., CNAME s-part-0039.t-0009.t-msedge.net., A 13.107.246.67 (218)
+5 packets captured
+8 packets received by filter
+0 packets dropped by kernel
+```
+
+**Key Observations:**
+
+- The command successfully captured 5 DNS packets on port 53. All traffic was routed through the `amn0` interface (running AmneziaVPN) and sent to the public DNS resolver `1.1.1.1` (Cloudflare)
+- For `main.vscode-cdn.net` machine sent requests for both an IPv6 (`AAAA`) and an IPv4 (`A`) address almost simultaneously. This is a modern client-side technique to connect via whichever protocol is faster
+- The first query for an `AAAA` record for `gigacode.ru` received a response with `0` answers
+
+## Task 2.3: Reverse DNS
+
+_Command:_
+
+```bash
+dig -x 8.8.4.4
+```
+
+_Output:_
+
+```bash
+; <<>> DiG 9.18.36 <<>> -x 8.8.4.4
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 58150
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;4.4.8.8.in-addr.arpa.          IN      PTR
+
+;; ANSWER SECTION:
+4.4.8.8.in-addr.arpa.   82631   IN      PTR     dns.google.
+
+;; Query time: 80 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Jun 27 02:21:39 MSK 2025
+;; MSG SIZE  rcvd: 73
+```
+
+_Command:_
+
+```bash
+dig -x 1.1.2.2
+```
+
+_Output:_
+
+```bash
+; <<>> DiG 9.18.36 <<>> -x 1.1.2.2
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 21747
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;2.2.1.1.in-addr.arpa.          IN      PTR
+
+;; AUTHORITY SECTION:
+1.in-addr.arpa.         3600    IN      SOA     ns.apnic.net. read-txt-record-of-zone-first-dns-admin.apnic.net. 22229 7200 1800 604800 3600
+
+;; Query time: 112 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Jun 27 02:22:17 MSK 2025
+;; MSG SIZE  rcvd: 137
+```
+
+**Key Observations:**
+
+- The IP `8.8.4.4` successfully resolved to the hostname `dns.google.`
+- The IP `1.1.2.2` failed to resolve. The server responded with a status of `NXDOMAIN` (Non-Existent Domain)
+- **Successful Pattern:** The first query received a `NOERROR` status and a single `PTR` record in the `ANSWER` section
+- **Failed Pattern:** The second query received an `NXDOMAIN` status. The response has `0` answers but includes an `SOA` (Start of Authority) record in the `AUTHORITY` section. This is the server's way of proving it is authoritative for the zone and can confirm the name does not exist
