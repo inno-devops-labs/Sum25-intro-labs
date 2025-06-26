@@ -150,3 +150,9 @@ on: [push]
 ---
 
 ## Task 2: Gathering System Information and Manual Triggering
+
+**Objective**: Extend your workflow to include manual triggering and system information gathering.
+
+- [x] Configure a Manual Trigger
+- [x] Gather System Information
+
