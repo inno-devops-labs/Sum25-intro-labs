@@ -81,4 +81,66 @@ wtmp begins Sun Jan 26 20:29:20 2025
 Подкачка:      4.0Gi       768Ki       4.0Gi
 ```
 
-`cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable` тоже показывает загрузку памяти, но в целом под `cat` больше инфы   
+`cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable` тоже показывает загрузку памяти, но в целом под `cat` больше инфы 
+
+## Task 2
+
+`traceroute` позволяет исследовать путь пакета по сети до требуемого ресурса. После 8 узла пошли звездочки (выключил на 31ом), что означает отсутствие ответа от промежуточного хоста.
+``` 
+  1   10.8.0.1  68.627ms  70.267ms  69.887ms 
+  2   10.2.0.1  70.286ms  71.092ms  67.833ms 
+  3   185.8.178.2  69.835ms  69.986ms  69.788ms 
+  4   185.8.179.35  69.899ms  80.053ms  69.721ms 
+  5   185.1.222.21  69.800ms  72.577ms  67.167ms 
+  6   *  *  * 
+  7   94.103.180.24  78.316ms  170.366ms  209.798ms 
+  8   45.153.82.39  89.491ms  89.878ms  90.297ms 
+  9   *  *  * 
+ 10   *  *  * 
+```
+Так выглядит traceroute до адреса в локальной сети, отмечает только текущее устройство, с которого происходит запрос:
+```
+traceroute to 192.168.0.5 (192.168.0.5), 64 hops max
+  1   192.168.0.245  3049.849ms !H  *  68.422ms !H 
+```
+
+`dig github.com` делает запрос к DNS-серверу и возвращает полученную информацию о домене: метаданные, айпи, время запроса и тд
+```
+
+; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> github.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29206
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;github.com.                    IN      A
+
+;; ANSWER SECTION:
+github.com.             0       IN      A       140.82.121.3
+
+;; Query time: 78 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Jun 27 19:08:33 MSK 2025
+;; MSG SIZE  rcvd: 55
+```
+
+`sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn` отлавливает первые 5 днс запросов или запросы за 10 секунд (смотря что наступит раньше), выводит о них информацию: время, порт, адреса и тд
+```
+tcpdump: data link type LINUX_SLL2
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+19:13:25.286924 lo    In  IP 127.0.0.1.34291 > 127.0.0.53.53: 19168+ A? alive.github.com. (34)
+19:13:25.287028 lo    In  IP 127.0.0.1.20297 > 127.0.0.53.53: 20949+ HTTPS? alive.github.com. (34)
+19:13:25.287299 wg0   Out IP 10.8.0.122.44077 > 10.2.0.100.53: 59988+ [1au] A? alive.github.com. (45)
+19:13:25.287374 tun0  Out IP 10.8.0.7.57077 > 10.186.0.11.53: 29753+ [1au] A? alive.github.com. (45)
+19:13:25.287577 wg0   Out IP 10.8.0.122.40604 > 10.2.0.100.53: 22912+ [1au] HTTPS? alive.github.com. (45)
+5 packets captured
+8 packets received by filter
+0 packets dropped by kernel
+```
+
+Команды типа `dig -x 8.8.4.4` делают обратный днс запрос, в ответ получаем, какое имя привязано к адресу. В данном случае это днс гугла. \
+Для команды `dig -x 1.1.2.2` имеем отсутствие ответа (ANSWER: 0), что означает отсутствие привязанного к адресу имени. Но у нее есть секция Authority, которая говорит, кто отвечает за адрес.
