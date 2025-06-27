@@ -1,0 +1,8 @@
+# The editor folders
+/.vscode
+/.idea
+
+# Python folders
+/**/.venv
+/**/__pycache__
+/**/.pytest_cache
