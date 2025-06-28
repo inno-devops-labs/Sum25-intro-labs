@@ -1,0 +1,44 @@
+6.729s landscape-client.service
+2.437s dev-sdd.device
+2.278s snapd.seeded.service
+2.003s snapd.service
+1.922s systemd-journal-flush.service
+1.660s networkd-dispatcher.service
+1.321s systemd-udev-trigger.service
+1.005s systemd-sysctl.service
+ 896ms rsyslog.service
+ 732ms systemd-logind.service
+ 723ms systemd-sysusers.service
+ 646ms apport.service
+ 530ms systemd-timesyncd.service
+ 511ms man-db.service
+ 470ms keyboard-setup.service
+ 407ms systemd-udevd.service
+ 407ms e2scrub_reap.service
+ 348ms systemd-resolved.service
+ 289ms systemd-journald.service
+ 251ms user@1000.service
+ 244ms plymouth-read-write.service
+ 232ms console-setup.service
+ 215ms ufw.service
+ 137ms sys-fs-fuse-connections.mount
+ 127ms setvtrgb.service
+ 125ms systemd-tmpfiles-setup.service
+ 119ms systemd-user-sessions.service
+  57ms snapd.socket
+  56ms systemd-update-utmp-runlevel.service
+  52ms dev-mqueue.mount
+  52ms dev-hugepages.mount
+  51ms sys-kernel-debug.mount
+  50ms sys-kernel-tracing.mount
+  49ms systemd-remount-fs.service
+  47ms modprobe@fuse.service
+  46ms modprobe@efi_pstore.service
+  44ms modprobe@drm.service
+  44ms systemd-tmpfiles-setup-dev.service
+  44ms kmod-static-nodes.service
+  24ms plymouth-quit.service
+  15ms systemd-update-utmp.service
+  14ms user-runtime-dir@1000.service
+   8ms plymouth-quit-wait.service
+   8ms modprobe@configfs.service
