@@ -1,0 +1,82 @@
+name: System Analysis
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  boot_performance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Analyze Boot Performance
+        run: |
+          echo "=== Boot Performance ==="
+          echo "Systemd Analyze:"
+          systemd-analyze
+          echo "Blame:"
+          systemd-analyze blame
+          echo "Uptime:"
+          uptime
+          echo "Current Users:"
+          w
+
+  resource_intensive_processes:
+    runs-on: ubuntu-latest
+    needs: boot_performance
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Process Expertise
+        run: |
+          echo "=== Resource-Intensive Processes ==="
+          echo "Top Memory Consumers:"
+          ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 6
+          echo "Top CPU Consumers:"
+          ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -n 6
+
+  service_dependencies:
+    runs-on: ubuntu-latest
+    needs: resource_intensive_processes
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Service Dependencies
+        run: |
+          echo "=== Service Dependencies ==="
+          systemctl list-dependencies
+          systemctl list-dependencies multi-user.target
+
+  user_sessions_audit:
+    runs-on: ubuntu-latest
+    needs: service_dependencies
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: User Sessions Audit
+        run: |
+          echo "=== User Sessions ==="
+          who -a
+          last -n 5
+
+  memory_analysis:
+    runs-on: ubuntu-latest
+    needs: user_sessions_audit
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Memory Analysis
+        run: |
+          echo "=== Memory Allocation ==="
+          free -h
+          echo "Memory Info:"
+          cat /proc/meminfo | grep -e MemTotal -e SwapTotal -e MemAvailable
