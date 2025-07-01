@@ -1,5 +1,3 @@
-VirtualBox 7.1.10
-
 # Virtualization Lab
 
 ## Task 1: VM Deployment
