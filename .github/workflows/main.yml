@@ -1,0 +1,29 @@
+# .github/workflows/main.yml
+name: CI/CD Test Workflow
+
+on:
+  push:
+    branches:
+      - lab3
+  workflow_dispatch:
+    
+            
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Show system info
+        run: |
+          echo OS Info:
+          systeminfo
+          echo CPU Info:
+          wmic cpu get name,NumberOfCores,NumberOfLogicalProcessors
+          echo Memory Info:
+          wmic memorychip get capacity,manufacturer,partnumber,speed
+
+      - name: Run a simple script
+        run: echo "Hello, GitHub Actions!"
