@@ -194,7 +194,7 @@ sudo docker attach redis_container
 ```
 Observation:
 docker attach connects to the main Redis process. Sending SIGINT (Ctrl+C) stops that process and shuts down the container.
-
+![task5](screenshots/task5_3.PNG)  
 
 
 
