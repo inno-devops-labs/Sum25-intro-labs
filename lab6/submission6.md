@@ -146,3 +146,55 @@ docker run -d -v app_data:/usr/share/nginx/html --name web_new -p 8080:80 nginx
 curl http://localhost:8080
 ```
 ![Recreatecontainerverifypersistence](screenshots/Recreatecontainerverifypersistence.PNG)    
+
+## Task 5: Container Inspection
+
+### 5.1 Run Redis Container
+
+**Command:**
+```bash
+sudo docker run -d --name redis_container redis
+```
+**Verify**:
+```
+sudo docker ps --filter name=redis_container
+```
+```
+CONTAINER ID   IMAGE     COMMAND                  STATUS          NAMES
+8963c60abd32   redis     "docker-entrypoint.s…"   Up 28 seconds   redis_container
+```
+### 5.2 Inspect Processes
+```
+sudo docker exec redis_container ps aux
+```
+```
+USER    PID  %CPU %MEM    VSZ   RSS TTY STAT START   TIME COMMAND
+redis     1   0.2  0.2 147312 18176 ?   Ssl  17:17   0:01 redis-server *:6379
+```
+### 5.3 Network Inspection
+```
+sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis_container
+```
+Output:
+```
+172.17.0.4
+```
+### 5.4 Compare docker exec vs docker attach
+```
+sudo docker exec -it redis_container sh -c 'echo "inside exec"; sleep 1'
+```
+Observation:
+The command prints inside exec and returns to the host shell without stopping Redis. The container continues running.
+```
+sudo docker attach redis_container
+```
+```
+1:M ... * User requested shutdown...
+1:M ... * Redis is now ready to exit, bye bye...
+```
+Observation:
+docker attach connects to the main Redis process. Sending SIGINT (Ctrl+C) stops that process and shuts down the container.
+
+
+
+
