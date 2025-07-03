@@ -66,6 +66,9 @@ sudo docker run -d -p 80:80 --name my_website_container my_website:latest
 ```
 curl http://localhost
 ```
+![web](screenshots/web.PNG)  
+
+
 7. **Inspect changes**
 ```
 sudo docker diff my_website_container
