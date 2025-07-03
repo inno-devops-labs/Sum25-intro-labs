@@ -37,19 +37,19 @@ sudo apt install -y inxi
 ```
 inxi --cpu
 ```
-(../screens/cpu.PNG)
+![cpu](../screens/cpu.PNG)
 **Memory:**
 ```
 inxi --memory
 ```
-(../screens/memory.PNG)
+![memory](../screens/memory.PNG)
 **Network:**
 ```
 inxi --network
 ```
-(../screens/network.PNG)
+![network](../screens/network.PNG)
 ### 2.2 Operating System Specifications
 ```
 lsb_release -a
 ```
-(../screens/lsb_release.PNG)
+![release](../screens/lsb_release.PNG)
