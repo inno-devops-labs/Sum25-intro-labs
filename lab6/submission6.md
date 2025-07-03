@@ -1,0 +1,261 @@
+# Lab 6: Containers Lab – Docker
+
+## Task 1: Core Container Operations
+
+1. **List all containers**  
+ ```bash
+ sudo docker ps -a
+```
+![dockerps](screenshots/dockerps.PNG)
+
+
+2. **Pull Ubuntu image**
+ ```
+ sudo docker pull ubuntu:latest
+  ```
+![dockerpull](screenshots/dockerpull.PNG)  
+3. **Run an interactive Ubuntu container**
+   ```
+   sudo docker run -it --name ubuntu_container ubuntu:latest
+   ```
+![root](screenshots/root.PNG)  
+4. **Attempt to remove the image**
+ ```
+ sudo docker rmi ubuntu:latest
+  ```
+  Error: conflict: unable to remove repository reference "ubuntu:latest" (must force) - container … is using its referenced image
+
+5. **Cleanup**
+```
+sudo docker rm ubuntu_container
+sudo docker rmi ubuntu:latest
+```
+
+## Task 2: Image Customization
+
+1.  **Deploy Nginx**
+```
+sudo docker run -d -p 80:80 --name nginx_container nginx
+```
+
+```
+curl http://localhost
+```
+![welcomnginx](screenshots/welcomnginx.PNG)  
+
+
+2. **Create custom HTML**
+
+![web](screenshots/web.PNG)  
+3. **Copy HTML into the container**
+```
+sudo docker cp index.html nginx_container:/usr/share/nginx/html/index.html
+```
+4.  **Commit a new image**
+```
+sudo docker commit nginx_container my_website:latest
+```
+5.  **Remove the original container**
+```
+sudo docker rm -f nginx_container
+```
+6. **Run the custom image**
+```
+sudo docker run -d -p 80:80 --name my_website_container my_website:latest
+```
+```
+curl http://localhost
+```
+
+
+7. **Inspect changes**
+```
+sudo docker diff my_website_container
+```
+Output:
+```
+C /run
+C /run/nginx.pid
+C /etc
+C /etc/nginx
+C /etc/nginx/conf.d
+C /etc/nginx/conf.d/default.conf
+```
+## Task 3: Container Networking
+
+### 3.1 Create a custom bridge network
+
+**Command:**
+```bash
+sudo docker network create lab_network
+```
+Output:
+```
+60ad3c5f5fd1   lab_network   bridge    local
+```
+
+### 3.2 Run two Alpine containers on that network
+```
+sudo docker run -dit --network lab_network --name container alpine ash
+sudo docker run -dit --network lab_network --name container2 alpine ash
+```
+```
+sudo docker ps -a | grep container
+```
+Output:
+```
+c61b0f73aeea   alpine   "ash"   Up 2 minutes   container
+c61b0f73aeea   alpine   "ash"   Up 13 seconds  container2
+```
+### 3.3 Test inter-container connectivity
+```
+sudo docker exec container ping -c 3 container2
+```
+```
+PING container2 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.205 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.078 ms
+64 bytes from 172.18.0.3: seq=2 ttl=64 time=0.063 ms
+
+--- container2 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.063/0.115/0.205 ms
+```
+Docker automatically provides an embedded DNS server (at 127.0.0.11) inside each user-defined network. When a container starts, Docker registers its hostname and IP in that DNS. Thus any container on lab_network can resolve container2 to its IP (172.18.0.3) without additional configuration.
+![task3](screenshots/task3.PNG)  
+
+## Task 4: Volume Persistence
+
+1. **Create volume & run Nginx**  
+   ```bash
+   docker volume create app_data
+   docker run -d -v app_data:/usr/share/nginx/html --name web -p 8080:80 nginx
+   ```
+2. **Default page:**
+```curl http://localhost:8080```
+![Defaultpage](screenshots/Defaultpage.PNG)     
+3. **Copy custom page into volume:**
+```
+docker cp index.html web:/usr/share/nginx/html/index.html
+curl http://localhost:8080
+```
+4. **Recreate container & verify persistence:**
+```
+docker stop web && docker rm web
+docker run -d -v app_data:/usr/share/nginx/html --name web_new -p 8080:80 nginx
+curl http://localhost:8080
+```
+![Recreatecontainerverifypersistence](screenshots/Recreatecontainerverifypersistence.PNG)    
+
+## Task 5: Container Inspection
+
+### 5.1 Run Redis Container
+
+**Command:**
+```bash
+sudo docker run -d --name redis_container redis
+```
+**Verify**:
+```
+sudo docker ps --filter name=redis_container
+```
+```
+CONTAINER ID   IMAGE     COMMAND                  STATUS          NAMES
+8963c60abd32   redis     "docker-entrypoint.s…"   Up 28 seconds   redis_container
+```
+### 5.2 Inspect Processes
+```
+sudo docker exec redis_container ps aux
+```
+```
+USER    PID  %CPU %MEM    VSZ   RSS TTY STAT START   TIME COMMAND
+redis     1   0.2  0.2 147312 18176 ?   Ssl  17:17   0:01 redis-server *:6379
+```
+### 5.3 Network Inspection
+```
+sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis_container
+```
+Output:
+```
+172.17.0.4
+```
+### 5.4 Compare docker exec vs docker attach
+```
+sudo docker exec -it redis_container sh -c 'echo "inside exec"; sleep 1'
+```
+Observation:
+The command prints inside exec and returns to the host shell without stopping Redis. The container continues running.
+```
+sudo docker attach redis_container
+```
+```
+1:M ... * User requested shutdown...
+1:M ... * Redis is now ready to exit, bye bye...
+```
+Observation:
+docker attach connects to the main Redis process. Sending SIGINT (Ctrl+C) stops that process and shuts down the container.
+![task5](screenshots/task5_3.PNG)  
+
+
+## Task 6: Cleanup Operations
+
+### Verify before cleanup
+```bash
+sudo docker system df
+```
+![task6](screenshots/task6.PNG)  
+```
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          5         5         331.7MB   192.2MB (57%)
+Containers      6         4         21.52MB   21.52MB (99%)
+Local Volumes   2         2         674B      0B (0%)
+Build Cache     0         0         0B        0B
+```
+### 6.2 Create test objects
+```
+for i in {1..3}; do docker run --name temp$i alpine echo "hello"; done
+docker ps -a | grep temp
+```
+```
+temp3   alpine "echo hello" Exited (0)
+temp2   alpine "echo hello" Exited (0)
+temp1   alpine "echo hello" Exited (0)
+```
+
+```
+docker build -t temp-image . && docker rmi temp-image
+```
+```
+Successfully built <sha256>
+Untagged: temp-image:latest
+Deleted: sha256:<sha256>
+```
+### 6.3 Prune resources
+```
+docker container prune -f
+```
+```
+Total reclaimed space: 21.52MB
+```
+```
+docker image prune -a -f
+```
+```
+Total reclaimed space: 131.2MB
+```
+### 6.4 Verify after cleanup
+```
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          3         3         200.5MB   192.2MB (95%)
+Containers      4         4         2.19kB    0B (0%)
+Local Volumes   2         1         674B      88B (13%)
+Build Cache     3         0         33B       33B
+```
+Space freed:
+
+Images: 331.7 MB → 200.5 MB (freed 131.2 MB)
+
+Containers: 21.52 MB → 0 MB (freed 21.52 MB)
+
+Total freed: ≈152.7 MB
+
