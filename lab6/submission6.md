@@ -124,4 +124,24 @@ round-trip min/avg/max = 0.063/0.115/0.205 ms
 Docker automatically provides an embedded DNS server (at 127.0.0.11) inside each user-defined network. When a container starts, Docker registers its hostname and IP in that DNS. Thus any container on lab_network can resolve container2 to its IP (172.18.0.3) without additional configuration.
 ![task3](screenshots/task3.PNG)  
 
+## Task 4: Volume Persistence
 
+1. **Create volume & run Nginx**  
+   ```bash
+   docker volume create app_data
+   docker run -d -v app_data:/usr/share/nginx/html --name web -p 8080:80 nginx
+   ```
+2. **Default page:**
+```curl http://localhost:8080```
+   
+3. **Copy custom page into volume:**
+```
+docker cp index.html web:/usr/share/nginx/html/index.html
+curl http://localhost:8080
+```
+4. **Recreate container & verify persistence:**
+```
+docker stop web && docker rm web
+docker run -d -v app_data:/usr/share/nginx/html --name web_new -p 8080:80 nginx
+curl http://localhost:8080
+```
