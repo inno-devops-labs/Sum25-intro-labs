@@ -1,16 +1,14 @@
 ## LAB 6
 Nikita Yaneev n.yaneev@innopolis.unversity
 
-### Task 0
-
-Pull before `save`
-
 
 ### Task 1
 
-77MB
+Original image - 77MB
 
-78.1MB
+.tar - 78.1MB
+
+When using docker save, each layer is included in full—even if some layers are identical to those in other images. In contrast, Docker’s local storage system deduplicates shared layers and stores them only once
 
 1. 
 
@@ -68,18 +66,24 @@ sumnios@Nikita:~$ docker rmi ubuntu:latest
 Error response from daemon: conflict: unable to remove repository reference "ubuntu:latest" (must force) - container e9057931a958 is using its referenced image f9248aac10f2
 ```
 
+Docker won’t let you remove image because there’s still a container (e9057931a958) that is using that image (f9248aac10f2).
+
+Since the image is in use, Docker blocks its removal to prevent breaking the container
+
 ### Task 2
 
 1.
 
 *Input:*
 ```bash 
-
+docker save -o ubuntu_image.tar ubuntu:latest
 ```
 
 *Output*:
 ```sh
-
+sumnios@Nikita:~$ docker save -o ubuntu_image.tar ubuntu:latest
+sumnios@Nikita:~$ ls
+Dockerfile  SSEC  index.html  nltk_data  packets.pcap  snap  ubuntu_image.tar
 
 ```
 
@@ -173,6 +177,18 @@ C /etc/nginx/conf.d
 C /etc/nginx/conf.d/default.conf
 ```
 
+The docker diff command shows changes made to the container's filesystem compared to its original image. Each line is prefixed with:
+
+A: Added
+
+D: Deleted
+
+C: Changed
+
+In this case:
+
+All listed files/directories are marked with C, indicating they changed since the container was started
+
 ### Task 3
 
 
@@ -233,7 +249,7 @@ round-trip min/avg/max = 0.121/0.309/0.673 ms
 
 
 4.
-
+Docker provides internal DNS resolution so containers can communicate using container names or service names instead of IP addresses
 ### Task 4
 
 1.
@@ -359,6 +375,16 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redi
 sumnios@Nikita:~$ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis_container
 172.17.0.3
 ```
+
+
+| Feature               | `docker exec`                                   | `docker attach`                                         |
+| --------------------- | ----------------------------------------------- | ------------------------------------------------------- |
+| **Purpose**           | Run a new process in a running container        | Attach to the container's main process                  |
+| **Use Case**          | Debugging, one-off commands (e.g., bash)        | Viewing live output or interacting with main process    |
+| **Interference**      | Runs separately; non-intrusive                  | Shares stdin/stdout with main process                   |
+| **Multiple sessions** | Supports multiple simultaneous sessions         | Only one attach session at a time (risk of disruption)  |
+| **Disconnection**     | Exit the command without stopping the container | `Ctrl+C` may stop the container unless handled properly |
+
 
 ### Task 6
 
