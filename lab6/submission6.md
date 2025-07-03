@@ -133,7 +133,7 @@ Docker automatically provides an embedded DNS server (at 127.0.0.11) inside each
    ```
 2. **Default page:**
 ```curl http://localhost:8080```
-   
+![Defaultpage](screenshots/Defaultpage.PNG)     
 3. **Copy custom page into volume:**
 ```
 docker cp index.html web:/usr/share/nginx/html/index.html
@@ -145,3 +145,4 @@ docker stop web && docker rm web
 docker run -d -v app_data:/usr/share/nginx/html --name web_new -p 8080:80 nginx
 curl http://localhost:8080
 ```
+![Recreatecontainerverifypersistence](screenshots/Recreatecontainerverifypersistence.PNG)    
