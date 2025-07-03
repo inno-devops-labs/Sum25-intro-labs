@@ -46,14 +46,8 @@ curl http://localhost
 
 
 2. **Create custom HTML**
-   File:
-   ```
-   <html>
-  <head><title>The best</title></head>
-  <body><h1>website</h1></body>
-</html>
-```
 
+![welcomnginx](screenshots/welcomnginx.PNG)  
 3. **Copy HTML into the container**
    ```
    sudo docker cp index.html nginx_container:/usr/share/nginx/html/index.html
