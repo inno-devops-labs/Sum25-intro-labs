@@ -81,3 +81,47 @@ C /etc/nginx
 C /etc/nginx/conf.d
 C /etc/nginx/conf.d/default.conf
 ```
+## Task 3: Container Networking
+
+### 3.1 Create a custom bridge network
+
+**Command:**
+```bash
+sudo docker network create lab_network
+```
+Output:
+```
+60ad3c5f5fd1   lab_network   bridge    local
+```
+
+### 3.2 Run two Alpine containers on that network
+```
+sudo docker run -dit --network lab_network --name container alpine ash
+sudo docker run -dit --network lab_network --name container2 alpine ash
+```
+```
+sudo docker ps -a | grep container
+```
+Output:
+```
+c61b0f73aeea   alpine   "ash"   Up 2 minutes   container
+c61b0f73aeea   alpine   "ash"   Up 13 seconds  container2
+```
+### 3.3 Test inter-container connectivity
+```
+sudo docker exec container ping -c 3 container2
+```
+```
+PING container2 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.205 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.078 ms
+64 bytes from 172.18.0.3: seq=2 ttl=64 time=0.063 ms
+
+--- container2 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.063/0.115/0.205 ms
+```
+Docker automatically provides an embedded DNS server (at 127.0.0.11) inside each user-defined network. When a container starts, Docker registers its hostname and IP in that DNS. Thus any container on lab_network can resolve container2 to its IP (172.18.0.3) without additional configuration.
+
+
+
