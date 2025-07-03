@@ -22,5 +22,5 @@
   
 3. **Screenshots**  
 
-![Ubuntu Desktop in VirtualBox](./screens/screenshot.PNG)
-![VirtualBox VM Settings Overview](./screens/screenshot 2.PNG)
+![Ubuntu Desktop in VirtualBox](screens/screenshot.PNG)
+![VirtualBox VM Settings Overview](screens/screenshot 2.PNG)
