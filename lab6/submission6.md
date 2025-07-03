@@ -6,6 +6,7 @@
  ```bash
  sudo docker ps -a
 ```
+![dockerps](../screenshots/dockerps.PNG)
 2. **Pull Ubuntu image**
  ```
  sudo docker pull ubuntu:latest
