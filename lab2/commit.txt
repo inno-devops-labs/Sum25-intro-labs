@@ -1,0 +1,12 @@
+tree d1c28b8c52dae6527b82f13ffaba103fd52b6e85
+parent a43f35b33123d573b146cd008965f7e8ffcd5e1b
+author anntorkot <sadrievaav@gmail.com> 1749550117 +0300
+committer anntorkot <sadrievaav@gmail.com> 1749550429 +0300
+gpgsig -----BEGIN SSH SIGNATURE-----
+ U1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgo6P5k7R8Av3WNRrqnyc3qoFoG0
+ w/3sllaA1jW7WWHOUAAAADZ2l0AAAAAAAAAAZzaGE1MTIAAABTAAAAC3NzaC1lZDI1NTE5
+ AAAAQCHoFBFu4tjc7obGWwGOclHwu7wMKPeIBzkhFQ6XdP5PuhdR8o7UFqD8Oj4t+NyxOI
+ DQ0AMySsnlUnvvnml7ng4=
+ -----END SSH SIGNATURE-----
+
+Test SSH signature
