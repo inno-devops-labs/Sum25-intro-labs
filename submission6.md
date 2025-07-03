@@ -4,7 +4,9 @@
 ```
 docker save -o ubuntu_image.tar ubuntu:latest
 ```
-File is bigger than original image for 120 MB
+File is bigger than original image for 120 MB.
+
+When comparing the exported .tar file size with the original Docker image, the tar archive is typically larger because Docker images use compressed, layered storage, while docker save creates an uncompressed tar file containing all image layers and metadata. The original image size reported by docker images shows the compressed, space-efficient size, whereas the exported tar represents the full uncompressed data, including JSON manifests and configuration files that aren't visible in the image size listing.
 
 # Task 1: Core Container Operations
 
