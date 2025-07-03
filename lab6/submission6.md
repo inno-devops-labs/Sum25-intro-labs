@@ -13,10 +13,12 @@
  ```
  sudo docker pull ubuntu:latest
   ```
+![dockerpull](screenshots/dockerpull.PNG)  
 3. **Run an interactive Ubuntu container**
    ```
    sudo docker run -it --name ubuntu_container ubuntu:latest
    ```
+![root](screenshots/root.PNG)  
 4. **Attempt to remove the image**
  ```
  sudo docker rmi ubuntu:latest
@@ -39,6 +41,10 @@ sudo docker run -d -p 80:80 --name nginx_container nginx
 ```
 curl http://localhost
 ```
+
+![welcomnginx](screenshots/welcomnginx.PNG)  
+
+
 2. **Create custom HTML**
    File:
    ```
