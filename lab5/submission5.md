@@ -22,5 +22,5 @@
   
 3. **Screenshots**  
 
-
-![screenshot](https://github.com/user-attachments/assets/763c5e64-1cfa-48ea-9e6b-238d6fccd09a)
+![Ubuntu Desktop in VirtualBox](./screens/screenshot.PNG)
+![VirtualBox VM Settings Overview](./screens/screenshot 2.PNG)
