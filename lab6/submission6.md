@@ -41,7 +41,6 @@ sudo docker run -d -p 80:80 --name nginx_container nginx
 ```
 curl http://localhost
 ```
-
 ![welcomnginx](screenshots/welcomnginx.PNG)  
 
 
@@ -49,11 +48,10 @@ curl http://localhost
 
 ![welcomnginx](screenshots/welcomnginx.PNG)  
 3. **Copy HTML into the container**
-   ```
-   sudo docker cp index.html nginx_container:/usr/share/nginx/html/index.html
-   ```
+```
+sudo docker cp index.html nginx_container:/usr/share/nginx/html/index.html
+```
 4.  **Commit a new image**
-
 ```
 sudo docker commit nginx_container my_website:latest
 ```
