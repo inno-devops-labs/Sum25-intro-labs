@@ -46,7 +46,7 @@ curl http://localhost
 
 2. **Create custom HTML**
 
-![welcomnginx](screenshots/welcomnginx.PNG)  
+![web](screenshots/web.PNG)  
 3. **Copy HTML into the container**
 ```
 sudo docker cp index.html nginx_container:/usr/share/nginx/html/index.html
@@ -66,7 +66,6 @@ sudo docker run -d -p 80:80 --name my_website_container my_website:latest
 ```
 curl http://localhost
 ```
-![web](screenshots/web.PNG)  
 
 
 7. **Inspect changes**
