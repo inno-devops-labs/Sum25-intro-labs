@@ -122,6 +122,6 @@ PING container2 (172.18.0.3): 56 data bytes
 round-trip min/avg/max = 0.063/0.115/0.205 ms
 ```
 Docker automatically provides an embedded DNS server (at 127.0.0.11) inside each user-defined network. When a container starts, Docker registers its hostname and IP in that DNS. Thus any container on lab_network can resolve container2 to its IP (172.18.0.3) without additional configuration.
-
+![task3](screenshots/task3.PNG)  
 
 
