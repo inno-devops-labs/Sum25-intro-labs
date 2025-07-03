@@ -197,4 +197,10 @@ docker attach connects to the main Redis process. Sending SIGINT (Ctrl+C) stops 
 ![task5](screenshots/task5_3.PNG)  
 
 
+## Task 6: Cleanup Operations
+
+### Verify before cleanup
+```bash
+sudo docker system df
+```
 
