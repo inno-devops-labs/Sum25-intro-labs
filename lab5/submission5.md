@@ -29,22 +29,26 @@
 ### 2.1 Processor, RAM и Network Information
 
 **Tool:** inxi  
-```bash
+```
 sudo apt update
 sudo apt install -y inxi
 ```
 **CPU:**
-``` inxi --cpu
+```
+inxi --cpu
 ```
 
 **Memory:**
-```inxi --memory
+```
+inxi --memory
 ```
 
 **Network:**
-```inxi --network
+```
+inxi --network
 ```
 
 ### 2.2 Operating System Specifications
-``` lsb_release -a
+```
+lsb_release -a
 ```
