@@ -203,4 +203,59 @@ docker attach connects to the main Redis process. Sending SIGINT (Ctrl+C) stops 
 ```bash
 sudo docker system df
 ```
+![task6](screenshots/task6.PNG)  
+```
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          5         5         331.7MB   192.2MB (57%)
+Containers      6         4         21.52MB   21.52MB (99%)
+Local Volumes   2         2         674B      0B (0%)
+Build Cache     0         0         0B        0B
+```
+### 6.2 Create test objects
+```
+for i in {1..3}; do docker run --name temp$i alpine echo "hello"; done
+docker ps -a | grep temp
+```
+```
+temp3   alpine "echo hello" Exited (0)
+temp2   alpine "echo hello" Exited (0)
+temp1   alpine "echo hello" Exited (0)
+```
+
+```
+docker build -t temp-image . && docker rmi temp-image
+```
+```
+Successfully built <sha256>
+Untagged: temp-image:latest
+Deleted: sha256:<sha256>
+```
+### 6.3 Prune resources
+```
+docker container prune -f
+```
+```
+Total reclaimed space: 21.52MB
+```
+```
+docker image prune -a -f
+```
+```
+Total reclaimed space: 131.2MB
+```
+### 6.4 Verify after cleanup
+```
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          3         3         200.5MB   192.2MB (95%)
+Containers      4         4         2.19kB    0B (0%)
+Local Volumes   2         1         674B      88B (13%)
+Build Cache     3         0         33B       33B
+```
+Space freed:
+
+Images: 331.7 MB → 200.5 MB (freed 131.2 MB)
+
+Containers: 21.52 MB → 0 MB (freed 21.52 MB)
+
+Total freed: ≈152.7 MB
 
