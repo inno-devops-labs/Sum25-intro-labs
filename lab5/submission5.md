@@ -21,8 +21,8 @@
    - **ISO image:** mounted `ubuntu-22.04-desktop-amd64.iso` under **Settings → Storage**
   
 3. **Screenshots**  
-   GRUB menu on first boot:  
-   
 
-   Ubuntu desktop after login:  
+![Ubuntu Desktop in VirtualBox](./screens/screenshot.PNG)
+
+![VirtualBox VM Settings Overview](./screens/screenshot 2.PNG)
 
