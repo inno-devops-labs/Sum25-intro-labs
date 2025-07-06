@@ -1,171 +1,175 @@
-# **Лабораторная работа по основам GitOps**
+# **GitOps Fundamentals Lab**
 
-Эта лабораторная работа изучает основные принципы GitOps, моделируя ключевые рабочие процессы, используя только инструменты командной строки Linux. Студенты будут:
+## RESULT: https://github.com/Kulikova-A18/Sum25-intro-labs/blob/master/submission7.md
 
-1. Практиковать **декларативное управление конфигурацией**
-2. Реализовать **автоматизированное согласование**
-3. Создавать **самовосстанавливающиеся системы**
-4. Контролировать **состояние работоспособности синхронизации**
+This lab teaches core GitOps principles by simulating key workflows using only Linux command-line tools. Students will:
 
-Никаких инструментов Kubernetes или GitOps не требуется!
+1. Practice **declarative configuration management**
+2. Implement **automated reconciliation**
+3. Build **self-healing systems**
+4. Monitor **state synchronization health**
+
+No Kubernetes or GitOps tools required!
 
 ---
 
-## **Задание 1: Согласование состояния Git**
+## **Task 1: Git State Reconciliation**
 
-**Цель**: Моделировать, как операторы GitOps непрерывно синхронизируют состояние кластера с Git
+**Objective**: Simulate how GitOps operators continuously synchronize cluster state with Git
 
-Почему это важно:
+Why This Matters:
 
-- Понять основной цикл согласования в GitOps
-- Узнать, почему декларативная конфигурация > императивные команды
-- Увидеть, как автоматизация предотвращает дрейф конфигурации
+- Understand the core reconciliation loop in GitOps
+- Learn why declarative configuration > imperative commands
+- See how automation prevents configuration drift
 
-Используемые инструменты:
+Tools Used:
 
 `git` | `watch` | `diff` | `cp`
 
-1. **Инициализация репозитория**:
+1. **Initialize repository**:
+
+   ```bash
+   mkdir gitops-lab && cd gitops-lab
+   git init
+   ```
+
+2. **Create desired state**:
+
+   ```bash
+   echo "version: 1.0" > desired-state.txt
+   git add . && git commit -m "Initial state"
+   ```
+
+3. **Simulate live cluster**:
+
+   ```bash
+   cp desired-state.txt current-state.txt
+   ```
+
+4. **Create reconciliation script**:
+
+   ```bash
+   #!/bin/bash
+   # reconcile.sh
+   DESIRED=$(cat desired-state.txt)
+   CURRENT=$(cat current-state.txt)
+   
+   if [ "$DESIRED" != "$CURRENT" ]; then
+   echo "$(date) - DRIFT DETECTED! Reconciling..."
+   cp desired-state.txt current-state.txt
+   fi
+   ```
+
+5. **Trigger manual drift**:
+
+   ```bash
+   echo "version: 2.0" > current-state.txt # Simulate manual cluster change
+   ```
+
+6. **Run reconciliation**:
+
+   ```bash
+   chmod +x reconcile.sh
+   ./reconcile.sh # Should detect and fix drift
+   ```
+
+7. **Automate reconciliation**:
+
+   ```bash
+   watch -n 5 ./reconcile.sh # Runs every 5 seconds
+   ```
+
+8. **Documentation**:
+   - Create a `submission7.md` file.
+   - Provide the output.
+
+### Expected Output
 
 ```bash
-mkdir gitops-lab && cd gitops-lab
-git init
-```
-
-2. **Создание желаемого состояния**:
-
-```bash
-echo "version: 1.0" > desired-state.txt
-git add . && git commit -m "Начальное состояние"
-```
-
-3. **Симулировать работающий кластер**:
-
-```bash
-cp desired-state.txt current-state.txt
-```
-
-4. **Создать скрипт согласования**:
-
-```bash
-#!/bin/bash
-# reconcile.sh
-DESIRED=$(cat desired-state.txt)
-CURRENT=$(cat current-state.txt)
-
-if [ "$DESIRED" != "$CURRENT" ]; then
-echo "$(date) - ОБНАРУЖЕН ДРЕЙФ! Согласование..."
-cp desired-state.txt current-state.txt
-fi
-```
-
-5. **Запустить ручной дрейф**:
-
-```bash
-echo "version: 2.0" > current-state.txt # Имитировать ручное изменение кластера
-```
-
-6. **Запустить согласование**:
-
-```bash
-chmod +x reconcile.sh
-./reconcile.sh # Следует обнаружить и исправить дрейф
-```
-
-7. **Автоматизировать согласование**:
-
-```bash
-watch -n 5 ./reconcile.sh # Запускается каждые 5 секунд
-```
-
-8. **Документация**:
-- Создать файл `submission7.md`.
-- Предоставить вывод.
-
-### Ожидаемый результат
-
-```bash
-Пн 3 июл 14:30:00 UTC 2023 - ОБНАРУЖЕН ДРЕЙФ! Согласование...
+Mon Jul 3 14:30:00 UTC 2023 - DRIFT DETECTED! Reconciling...
 ```
 
 ---
 
-## **Задача 2: Мониторинг работоспособности GitOps**
+## **Task 2: GitOps Health Monitoring**
 
-**Цель**: Реализовать проверки работоспособности для синхронизации конфигурации
+**Objective**: Implement health checks for configuration synchronization
 
-Почему это важно:
+Why This Matters:
 
-- Научиться проверять согласованность состояния системы
-- Обнаруживать дрейф конфигурации до того, как он приведет к сбоям
-- Создавайте упреждающий мониторинг для систем GitOps
+- Learn to validate system state consistency
+- Detect configuration drift before it causes failures
+- Build proactive monitoring for GitOps systems
 
-Используемые инструменты:
+Tools Used:
 
 `md5sum` | `cron` | `echo` | `date`
 
-1. **Создать скрипт проверки работоспособности**:
+1. **Create health check script**:
+
+   ```bash
+   #!/bin/bash
+   # healthcheck.sh
+   DESIRED_MD5=$(md5sum desired-state.txt | awk '{print $1}')
+   CURRENT_MD5=$(md5sum current-state.txt | awk '{print $1}')
+   
+   if [ "$DESIRED_MD5" != "$CURRENT_MD5" ]; then
+   echo "$(date) - CRITICAL: State mismatch!" >> health.log
+   else
+   echo "$(date) - OK: States synchronized" >> health.log
+   fi
+   ```
+
+2. **Make executable**:
+
+   ```bash
+   chmod +x healthcheck.sh
+   ```
+
+3. **Simulate healthy state**:
+
+   ```bash
+   ./healthcheck.sh
+   cat health.log# Should show "OK"
+   ```
+
+4. **Create drift**:
+
+   ```bash
+   echo "unapproved change" >> current-state.txt
+   ```
+
+5. **Run health check**:
+
+   ```bash
+   ./healthcheck.sh
+   cat health.log# Now shows "CRITICAL"
+   ```
+
+6. **Documentation**:
+   - Provide the output in a `submission7.md` file.
+
+### Expected Output in `health.log`
 
 ```bash
-#!/bin/bash
-# healthcheck.sh
-DESIRED_MD5=$(md5sum desired-state.txt | awk '{print $1}')
-CURRENT_MD5=$(md5sum current-state.txt | awk '{print $1}')
-
-if [ "$DESIRED_MD5" != "$CURRENT_MD5" ]; then
-echo "$(date) - CRITICAL: State mismatch!" >> health.log
-else
-echo "$(date) - OK: состояния синхронизированы" >> health.log
-fi
-```
-
-2. **Создать исполняемый файл**:
-
-```bash
-chmod +x healthcheck.sh
-```
-
-3. **Смоделировать работоспособное состояние**:
-
-```bash
-./healthcheck.sh
-cat health.log# Должно быть показано "OK"
-```
-
-4. **Создать дрейф**:
-
-```bash
-echo "unapproved change" >> current-state.txt
-```
-
-5. **Запустить проверку работоспособности**:
-
-```bash
-./healthcheck.sh
-cat health.log# Теперь отображается "CRITICAL"
-```
-
-6. **Документация**:
-- Предоставьте вывод в файле `submission7.md`.
-
-### Ожидаемый вывод в `health.log`
-
-```bash
-Пн июл 3 14:35:00 UTC 2023 - ОК: состояния синхронизированы
-Пн июл 3 14:36:00 UTC 2023 - КРИТИЧЕСКИЙ: несоответствие состояний!
+Mon Jul 3 14:35:00 UTC 2023 - OK: States synchronized
+Mon Jul 3 14:36:00 UTC 2023 - CRITICAL: State mismatch!
 ```
 
 ---
 
-### **Руководство по лабораторной работе**
+### **Lab Guidelines**
 
-- Используйте правильное форматирование и структуру Markdown для файлов документации.
-- Организуйте файлы в папке лабораторной работы, используя соответствующие соглашения об именовании.
-- Создайте запрос на извлечение в основную ветку репозитория с выполненным лабораторным заданием.
+- Use proper Markdown formatting and structure for the documentation files.
+- Organize the files within the lab folder using appropriate naming conventions.
+- Create a Pull Request to the main branch of the repository with your completed lab assignment.
 
-1. **Продемонстрированные основные концепции**:
+1. **Key Concepts Demonstrated**:
 
-| Задача | Принцип GitOps | Реальный эквивалент |
-|------|-------------------|------------------------|
-| 1 | Непрерывное согласование | Циклы синхронизации Argo CD/Flux |
-| 2 | Мониторинг работоспособности | Проверки статуса оператора Kubernetes |
+   | Task | GitOps Principle | Real-World Equivalent |
+   |------|------------------|------------------------|
+   | 1 | Continuous Reconciliation | Argo CD/Flux sync loops |
+   | 2 | Health Monitoring | Kubernetes operator status checks |
+
+> "These simulations mirror how real GitOps operators work - just at human speed instead of computer speed!"
