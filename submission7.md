@@ -104,3 +104,79 @@ vboxuser@xubu:~/test$ cat gitops-lab/gitops_simulation.log
 Вс 06 июл 2025 17:16:41 +03 - Скрипт завершен. Логи доступны в файле gitops_simulation.log.
 vboxuser@xubu:~/test$ 
 ```
+
+## **Task 2: Monitoring GitOps performance**
+
+For ease of use, a script was written:
+
+```
+#!/bin/bash
+
+LOG_FILE="health.log"
+
+if [ ! -f desired-state.txt ]; then
+    echo "Создание файла desired-state.txt"
+    echo "version: 1.0" > desired-state.txt
+fi
+
+if [ ! -f current-state.txt ]; then
+    echo "Создание файла current-state.txt"
+    cp desired-state.txt current-state.txt
+fi
+
+if [ ! -f desired-state.txt ]; then
+    echo "$(date) - ERROR: Файл desired-state.txt не найден!" >> "$LOG_FILE"
+    exit 1
+fi
+
+if [ ! -f current-state.txt ]; then
+    echo "$(date) - ERROR: Файл current-state.txt не найден!" >> "$LOG_FILE"
+    exit 1
+fi
+
+DESIRED_MD5=$(md5sum desired-state.txt | awk '{print $1}')
+CURRENT_MD5=$(md5sum current-state.txt | awk '{print $1}')
+
+if [ "$DESIRED_MD5" != "$CURRENT_MD5" ]; then
+    echo "$(date) - CRITICAL: State mismatch!" >> "$LOG_FILE"
+else
+    echo "$(date) - OK: состояния синхронизированы" >> "$LOG_FILE"
+fi
+
+cat "$LOG_FILE"
+```
+
+Results of the work:
+
+```
+vboxuser@xubu:~/test$ ./healthcheck.sh
+   
+Создание файла desired-state.txt
+Создание файла current-state.txt
+Вс 06 июл 2025 17:27:35 +03 - OK: состояния синхронизированы
+vboxuser@xubu:~/test$ tree
+.
+├── current-state.txt
+├── desired-state.txt
+├── healthcheck.sh
+└── health.log
+
+0 directories, 4 files
+vboxuser@xubu:~/test$ cat current-state.txt 
+version: 1.0
+vboxuser@xubu:~/test$ cat desired-state.txt 
+version: 1.0 
+```
+
+Let's replace the content in desired-state.txt with "version: 2.0".
+
+Results of the work:
+
+```
+vboxuser@xubu:~/test$ cat desired-state.txt 
+version: 2.0
+vboxuser@xubu:~/test$ ./healthcheck.sh
+Вс 06 июл 2025 17:27:35 +03 - OK: состояния синхронизированы
+Вс 06 июл 2025 17:29:40 +03 - CRITICAL: State mismatch!
+vboxuser@xubu:~/test$ 
+```
