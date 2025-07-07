@@ -19,6 +19,139 @@
 
 - Предоставьте вывод и анализ отслеживаемых показателей и управления дисковым пространством.
 
+### Решение
+
+Для данного задания был сделан скрипт, который создает шалблон submission8.md.
+
+Сам скрипт:
+
+```
+#!/bin/bash
+
+OUTPUT_FILE="submission8.md"
+
+echo "# System resource monitoring and disk space management report" > $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+
+if command -v ps > /dev/null; then
+echo "## System resource monitoring" >> $OUTPUT_FILE
+echo "### CPU and memory usage" >> $OUTPUT_FILE
+echo "Current CPU usage:" >> $OUTPUT_FILE
+mpstat 1 1 | tail -n +4 | awk '{print "CPU usage: " $3 "%"}' >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+
+echo "Top 3 CPU consuming apps:" >> $OUTPUT_FILE
+ps -eo pid,comm,%cpu --sort=-%cpu | head -n 4 >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+
+echo "Current memory usage:" >> $OUTPUT_FILE
+free -h | awk 'NR==2{printf "Memory usage: %s of %s\n", $3, $2}' >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+
+echo "The top three memory hogs are:" >> $OUTPUT_FILE
+ps -eo pid,comm,%mem --sort=-%mem | head -n 4 >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+else
+echo "The ps command was not found." >> $OUTPUT_FILE
+fi
+
+if command -v iostat > /dev/null; then
+echo "### I/O Usage" >> $OUTPUT_FILE
+echo "The top three I/O-consuming applications are:" >> $OUTPUT_FILE
+iostat -xz 1 3 | awk 'NR>3 {print $1, $2, $3, $4, $5, $6}' | sort -k4 -nr | head -n 3 >> $OUTPUT_FILE
+echo "I/O-consuming applications are:" >> $OUTPUT_FILE
+ps all >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+else
+echo "The iostat command was not found." >> $OUTPUT_FILE
+fi
+
+echo "## Disk Space Management" >> $OUTPUT_FILE
+
+if command -v df > /dev/null; then
+echo "Current disk space status:" >> $OUTPUT_FILE
+df -h >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+else
+echo "The df command could not be found." >> $OUTPUT_FILE
+fi
+
+if command -v du > /dev/null; then
+echo "### The three largest files in /var" >> $OUTPUT_FILE
+echo "the largest directories" >> $OUTPUT_FILE
+du -ah /var 2>/dev/null | sort -rh | head -n 4 >> $OUTPUT_FILE
+echo "the largest files" >> $OUTPUT_FILE
+find /var -type f -exec du -ah {} + 2>/dev/null | sort -rh | head -n 3 >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+else
+echo "The du command could not be found." >> $OUTPUT_FILE
+fi
+
+echo "Report complete. Results written to file $OUTPUT_FILE."
+```
+
+Итоговый файл - шаблон:
+
+```
+# System resource monitoring and disk space management report
+
+## System resource monitoring
+### CPU and memory usage
+Current CPU usage:
+CPU usage: 0,51%
+CPU usage: 0,51%
+
+Top 3 CPU consuming apps:
+    PID COMMAND         %CPU
+ 180568 cpptools        16.0
+ 180485 code             6.6
+ 180453 code             2.7
+
+Current memory usage:
+Memory usage: 2,5Gi of 7,8Gi
+
+The top three memory hogs are:
+    PID COMMAND         %MEM
+ 180568 cpptools         8.0
+ 180689 dart             6.8
+ 180485 code             5.1
+
+### I/O Usage
+The top three I/O-consuming applications are:
+sda 10,36 271,77 2,79 21,23 9,67
+31,20 0,00 2,16 1,48 0,00 65,16
+sr0 0,00 0,00 0,00 0,00 0,50
+I/O-consuming applications are:
+F   UID     PID    PPID PRI  NI    VSZ   RSS WCHAN  STAT TTY        TIME COMMAND
+4     0    1370    1337  20   0 363360 109800 -     Ssl+ tty7       3:14 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+4     0    1376       1  20   0  12296  1060 -      Ss+  tty1       0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+0  1000    2494    2475  20   0  15184  3712 do_sel Ss+  pts/0      0:00 bash
+0  1000  180376    2475  20   0  14928  5180 do_wai Ss   pts/1      0:00 bash
+0  1000  187390  180376  20   0  13624  3940 do_wai S+   pts/1      0:00 bash submission8.sh
+0  1000  187404  187390  20   0  16192  1632 -      R+   pts/1      0:00 ps all
+
+## Disk Space Management
+Current disk space status:
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           794M  1,3M  793M   1% /run
+/dev/sda3        78G   55G   20G  74% /
+tmpfs           3,9G   19M  3,9G   1% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+/dev/sda2       512M  6,1M  506M   2% /boot/efi
+tmpfs           794M  112K  794M   1% /run/user/1000
+
+### The three largest files in /var
+the largest directories
+6,6G	/var
+4,4G	/var/lib
+4,0G	/var/lib/snapd
+3,2G	/var/lib/snapd/snaps
+the largest files
+517M	/var/lib/snapd/snaps/gnome-42-2204_202.snap
+506M	/var/lib/snapd/snaps/gnome-42-2204_176.snap
+401M	/var/lib/snapd/snaps/gnome-3-38-2004_112.snap
+```
+
 ## Задача 2: Практическая настройка мониторинга веб-сайта
 
 **Цель**: Настройте мониторинг в реальном времени для любого веб-сайта с помощью Checkly. Вы создадите проверки для:
