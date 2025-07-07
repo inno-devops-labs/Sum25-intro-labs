@@ -165,14 +165,28 @@ the largest files
 
 Выберите ЛЮБОЙ общедоступный веб-сайт, который вы хотите контролировать (например, ваш любимый магазин, новостной сайт или портфолио)
 
+был выбран http://www.vbstreets.ru/VB/Articles/66484.aspx
+
 ### Шаг 2: Создайте проверки в Checkly
 
 1. **Зарегистрируйтесь на [Checkly](https://checklyhq.com/)** (бесплатная учетная запись)
+
+![image](https://github.com/user-attachments/assets/a7766186-dd9e-45c2-aafd-1cb8e8488deb)
+
 2. Создайте **Проверку API** для базовой доступности:
 - URL: выбранный вами веб-сайт
 - Утверждение: код статуса 200
+
+![image](https://github.com/user-attachments/assets/7ad9a265-536c-45f8-a9bc-6d4a419e0c55)
+
+![image](https://github.com/user-attachments/assets/f9380bf0-750b-4d0a-9ced-3fdb94207b1d)
+
 3. Создайте **Проверку браузера** для контента и взаимодействия:
 - URL: тот же веб-сайт
+
+![image](https://github.com/user-attachments/assets/722326f7-8672-44c3-acb8-38b39d14d036)
+
+![image](https://github.com/user-attachments/assets/528c408e-8b7b-42d1-ae9c-a8108af6a095)
 
 ### Шаг 3: Настройте оповещения
 
@@ -182,6 +196,8 @@ the largest files
 - Как получать уведомления? (электронная почта, телеграмма и т. д.)
 - Установите пороговые значения, которые имеют смысл для вашего сайта
 
+не получилось сделать
+
 ### Шаг 4: захват доказательств и документации
 
 1. Запустите проверки вручную, чтобы убедиться, что они работают
@@ -189,6 +205,56 @@ the largest files
 - Конфигурацию проверки вашего браузера
 - Успешный результат проверки
 - Ваши настройки оповещений
+
+
+эскпортируемый код:
+
+```
+/**
+* This is a Checkly CLI ApiCheck construct. To learn more, visit:
+* - https://www.checklyhq.com/docs/cli/
+* - https://www.checklyhq.com/docs/cli/constructs-reference/#apicheck
+*/
+
+import { ApiCheck, Frequency, AssertionBuilder, RetryStrategyBuilder } from 'checkly/constructs'
+
+new ApiCheck('http-www-vbstreets-ru-vb-articles-66484-aspx', {
+  name: 'http://www.vbstreets.ru/VB/Articles/66484.aspx',
+  activated: true,
+  muted: false,
+  shouldFail: false,
+  runParallel: true,
+  locations: ['eu-north-1', 'eu-central-1', 'us-east-1', 'eu-west-1', 'us-east-2', 'ca-central-1', 'us-west-1', 'us-west-2', 'eu-west-2', 'eu-west-3', 'eu-south-1', 'me-south-1', 'af-south-1', 'ap-southeast-1', 'ap-northeast-1', 'ap-northeast-3', 'ap-east-1', 'ap-southeast-3', 'ap-southeast-2', 'ap-northeast-2', 'ap-south-1'],
+  tags: [],
+  frequency: Frequency.EVERY_10S,
+  environmentVariables: [],
+  maxResponseTime: 20000,
+  degradedResponseTime: 5000,
+  request: {
+    url: 'http://www.vbstreets.ru/VB/Articles/66484.aspx',
+    method: 'GET',
+    followRedirects: true,
+    skipSSL: true,
+    assertions: [
+      AssertionBuilder.statusCode().equals(1),
+    ],
+    body: ``,
+    bodyType: 'NONE',
+    headers: [],
+    queryParameters: [],
+    basicAuth: {
+      username: 'test-user',
+      password: '',
+    },
+  },
+  retryStrategy: RetryStrategyBuilder.linearStrategy({
+    baseBackoffSeconds: 60,
+    maxRetries: 2,
+    maxDurationSeconds: 600,
+    sameRegion: true,
+  }),
+})
+```
 
 ### Рекомендации
 
