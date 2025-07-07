@@ -68,4 +68,4 @@ Output:
 
 Unlike in the previous case, this script does not correct changes, but it can log changes over time.
 
-The created files and scripts can be found in the directory `gitops-lab`
+The created files and scripts can be found in the directory `gitops-lab` or in https://github.com/VAlikV/gitops-lab
