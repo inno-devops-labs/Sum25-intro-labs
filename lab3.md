@@ -32,10 +32,10 @@ In this lab, you will explore continuous integration and continuous deployment (
 ### Documentation
 
 - **Create `submission3.md` file**:
-  - Include your observations, key concepts, and steps followed from the quickstart guide.
-  - Document the workflow execution output, any errors encountered, and observations.
-  - Document the changes made to include manual triggering.
-  - Include the gathered system information and the commands used.
+    - Include your observations, key concepts, and steps followed from the quickstart guide.
+    - Document the workflow execution output, any errors encountered, and observations.
+    - Document the changes made to include manual triggering.
+    - Include the gathered system information and the commands used.
 
 ### Guidelines
 
