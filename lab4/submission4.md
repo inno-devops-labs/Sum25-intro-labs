@@ -449,3 +449,220 @@ Operating System: Ubuntu 24.04.2 LTS
     Answer:
     - No memory pressure observed.
     - Buff/cache usage is low (~150 MiB), indicating minimal disk operations.
+
+## Task 2: Networking Analysis
+
+**Objective**: Perform network diagnostics including path tracing, DNS inspection, packet capture, and reverse lookups.
+
+### 2.1: Network Path Tracing
+
+1. **Traceroute Execution**:
+
+    ```sh
+    traceroute github.com
+    ```
+
+    ```bash
+    sam@sam-home-pc:/mnt/c/Users/Admin/Sum25-intro-labs$ traceroute github.com
+    traceroute to github.com (140.82.121.4), 30 hops max, 60 byte packets                                                                                                                                      
+    1  172.28.64.1 (172.28.64.1)  0.212 ms  0.198 ms  0.216 ms - WSL
+    2  192.168.0.1 (192.168.0.1)  0.573 ms  0.773 ms  0.821 ms - my PC
+    3  10.16.255.135 (10.16.255.135)  1.624 ms  1.489 ms  1.699 ms
+    4  10.16.248.225 (10.16.248.225)  1.589 ms 10.16.249.41 (10.16.249.41)  2.121 ms 10.16.248.209 (10.16.248.209)  1.870 ms
+    5  10.16.248.150 (10.16.248.150)  1.944 ms 10.16.248.218 (10.16.248.218)  3.822 ms 10.16.248.206 (10.16.248.206)  3.874 ms
+    6  10.16.248.130 (10.16.248.130)  2.236 ms 10.16.248.253 (10.16.248.253)  1.732 ms 10.16.248.134 (10.16.248.134)  1.638 ms
+    7  188.254.80.85 (188.254.80.85)  14.144 ms 188.254.80.81 (188.254.80.81)  15.225 ms 188.254.80.85 (188.254.80.85)  14.053 ms
+    8  95.167.92.165 (95.167.92.165)  23.627 ms 95.167.92.161 (95.167.92.161)  24.024 ms  23.719 ms - ROSTELECOMNET
+    9  * * *
+    10  217.161.68.33 (217.161.68.33)  60.609 ms  60.589 ms  60.581 ms
+    11  * * *
+    12  github-ic-350972.ip.twelve99-cust.net (62.115.182.171)  60.078 ms  59.490 ms  59.528 ms - VODAFONE
+    13  * * *
+    14  * * *
+    15  * * *
+    16  * * *
+    17  * * *
+    18  * * *
+    19  * * *
+    20  * * *
+    21  * * *
+    22  * * *
+    23  * * *
+    24  * * *
+    25  * * *
+    26  * * *
+    27  * * *
+    28  * * *
+    29  * * *
+    30  * * *
+    ```
+
+    Anakysis of the path:
+
+    ```txt
+    1  172.28.64.1         ← WSL internal virtual interface
+    2  192.168.0.1         ← Local home router (gateway)
+    3–6 10.16.x.x          ← Private ISP backbone subnets (RFC1918)
+    7  188.254.80.X        ← Public IPs, likely ISP carrier-grade NAT (CG-NAT)
+    8  95.167.92.X         ← Rostelecom network
+    10 217.161.68.33       ← Tier-1/2 ISP transit provider
+    12 62.115.182.171      ← Vodafone/Twelve99, GitHub’s CDN edge partner
+    13–30 * * *            ← ICMP replies blocked (standard practice in production CDNs)
+    ```
+
+    Key Insight:
+    - The network begins with WSL and NAT into your local router.
+    - Then it traverses internal ISP infrastructure (10.x addresses).
+    - Public routing appears at hop 7 with carrier NATed IPs.
+    - Rostelecom is confirmed as the ISP, handing off to higher-tier transit.
+    - GitHub likely uses ICMP filtering or firewalling at the edge to avoid diagnostics, hence the timeout from hop 13 onward.
+
+2. **DNS Resolution Check**:
+
+    ```sh
+    dig github.com
+    ```
+
+    ```bash
+    sam@sam-home-pc:/mnt/c/Users/Admin/Sum25-intro-labs$ dig github.com
+                    
+    ; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> github.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 58811
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ;; QUESTION SECTION:
+    ;github.com.                    IN      A
+
+    ;; ANSWER SECTION:
+    github.com.             27      IN      A       140.82.121.3
+
+    ;; Query time: 10 msec
+    ;; SERVER: 10.255.255.254#53(10.255.255.254) (UDP)
+    ;; WHEN: Mon Jul 07 20:13:00 MSK 2025
+    ;; MSG SIZE  rcvd: 55
+    ```
+
+    Key Insight:
+    - DNS is working properly and resolves GitHub’s A record (IPv4).
+    - 10.255.255.254 is a private DNS resolver—could be internal ISP DNS.
+    - The single A record suggests GitHub's GeoDNS is routing my to the nearest content distribution node.
+    - Very fast response time (10 ms) implies local caching, either in my network or upstream.
+
+### 2.2: Packet Capture
+
+1. **Capture DNS Traffic**:
+
+    ```sh
+    sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn
+    ```
+
+    ```bash
+    sam@sam-home-pc:/mnt/c/Users/Admin/Sum25-intro-labs$ sudo timeout 10 tcpdump -c 5 -i any 'port 53' -nn
+    tcpdump: data link type LINUX_SLL2
+    tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+    listening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes
+
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel`
+    ```
+
+    **Expected**: capture DNS (UDP/TCP port 53) traffic.
+    **Result**: 0 packets captured.
+
+    Reason: WSL2 Network Isolation
+    > WSL2 runs in a lightweight VM, not a real Linux kernel attached to your physical network stack.
+
+    That means:
+    - Actual DNS queries never touch Linux interfaces (eth0, lo, etc.).
+    - Instead, Windows handles DNS, and forwards results to WSL2.
+    - As a result, tcpdump inside WSL2 doesn't see any traffic to/from port 53.
+
+### 2.3: Reverse DNS
+
+1. **Perform PTR Lookups**:
+
+    ```sh
+    dig -x 8.8.4.4
+    dig -x 1.1.2.2
+    ```
+
+    ```bash
+    sam@sam-home-pc:/mnt/c/Users/Admin/Sum25-intro-labs$ dig -x 8.8.4.4
+
+    ; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> -x 8.8.4.4
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5407
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ;; QUESTION SECTION:
+    ;4.4.8.8.in-addr.arpa.          IN      PTR
+
+    ;; ANSWER SECTION:
+    4.4.8.8.in-addr.arpa.   15295   IN      PTR     dns.google.
+
+    ;; Query time: 0 msec
+    ;; SERVER: 10.255.255.254#53(10.255.255.254) (UDP)
+    ;; WHEN: Tue Jul 08 23:38:43 MSK 2025
+    ;; MSG SIZE  rcvd: 73
+
+    ```
+
+    This confirms Google properly maintains reverse DNS records for its public resolvers.
+
+    ```bash
+    sam@sam-home-pc:/mnt/c/Users/Admin/Sum25-intro-labs$ dig -x 1.1.2.2
+
+    ; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> -x 1.1.2.2
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 22048
+    ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ;; QUESTION SECTION:
+    ;2.2.1.1.in-addr.arpa.          IN      PTR
+
+    ;; AUTHORITY SECTION:
+    1.in-addr.arpa.         922     IN      SOA     ns.apnic.net. read-txt-record-of-zone-first-dns-admin.apnic.net. 22242 7200 1800 604800 3600
+
+    ;; Query time: 69 msec
+    ;; SERVER: 10.255.255.254#53(10.255.255.254) (UDP)
+    ;; WHEN: Tue Jul 08 23:39:44 MSK 2025
+    ;; MSG SIZE  rcvd: 137
+    ```
+
+    The IP is from APNIC (Asia-Pacific Network Information Centre) and doesn’t resolve. This is expected for many non-public DNS servers or placeholders.
+
+    ```bash
+    sam@sam-home-pc:/mnt/c/Users/Admin/Sum25-intro-labs$ dig -x 77.88.8.3
+
+    ; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> -x 77.88.8.3
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47167
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ;; QUESTION SECTION:
+    ;3.8.88.77.in-addr.arpa.                IN      PTR
+
+    ;; ANSWER SECTION:
+    3.8.88.77.in-addr.arpa. 30      IN      PTR     secondary.family.dns.yandex.ru.
+
+    ;; Query time: 40 msec
+    ;; SERVER: 10.255.255.254#53(10.255.255.254) (UDP)
+    ;; WHEN: Tue Jul 08 23:40:54 MSK 2025
+    ;; MSG SIZE  rcvd: 95
+    ```
+
+    Yandex maintains PTRs for its recursive DNS servers. This helps with logging, filtering, and spam protection.
