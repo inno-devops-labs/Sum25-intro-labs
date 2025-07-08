@@ -1,5 +1,6 @@
 # Lab 1: Introduction to DevOps with Git
 
+
 ## Overview
 
 This lab assignment introduces you to Git and its essential operations. You will complete two tasks focusing on commit signing and understanding merge strategies. Follow the tasks below to complete the lab assignment.
