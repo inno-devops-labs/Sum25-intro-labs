@@ -1,29 +1,29 @@
 # SRE Lab
 
-В этой лабораторной работе вы изучите принципы проектирования надежности сайта (SRE). Для выполнения лабораторной работы выполните следующие задания.
+In this lab, you will learn the principles of Site Reliability Engineering (SRE). To complete the lab, complete the following tasks.
 
-## Задача 1: Ключевые показатели для SRE и SLA
+## Task 1: Key Metrics for SRE and SLAs
 
-**Цель**: Мониторинг системных ресурсов и управление дисковым пространством.
+**Objective**: Monitor system resources and manage disk space.
 
-1. **Мониторинг системных ресурсов**:
-- Используйте такие команды, как `htop` и `iostat`, для мониторинга использования ЦП, памяти и ввода-вывода.
-- Определите и задокументируйте 3 самых потребляющих приложения для использования ЦП, памяти и ввода-вывода в файле `submission8.md`.
+1. **Monitor system resources**:
+- Use commands such as `htop` and `iostat` to monitor CPU, memory, and I/O usage.
+- Identify and document the top 3 CPU, memory, and I/O consuming applications in `submission8.md`.
 
-2. **Управление дисковым пространством**:
-- Используйте `du` и `df` для управления дисковым пространством.
-- Определите и зарегистрируйте 3 самых больших файла в каталоге `/var` в файле `submission8.md`.
+2. **Manage disk space**:
+- Use `du` and `df` to manage disk space.
+- Identify and document the top 3 files in the `/var` directory in `submission8.md`.
 
-3. **Документация**:
-- Создайте файл `submission8.md`.
+3. **Documentation**:
+- Create a `submission8.md` file.
 
-- Предоставьте вывод и анализ отслеживаемых показателей и управления дисковым пространством.
+- Provide output and analysis of monitored metrics and disk space management.
 
-### Решение
+### Solution
 
-Для данного задания был сделан скрипт, который создает шалблон submission8.md.
+A script was made for this task that creates a submission8.md template.
 
-Сам скрипт:
+The script itself:
 
 ```
 #!/bin/bash
@@ -90,7 +90,7 @@ fi
 echo "Report complete. Results written to file $OUTPUT_FILE."
 ```
 
-Итоговый файл - шаблон:
+The final file is a template:
 
 ```
 # System resource monitoring and disk space management report
@@ -152,62 +152,61 @@ the largest files
 401M	/var/lib/snapd/snaps/gnome-3-38-2004_112.snap
 ```
 
-## Задача 2: Практическая настройка мониторинга веб-сайта
+## Task 2: Hands-on Website Monitoring Setup
 
-**Цель**: Настройте мониторинг в реальном времени для любого веб-сайта с помощью Checkly. Вы создадите проверки для:
+**Goal**: Set up real-time monitoring for any website using Checkly. You'll create checks for:
 
-1. Базовой доступности (загружается ли сайт?)
-2. Проверки контента (виден ли ключевой элемент?)
-3. Эффективности взаимодействия (сколько времени занимает нажатие кнопки?)
-4. Оповещения (получайте уведомления, когда что-то ломается)
+1. Basic availability (does the site load?)
+2. Content checks (is a key element visible?)
+3. Interaction efficiency (how long does it take to click a button?)
+4. Alerts (get notified when something breaks)
 
-### Шаг 1: Выберите свой веб-сайт
+### Step 1: Select your website
 
-Выберите ЛЮБОЙ общедоступный веб-сайт, который вы хотите контролировать (например, ваш любимый магазин, новостной сайт или портфолио)
+Select ANY public website you want to monitor (like your favorite store, news site, or portfolio site)
 
-был выбран http://www.vbstreets.ru/VB/Articles/66484.aspx
+http://www.vbstreets.ru/VB/Articles/66484.aspx was selected
 
-### Шаг 2: Создайте проверки в Checkly
+### Step 2: Create Checks in Checkly
 
-1. **Зарегистрируйтесь на [Checkly](https://checklyhq.com/)** (бесплатная учетная запись)
+1. **Sign up for [Checkly](https://checklyhq.com/)** (free account entry)
 
 ![image](https://github.com/user-attachments/assets/a7766186-dd9e-45c2-aafd-1cb8e8488deb)
 
-2. Создайте **Проверку API** для базовой доступности:
-- URL: выбранный вами веб-сайт
-- Утверждение: код статуса 200
+2. Create an **API Check** for basic accessibility:
+- URL: your chosen website
+- Assertion: status code 200
 
 ![image](https://github.com/user-attachments/assets/7ad9a265-536c-45f8-a9bc-6d4a419e0c55)
 
 ![image](https://github.com/user-attachments/assets/f9380bf0-750b-4d0a-9ced-3fdb94207b1d)
 
-3. Создайте **Проверку браузера** для контента и взаимодействия:
-- URL: тот же веб-сайт
+3. Create a **Browser Check** for content and interaction:
+- URL: same website
 
 ![image](https://github.com/user-attachments/assets/722326f7-8672-44c3-acb8-38b39d14d036)
 
 ![image](https://github.com/user-attachments/assets/528c408e-8b7b-42d1-ae9c-a8108af6a095)
 
-### Шаг 3: Настройте оповещения
+### Step 3: Set up alerts
 
-Настройте **правила оповещений** ВАШЕГО выбор:
+Set up **alert rules** YOUR choice:
 
-- О чем оповещать? (например, непройденные проверки, медленная задержка)
-- Как получать уведомления? (электронная почта, телеграмма и т. д.)
-- Установите пороговые значения, которые имеют смысл для вашего сайта
+- What to alert on? (e.g. failed checks, slow latency)
+- How to get notified? (email, telegram, etc.)
+- Set thresholds that make sense for your site
 
-не получилось сделать
+failed to do
 
-### Шаг 4: захват доказательств и документации
+### Step 4: Capture evidence and documentation
 
-1. Запустите проверки вручную, чтобы убедиться, что они работают
-2. Сделайте снимки экрана и добавьте их в `submission8.md`, показывающие:
-- Конфигурацию проверки вашего браузера
-- Успешный результат проверки
-- Ваши настройки оповещений
+1. Run checks manually to make sure they work
+2. Take screenshots and add them to `submission8.md` showing:
+- Your browser check configuration
+- A successful check result
+- Your alert settings
 
-
-эскпортируемый код:
+Exported code:
 
 ```
 /**
@@ -256,10 +255,10 @@ new ApiCheck('http-www-vbstreets-ru-vb-articles-66484-aspx', {
 })
 ```
 
-### Рекомендации
+### Recommendations
 
-- Используйте правильное форматирование и структуру Markdown для файлов документации.
-- Организуйте файлы в папке лаборатории, используя соответствующие соглашения об именовании.
-- Создайте запрос на извлечение в основную ветку репозитория с вашим выполненным лабораторным заданием.
+- Use proper Markdown formatting and structure for documentation files.
+- Organize files in the lab folder using appropriate naming conventions.
+- Create a pull request to the master branch of the repository with your completed lab.
 
-> Примечание: активно изучите метрики SRE и SLA, чтобы понять их важность для измерения надежности системы.
+> Note: Actively study SRE and SLA metrics to understand their importance in measuring system reliability.
