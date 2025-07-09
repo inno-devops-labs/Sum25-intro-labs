@@ -79,3 +79,16 @@ sudo find /var -type f -exec du -h {} + 2>/dev/null | sort -hr | head -n 3
 1. `/var/lib/systemd/coredump/core.python.1000.169151514f1642debccc6971b13dc2c3.67332.1751376159000000.zst` (306 Mb) - core dump, file containing a snapshot of the working memory of a python process at the moment it crashed
 2. `/var/lib/systemd/coredump/core.python.1000.169151514f1642debccc6971b13dc2c3.75921.1751376783000000.zst` (212 Mb) - core dump, file containing a snapshot of the working memory of a python process at the moment it crashed
 3. `/var/lib/flatpak/repo/objects/32/92ca4eb44414c42fb2fc0d0987926d3a699e2a20dc99a96092bf85071e737b.file` (187 Mb) - flatpak (application manager) repository object
+
+## Task 2: Practical Website Monitoring Setup
+
+### Step 1: Choose Your Website
+
+**Chosen website** - <https://www.wikipedia.org/>
+
+### Step 4: Capture Proof & Documentation
+
+![Checkly API Check](./api_check.png)
+![Checkly Browser Check](./browser_check.png)
+![Checkly Alert Config](./alert.png)
+![Checkly Checks](./checks.png)
