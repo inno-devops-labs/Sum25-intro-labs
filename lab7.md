@@ -52,7 +52,7 @@ Tools Used:
    # reconcile.sh
    DESIRED=$(cat desired-state.txt)
    CURRENT=$(cat current-state.txt)
-   
+
    if [ "$DESIRED" != "$CURRENT" ]; then
    echo "$(date) - DRIFT DETECTED! Reconciling..."
    cp desired-state.txt current-state.txt
@@ -111,7 +111,7 @@ Tools Used:
    # healthcheck.sh
    DESIRED_MD5=$(md5sum desired-state.txt | awk '{print $1}')
    CURRENT_MD5=$(md5sum current-state.txt | awk '{print $1}')
-   
+
    if [ "$DESIRED_MD5" != "$CURRENT_MD5" ]; then
    echo "$(date) - CRITICAL: State mismatch!" >> health.log
    else
@@ -165,9 +165,9 @@ Mon Jul 3 14:36:00 UTC 2023 - CRITICAL: State mismatch!
 
 1. **Key Concepts Demonstrated**:
 
-   | Task | GitOps Principle | Real-World Equivalent |
-   |------|------------------|------------------------|
-   | 1 | Continuous Reconciliation | Argo CD/Flux sync loops |
-   | 2 | Health Monitoring | Kubernetes operator status checks |
+   | Task | GitOps Principle          | Real-World Equivalent             |
+   | ---- | ------------------------- | --------------------------------- |
+   | 1    | Continuous Reconciliation | Argo CD/Flux sync loops           |
+   | 2    | Health Monitoring         | Kubernetes operator status checks |
 
 > "These simulations mirror how real GitOps operators work - just at human speed instead of computer speed!"
