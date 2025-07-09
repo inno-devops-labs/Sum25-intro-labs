@@ -88,8 +88,6 @@ user@user-VirtualBox:~$ sudo du -ah /var | sort -rh | head -n 10
 ## Задание 2: Практическая настройка мониторинга веб-сайта
 
 
-### Алерты не работают (почта, телеграмм)
-
 - API
 
 ![Скриншот API](api.jpg)
@@ -105,3 +103,11 @@ user@user-VirtualBox:~$ sudo du -ah /var | sort -rh | head -n 10
 - Настройка алертов почта/телега
 
 ![Скриншот alert](alert.jpg)
+
+- Алерт телеграм
+
+- ![Скриншот tg](TG.jpg)
+
+- Алерт почта
+
+![Скриншот mail](mail.jpg)
