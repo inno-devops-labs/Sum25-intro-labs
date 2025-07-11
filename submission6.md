@@ -405,7 +405,6 @@ echo "FROM alpine" > Dockerfile
 
 ```
  docker build -t temp-image . && docker rmi temp-image
-
 ```
 
 ```
@@ -421,4 +420,43 @@ echo "FROM alpine" > Dockerfile
  => => writing image sha256:cea2ff433c610f5363017404ce989632e12b953114fefc6f597a58e813c15d61                                                      0.0s
  => => naming to docker.io/library/temp-image                                                                                                     0.0s
 Untagged: temp-image:latest
+```
+
+```
+docker container prune -f
+```
+
+```
+Deleted Containers:
+db2988c3df659b81ebb70f7ab2f91c47950faed11a3b95e3471d32fdcc495dfb
+c54047b624d1f1bd5722de3908a5b8f9522913624e1d56fe98c326dd67f89bd1
+e965cc12af3e784c3e99bd5b921ac03d34e8c7ad1b6f27be9111a8a8f518bc1f
+ece98e0fc03b6ceae73523a28aa7f8c99e714e42649d3be0f4f683b1bf0fac56
+
+Total reclaimed space: 0B
+```
+
+```
+docker image prune -a -f
+```
+
+```
+Deleted Images:
+deleted: sha256:27bd739206a4b60f4bff18d0d3d0a770f0ec8b0a2ae82c87cf3db6147d925f65
+deleted: sha256:ad5dc293930710e1781ad3db4e8365e0b76799d8085b0c7844dbdc5edf397733
+
+Total reclaimed space: 1.181kB
+```
+
+
+```
+docker system df
+```
+
+```
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          5         5         2.073GB   192.2MB (9%)
+Containers      6         6         456.3kB   0B (0%)
+Local Volumes   10        3         909.2MB   717.4MB (78%)
+Build Cache     3         0         12B       12B
 ```
