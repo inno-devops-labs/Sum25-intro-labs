@@ -32,7 +32,7 @@
 
     ![I/O usage](src/htop-io.png)
 
-    |Command | I/O% or IOPS |
+    |Command | I/O% |
     |--------|--------------|
     |/usr/libexec/gnome-terminal-server   | 652.17K/s |
     |/usr/lib/firefox/firefox  | 164.25/s  |
