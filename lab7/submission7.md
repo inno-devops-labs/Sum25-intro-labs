@@ -42,7 +42,7 @@ Sat Jul 12 12:47:47 MSK 2025 - DRIFT DETECTED! Reconciling..
    ```bash
    Sat Jul 12 12:55:51 MSK 2025 - OK: States synchronized
    ```
-   ![Health OK](./screens/health_ok.png)
+
 
 3. Simulate drift and run check again  
    ```bash
@@ -55,10 +55,10 @@ Sat Jul 12 12:47:47 MSK 2025 - DRIFT DETECTED! Reconciling..
    Sat Jul 12 12:55:51 MSK 2025 - OK: States synchronized
    Sat Jul 12 12:58:22 MSK 2025 - CRITICAL: State mismatch!
    ```
-   ![Health Critical](./screens/health_critical.png)
+<img width="1120" height="279" alt="image" src="https://github.com/user-attachments/assets/305aa207-ae25-4ee4-9a35-812d754791eb" />
 
 **Explanation:**  
 The health check script computes MD5 hashes of `desired-state.txt` and `current-state.txt`.  
 - If the hashes match, it logs an **OK** message.  
 - If the hashes differ, it logs a **CRITICAL** alert to `health.log`.
-<img width="1120" height="279" alt="image" src="https://github.com/user-attachments/assets/305aa207-ae25-4ee4-9a35-812d754791eb" />
+
