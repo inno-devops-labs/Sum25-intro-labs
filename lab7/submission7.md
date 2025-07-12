@@ -24,6 +24,10 @@ Sample output:
 ```
 Sat Jul 12 12:47:47 MSK 2025 - DRIFT DETECTED! Reconciling..
 ```
+
+
+<img width="1031" height="305" alt="image" src="https://github.com/user-attachments/assets/59d58e49-143d-4091-9db7-55fce64ca0de" />
+
 ### Task 2: GitOps Health Monitoring
 
 **Scripts and commands:**
