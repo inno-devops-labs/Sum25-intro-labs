@@ -1,4 +1,4 @@
-# Lab 8: SRE Lab
+# Lab 8: SRE 
 
 ## Task 1: Key Metrics for SRE and SLAs
 
@@ -32,3 +32,6 @@
 <img width="1600" height="370" alt="image" src="https://github.com/user-attachments/assets/52d09e05-6c61-4a39-87b9-d3a35325bcc7" />
 
 <img width="1045" height="196" alt="image" src="https://github.com/user-attachments/assets/f45e81fe-3327-4b23-86db-8004f2033982" />
+
+
+
