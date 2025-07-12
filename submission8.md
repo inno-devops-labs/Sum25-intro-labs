@@ -18,38 +18,63 @@ iostat
 
 ```sh
 sumnios@Nikita:~$ iostat
-Linux 5.15.167.4-microsoft-standard-WSL2 (Nikita)       07/11/25        _x86_64_        (8 CPU)
+Linux 5.15.167.4-microsoft-standard-WSL2 (Nikita)       07/12/25        _x86_64_        (8 CPU)
 
 avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           1.85    0.00    1.50    4.19    0.00   92.47
+           3.33    0.00    3.43    8.16    0.00   85.08
 
 Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
-sda               8.24       546.08         0.00         0.00      74037          0          0
-sdb               0.77        16.43         0.03         0.00       2228          4          0
-sdc             104.26      3084.98       841.63      1282.90     418261     114108     173936
+sda              23.58      1553.32         0.00         0.00      74109          0          0
+sdb               2.18        46.70         0.08         0.00       2228          4          0
+sdc             160.66      6567.70       660.24      4888.95     313345      31500     233252
+
 ```
 
 
+**Results:**
+*CPU Usage*
+- dockerd (PID 702) - 1.0% CPU
+
+- systemd-journald (PID 65) - 0.2% CPU
+
+- init processes (PIDs 1, 126-133) - 0.1-0.2% CPU each
+
+*Memory Usage*
+- dockerd (PID 702) - 77,464 KB RES (resident memory)
+
+- systemd-journald (PID 65) - 15,988 KB RES
+
+- init process (PID 1) - 12,836 KB RES
+
+
+*I/O Usage*
+- sdc device - 160.66 transactions per second, 6,567.70 kB_read/s, 660.24 kB_wrtn/s
+
+- sda device - 23.58 transactions per second, 1,553.32 kB_read/s
+
+- sdb device - 2.18 transactions per second, 46.70 kB_read/s
 
 2. 
 
 
 **Input:**
 ```sh
-du
+sudo du -ah /var | sort -rh | head -n 3
 ```
 
 **Output:**
-
 ```sh
+sumnios@Nikita:~$ sudo du -ah /var | sort -rh | head -n 3
+2.3G    /var
+1.4G    /var/lib
+921M    /var/lib/snapd/cache
 ```
-
 
 
 **Input:**
 
 ```sh
-
+df
 ```
 
 **Output:**
@@ -80,7 +105,23 @@ snapfuse            75776     75776         0 100% /snap/core22/1981
 snapfuse           144000    144000         0 100% /snap/docker/3265
 tmpfs              776192        16    776176   1% /run/user/1000
 ```
+**Results:**
 
+- /lib/snapd/snaps/docker_3265.snap
+Size: 144,000 KB (144 MB)
+
+
+- /lib/snapd/snaps/docker_3221.snap
+Size: 144,000 KB (144 MB)
+
+
+- /lib/snapd/snaps/core22_2010.snap
+Size: 75,776 KB (76 MB)
+
+
+The system have multiple versions of docker and core22 
+
+All snap packages show 100% usage as they're read-only mounts
 
 ### Task 2
 
