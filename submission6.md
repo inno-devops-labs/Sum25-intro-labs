@@ -417,7 +417,7 @@
     >>docker exec redis_container ps aux
     OCI runtime exec failed: exec failed: unable to start container process: exec: "ps": executable file not found in $PATH: unknown
 
-Как узнал, в мнималистичных образах нет устилиты PS. Можно узнать пизды процессов с помощью 
+Как узнал, в мнималистичных образах нет устилиты PS. Можно узнать PID-ы процессов с помощью 
 
     >>docker inspect --format '{{.State.Pid}}' redis_container
     1768
