@@ -24,3 +24,5 @@ Sample output:
 ```
 Sat Jul 12 12:47:47 MSK 2025 - DRIFT DETECTED! Reconciling..
 ```
+
+<img width="1120" height="279" alt="image" src="https://github.com/user-attachments/assets/305aa207-ae25-4ee4-9a35-812d754791eb" />
