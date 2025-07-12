@@ -127,3 +127,64 @@ Every 5,0s: ./reconcile.sh
 
 Пт 11 июл 2025 22:15:43 MSK - DRIFT DETECTED! Reconciling...
 ```
+
+# **Task 2: GitOps Health Monitoring**
+
+## 1. **Create health check script**:
+
+Sctript created
+
+```bash
+#!/bin/bash
+# healthcheck.sh
+DESIRED_MD5=$(md5sum desired-state.txt | awk '{print $1}')
+CURRENT_MD5=$(md5sum current-state.txt | awk '{print $1}')
+
+if [ "$DESIRED_MD5" != "$CURRENT_MD5" ]; then
+echo "$(date) - CRITICAL: State mismatch!" >> health.log
+else
+echo "$(date) - OK: States synchronized" >> health.log
+fi
+```
+
+## 2. **Make executable**:
+
+Then I made it executable
+
+```bash
+$ chmod +x healthcheck.sh
+
+$ ls -la healthcheck.sh 
+-rwxrwxrwx 1 root root 314 июл 12 15:53 healthcheck.sh
+```
+
+## 3. **Simulate healthy state**:
+
+```bash
+$ ./healthcheck.sh
+
+$ cat health.log # Should show "OK"
+Сб 12 июл 2025 15:55:20 MSK - OK: States synchronized
+
+```
+There is no cahnges in monitored file, so output as expected
+
+## 4. **Create drift**:
+
+Then i write some "unapproved change" (lol) to the state file
+
+```bash
+$ echo "unapproved change" >> current-state.txt
+```
+
+## 5. **Run health check**:
+
+```bash
+$ ./healthcheck.sh
+$ cat health.log # Now shows "CRITICAL"
+
+Сб 12 июл 2025 15:55:20 MSK - OK: States synchronized
+Сб 12 июл 2025 15:58:17 MSK - CRITICAL: State mismatch!
+```
+
+So this way we can monitor the unapproved changes in monitord files (but it's better to use more convenient instruments )
