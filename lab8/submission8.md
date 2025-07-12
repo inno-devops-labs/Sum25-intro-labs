@@ -48,8 +48,19 @@ test('visit Apple homepage', async ({ page }) => {
   await expect(page).toHaveTitle(/Apple/);
   await page.screenshot({ path: 'screenshots/browser_ok.png' });
 });
+```
 <img width="1783" height="619" alt="image" src="https://github.com/user-attachments/assets/26da430b-9073-4635-af47-ac97fd9f4793" />
 
 ### Alert setting
 <img width="1645" height="853" alt="image" src="https://github.com/user-attachments/assets/7ba0249c-04dc-448b-a2a8-20fcbbe6b5db" />
+
+
+Note on SRE Metrics & SLAs:**  
+In this lab we manually collected key metrics (CPU, memory, I/O via `ps`, `iotop`; disk usage via `df`/`du`). In a real-world SRE workflow these measurements become SLIs (Service Level Indicators) that feed into SLAs (Service Level Agreements). For example:
+
+- **Uptime SLA:** 99.9% availability  
+- **Performance SLA:** P95 response time < 1s  
+- **Resource SLA:** CPU < 70%, disk usage < 80%
+
+Defining SLIs/SLA thresholds lets you automate monitoring and alerting (e.g., via Prometheus/Grafana or Checkly), detect anomalies early, and guide capacity planning—ensuring your service stays reliable and performant.
 
