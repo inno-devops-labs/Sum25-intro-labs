@@ -1,13 +1,13 @@
 # Task 1: Key Metrics for SRE and SLAs
 
-1) **Monitor System Resources**
+## 1) **Monitor System Resources**
 
-1.1 `htop`:
+### 1.1 `htop`:
 ![htop interafce](submission8_pics/htop.png)
 
 Nice terminal process manager
 
-1.2 `iostat`:
+### 1.2 `iostat`:
 
 The `iostat` command is used for monitoring system input/output device loading by observing the time the devices are active in relation to their average transfer  rates.  The  `iostat` command generates reports that can be used to change system configuration to better balance the input/output load between physical disks.
 
@@ -53,9 +53,9 @@ Here we can see utilization on cpu in percents of time usage and write/read rate
 - Most I/O usage is nvme, loop21 and loop10
 
 
-2. Disk Space Management
+## 2. Disk Space Management
 
-2.1 `du`
+### 2.1 `du`
 
 ```bash
 $ du -c -h -a
@@ -98,7 +98,7 @@ $ du -c -h -a
 
 Here we can see memory usage of current dir files
 
-2.2 `dh`
+### 2.2 `dh`
 
 ```bash
 $ sudo df -h -a 
@@ -175,3 +175,21 @@ Here we can observe usage of disk space in the system
 ```
 
 # Task 2: Practical Website Monitoring Setup
+
+1. I choosed https://github.com
+
+2. Signed in with GitHub
+
+3. Made API check of GitHub
+
+![GitHub API check](submission8_pics/github_api_check.png)
+
+4. Made Browser check:
+
+![GitHub Browser check](submission8_pics/github_browser_check_1.png)
+![GitHub Browser check](submission8_pics/github_browser_check_2.png)
+![GitHub Browser check](submission8_pics/github_browser_check_3.png)
+
+5. Set Up Alerts
+
+![GitHub alerts ](submission8_pics/github_alerts.png)
