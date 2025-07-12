@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "lab3" ]
+  pull_request:
+    branches: [ "lab3" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Gather system information
+      - name: Gather system information
+        run: |
+          echo "Operating System: $(uname -a)"
+          echo "CPU info:"
+          lscpu
+          echo "Memory info:"
+          free -h
+
+      # Runs a single command using the runner’s shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runner’s shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
