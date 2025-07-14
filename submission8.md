@@ -23,3 +23,28 @@ The system is not under load
 1. `/var/lib` - 1.9 GB
 2. `/var/cache` - 164 MB
 3. `/var/log` - 48 MB
+
+## Task 2: Website Monitoring
+
+### Website: https://google.com
+
+### Screenshots:
+1. Browser Check:
+   
+   ![Browser](screenshots/browser.png)
+
+2. API Check:
+
+   ![API](screenshots/API.png)
+
+3. Browser Check Configuration:  
+
+   ![Config](screenshots/browser_check_config.png)
+
+4. Successful Check Result: 
+
+   ![Success](screenshots/check_success.png)
+
+5. Alert Settings:  
+
+   ![Alerts](screenshots/alert_settings.png)
