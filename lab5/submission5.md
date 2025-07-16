@@ -4,6 +4,8 @@ In this lab, you will learn how to deploy a Virtual Machine (VM) using VirtualBo
 
 ## Task 1: VM Deployment
 
+**Objective**: Install HV and deploy a new VM using Ubuntu.
+
 ### 1. **Install hypervisor**
 
 I've got predeployed **Type 1** (bare-metal) hypervisor - ESXi 6.0.0
@@ -69,3 +71,34 @@ OS: Ubuntu Server 25.04 (64-bit)
 > *Screenshot of the running VM*
 
 ## Task 2: System Information Tools
+
+1. **Processor, RAM, and Network Information**:
+
+    `lscpu` - for processor info
+
+    ![lscpu-output](../images/lscpu-output.png)
+
+    `free -h` - for RAM usage
+
+    ![ram-usage](../images/ram-usage.png)
+
+    `ip a` - for network interfaces
+
+    ![ip_a](../images/ip_a.png)
+
+2. **Operating System Specifications**:
+
+    Built-in tools:
+
+    - `hostnamectl` — General system metadata
+    - `lsb_release -a` — Distribution-specific details
+    - `cat /etc/os-release` — OS metadata in flat file format
+
+    ![os-info-1](../images/os-info-1.png)
+
+    Optional / Nicer Formatting (needed installation):
+
+    - `neofetch` — Pretty output, also shows kernel, RAM, etc.
+    - `inxi -S` — Lightweight, structured summary
+
+    ![os-info-2](../images/os-info-2.png)
