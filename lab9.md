@@ -1,4 +1,4 @@
-# Lab9: Introduction to DevSecOps Tools
+# Introduction to DevSecOps Tools
 
 In this lab, you'll explore fundamental DevSecOps practices by performing security scans on containers and web applications using industry-standard tools. You'll learn how to identify vulnerabilities in a safe, controlled environment using intentionally vulnerable targets.
 
@@ -46,13 +46,7 @@ In this lab, you'll explore fundamental DevSecOps practices by performing securi
 
 **Objective**: Identify vulnerabilities in container images using Trivy executed via Docker, focusing on intentionally vulnerable images for education. Container scanning detects OS/library vulnerabilities in images before deployment. Trivy is the industry's most comprehensive open-source scanner.
 
-1. **Pull a vulnerable educational image**:
-
-   ```bash
-      docker pull vulnweb/acunetix:latest
-   ```
-
-2. **Scan using Trivy in Docker**:
+1. **Scan using Trivy in Docker**:
 
    ```bash
       docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
@@ -61,13 +55,13 @@ In this lab, you'll explore fundamental DevSecOps practices by performing securi
       bkimminich/juice-shop
    ```
 
-3. **Analyze results**:
+2. **Analyze results**:
     - Identify:
     - The total number of CRITICAL vulnerabilities
     - 2 vulnerable package names
     - The most common vulnerability type
 
-4. **Clean up**:
+3. **Clean up**:
 
    ```bash
       docker rmi bkimminich/juice-shop
