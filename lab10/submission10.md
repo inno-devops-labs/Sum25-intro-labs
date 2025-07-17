@@ -1,4 +1,4 @@
-# Solution to Lab 9
+# Solution to Lab 10
 
 by Dadakhon Turgunboev <d.turgunboev@innopolis.university>
 
@@ -20,44 +20,29 @@ by Dadakhon Turgunboev <d.turgunboev@innopolis.university>
 ---
 
 ## Task 2 Results
-- Fleek project URL was not created (GitHub integration unsuccessful)
-- GitHub repository remains unlinked
-- No IPFS CID received from Fleek
+- 4EVERLAND Project URL: https://simple-ipfs-site-hxocq0fe-dadaxonenigma.4everland.app
+- GitHub Repository: https://github.com/dadaxonEnigma/simple-ipfs-site
+- IPFS CID from 4EVERLAND: bafybeiagwztwrekzpwmjofiobaoeryoh27lvpxr5epew3xiyup62q7kqdm
 
-## GitHub/Fleek Integration Issues
-According to the screenshot:
-1. Fleek requires a paid plan ($20/month) to enable GitHub repository integration
-2. Limitations of the free tier include:
-   - Blocking site creation for repositories
-   - No access to deployment requirement validations
-3. Attempts to link GitHub result in prompts to upgrade the plan
-4. Error displayed: "You cannot check deployment requirements without active subscription"
+### 4EVERLAND Deployment Steps
+1. Signed up at using GitHub
+2. Created new project:
+   - Platform: IPFS/Filecoin
+   - Framework: Other
+   - Publish Directory: `./`
+3. Connected GitHub repo and deployed website
+4. Verified CID in dashboard:  
+   `ipfs://bafybeiagwztwrekzpwmjofiobaoeryoh27lvpxr5epew3xiyup62q7kqdm`
+5. Accessed deployed site at:
+   - https://simple-ipfs-site-hxocq0fe-dadaxonenigma.4everland.app
+   - https://ipfs.io/ipfs/bafybeiagwztwrekzpwmjofiobaoeryoh27lvpxr5epew3xiyup62q7kqdm
+   - https://cloudflare-ipfs.com/ipfs/bafybeiagwztwrekzpwmjofiobaoeryoh27lvpxr5epew3xiyup62q7kqdm
 
-## Alternative Solution Implemented
-![IPFS Web UI Overview](screens/local.png)
-Due to the subscription-related restrictions with Fleek, I chose to manually deploy the website using IPFS:
+![4EVERLAND Dashboard](screens/4everland_dashboard.png)  
+*Screenshot: 4EVERLAND project deployment overview*
 
-### Alternative Deployment Steps
-1. Created simple website (`index.html`):
-```html
-<!DOCTYPE html>
-<html>
+![Deployed Site](screens/deployed_site.png)  
+*Screenshot: Site running from IPFS via 4everland*
 
-<body>
-    <h1>IPFS Hosting Alternative</h1>
-    <p>Deployed manually via IPFS CLI</p>
-</body>
-
-</html>
-
-
-2. Added to IPFS node:
-
-```bash
-docker cp index.html ipfs_node:/export/
-docker exec ipfs_node ipfs add /export/index.html
-> added QmPhJq7T7XX5aFgXq9DXPtnb1mSh66dnVjHyhc8n38DuXR index.html
-
-
-3. Accessed via gateway:
-http://localhost:8080/ipfs/QmPhJq7T7XX5aFgXq9DXPtnb1mSh66dnVjHyhc8n38DuXR
+![Web Site](screens/web_site.png)  
+*Screenshot: Opened web_site*
