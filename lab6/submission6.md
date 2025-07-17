@@ -219,6 +219,92 @@ Exporting:
 
 ## Task 3: Container Networking
 
+1. **Create Network**:
+    - Create a bridge network named `lab_network`
+
+    ```sh
+        docker network create lab_network
+    ```
+
+    ![network_ls](../images/network_ls.png)
+
+2. **Run Connected Containers**:
+    - Start two Alpine containers attached to the network:
+
+    ```sh
+        docker run -dit --network lab_network --name container1 alpine ash
+        docker run -dit --network lab_network --name container2 alpine ash
+    ```
+
+    ![alpine_containers_creation](../images/alpine_containers_creation.png)
+
+3. **Test Connectivity**:
+    - From `container1`, ping `container2` by name:
+
+    ```sh
+        docker exec container1 ping -c 3 container2
+    ```
+
+    ![ping](../images/ping.png)
+
+    Docker has a built-in internal DNS server that runs on each Docker network. It allows containers to resolve:
+
+    - Other container names
+    - Service names (in Docker Compose or Swarm)
+    - External DNS through /etc/resolv.conf fallback
+
+    To check docker network configuration:
+
+    ```txt
+        dev@b2b-ip-host:~$ docker network inspect lab_network
+        [
+            {
+                "Name": "lab_network",
+                "Id": "4670b73afdb2e5f2f5326c867bd82427909f0b261d91e1db4732c41fd0ae2162",
+                "Created": "2025-07-17T14:52:26.026296035Z",
+                "Scope": "local",
+                "Driver": "bridge",
+                "EnableIPv4": true,
+                "EnableIPv6": false,
+                "IPAM": {
+                    "Driver": "default",
+                    "Options": {},
+                    "Config": [
+                        {
+                            "Subnet": "172.18.0.0/16",
+                            "Gateway": "172.18.0.1"
+                        }
+                    ]
+                },
+                "Internal": false,
+                "Attachable": false,
+                "Ingress": false,
+                "ConfigFrom": {
+                    "Network": ""
+                },
+                "ConfigOnly": false,
+                "Containers": {
+                    "64fd567fca5e46970c511296cdaab01f8cba572044ce448e59737decf4e8b10b": {
+                        "Name": "container1",
+                        "EndpointID": "4100d28c2e101a223d969b7c5ecc2813940b71a329b532303c3174af7ed2859b",
+                        "MacAddress": "16:ea:e6:29:bc:b5",
+                        "IPv4Address": "172.18.0.2/16",
+                        "IPv6Address": ""
+                    },
+                    "abbb8e69a096c23d0334df6f534ce9b120e5b8014f83cf76ffdfa20624117d2a": {
+                        "Name": "container2",
+                        "EndpointID": "5e625183019e4090e6f026dfd25b7963a534926ef654a9db9424f86b4e377616",
+                        "MacAddress": "1a:d7:2c:dd:2f:27",
+                        "IPv4Address": "172.18.0.3/16",
+                        "IPv6Address": ""
+                    }
+                },
+                "Options": {},
+                "Labels": {}
+            }
+        ]
+    ```
+
 ## Task 4: Volume Persistence
 
 ## Task 5: Container Inspection
