@@ -1,0 +1,44 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Print Inputs
+        run: |
+          echo "Log level: ${{ github.event.inputs.logLevel }}"
+          echo "Tags: ${{ github.event.inputs.tags }}"
+
+      - name: System Info
+        uses: kenchan0130/actions-system-info@master
+        id: system-info
+      - run: |
+          echo "CPU: ${{ steps.system-info.outputs.cpu-model }} (cores: ${{ steps.system-info.outputs.cpu-core }})"
+          echo "Hostname: ${{ steps.system-info.outputs.hostname }}"
+          echo "OS release: ${{ steps.system-info.outputs.name }} ${{ steps.system-info.outputs.release }}"
+          echo "Runner platform: ${{ steps.system-info.outputs.platform }}"
+          echo "RAM total (bytes): ${{ steps.system-info.outputs.totalmem }}"
+
