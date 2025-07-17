@@ -27,13 +27,14 @@ screens/ipfs_web_bw.png — Web UI: bandwidth statistics
 <img width="1750" height="878" alt="image" src="https://github.com/user-attachments/assets/be2dcc73-637b-43d0-9ca0-738b7fe2173b" />
 
 
-## Task 2 Results
-
-- **4EVERLAND Project URL:**  
-- **GitHub Repository:**  
-- **IPFS CID:**  
+## Task 2 Results
+- 4EVERLAND Project URL: `https://sum25-intro-labs-awdhu1my-anntorkot.4everland.app`  
+- GitHub Repository: https://github.com/Anntorkot/Sum25-intro-labs (branch `lab10`)  
+- IPFS CID from 4EVERLAND: `bafybeid6ypwe424fbfqyw5yiu3casnymgdgzg6jujjwmfgwcfhbhsjewv4` *  
 
 ### Screenshots
 
-- `screens/4everland_dashboard.png`  
-- `screens/4everland_site.png`  
+<img width="1425" height="893" alt="image" src="https://github.com/user-attachments/assets/d29a7614-0ea1-4908-bb73-11820270d3a0" />
+ — 4EVERLAND dashboard with CID and domain  
+<img width="865" height="301" alt="image" src="https://github.com/user-attachments/assets/c53fd32f-b270-4729-bf83-e7a7bd843502" />
+ — browser view of the deployed “Hello from 4EVERLAND!” page
