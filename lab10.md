@@ -41,11 +41,12 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
    - Note the generated CID (e.g., QmXgZAUWd8yo4tvjBETqzUy3wLx5YRzuDwUQnBwRGrAmAo)
 
 4. **Access content**:
+
    - Via local gateway: `http://localhost:8080/ipfs/<CID>`
    - Via public gateways:
      - `https://ipfs.io/ipfs/<CID>`
      - `https://cloudflare-ipfs.com/ipfs/<CID>`
-   - *Note: Public access may take 2-5 minutes*
+   - _Note: Public access may take 2-5 minutes_
    - Open a browser and access the IPFS web UI:
 
      ```sh
@@ -62,7 +63,8 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 **Objective**: Deploy a website to IPFS using 4EVERLAND's automation platform and manage continuous deployment workflows. 4EVERLAND simplifies deploying and managing websites on decentralized infrastructure, providing CI/CD-like workflows for Web3 hosting with automatic IPFS publishing.
 
 1. **Set up 4EVERLAND project**:
-   1. Sign up at [4EVERLAND.org](https://www.4everland.org/) (use GitHub or any wallet  like Metamask auth)
+
+   1. Sign up at [4EVERLAND.org](https://www.4everland.org/) (use GitHub or any wallet like Metamask auth)
    2. Click "Create New Project" → "Connect GitHub repository"
    3. Select your current repository and branch or any real pet web app/site
    4. Configure build settings for this repo (if you use your own repo adjust configs):
@@ -74,7 +76,7 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 2. **Verify deployment**:
    - In 4EVERLAND dashboard:
      - Note IPFS CID under "Site Info"
-     - Access site via *.4everland.app subdomain
+     - Access site via \*.4everland.app subdomain
    - Verify on public gateway:
      `https://ipfs.io/ipfs/<CID-from-4EVERLAND>`
 
@@ -86,21 +88,24 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 
    ```markdown
    ## Task 1 Results
+
    - IPFS Node Peer Count: [Number from web UI]
    - IPFS Node Bandwidth: [Number from web UI]
    - Test File CID: [Your CID]
    - Public Gateway URL: [link]
 
    ## Task 2 Results
+
    - 4EVERLAND Project URL: [your-site.on..4everland.app]
    - GitHub Repository (if you used your own app): [github.com/your/repo]
    - IPFS CID from 4EVERLAND: [CID shown in dashboard]
    ```
 
 2. Include screenshots of:
+
    - Successful access via local gateway (Task 1)
    - 4EVERLAND deployment dashboard (Task 2)
-   - Site accessed through *.on.4EVERLAND.co domain
+   - Site accessed through \*.on.4EVERLAND.co domain
 
 3. Submit via pull request.
 
