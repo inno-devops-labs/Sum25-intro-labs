@@ -4,6 +4,8 @@
 - Test File CID: QmUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1
 - Public Gateway URL: https://ipfs.io/ipfs/QmUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1
 
+![localhost](screenshots/localhost.png)
+
 ![IPFS](screenshots/IPFS.png)
 
 ![bash](screenshots/bash.png)
