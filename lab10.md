@@ -1,6 +1,6 @@
-# Decentralized Web Hosting with IPFS & Fleek
+# Decentralized Web Hosting with IPFS & 4EVERLAND
 
-In this lab, you'll explore decentralized web technologies by setting up a local IPFS node, publishing content to the distributed web, and deploying a static site using Fleek's automation platform.
+In this lab, you'll explore decentralized web technologies by setting up a local IPFS node, publishing content to the distributed web, and deploying a static site using 4EVERLAND's automation platform.
 
 ---
 
@@ -57,25 +57,26 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 
 ---
 
-## Task 2: Static Site Deployment with Fleek
+## Task 2: Static Site Deployment with 4EVERLAND
 
-**Objective**: Deploy a website to IPFS using Fleek's automation platform and manage continuous deployment workflows. Fleek simplifies deploying and managing websites on decentralized infrastructure, providing CI/CD-like workflows for Web3 hosting with automatic IPFS publishing.
+**Objective**: Deploy a website to IPFS using 4EVERLAND's automation platform and manage continuous deployment workflows. 4EVERLAND simplifies deploying and managing websites on decentralized infrastructure, providing CI/CD-like workflows for Web3 hosting with automatic IPFS publishing.
 
-1. **Set up Fleek project**:
-   1. Sign up at [fleek.xyz](https://fleek.xyz/) (use GitHub auth)
-   2. Click "Add New Site" → "Connect GitHub repository"
+1. **Set up 4EVERLAND project**:
+   1. Sign up at [4EVERLAND.org](https://www.4everland.org/) (use GitHub or any wallet  like Metamask auth)
+   2. Click "Create New Project" → "Connect GitHub repository"
    3. Select your current repository and branch or any real pet web app/site
-   4. Configure build settings:
-      - Framework: Static
-      - Publish directory: `/`
+   4. Configure build settings for this repo (if you use your own repo adjust configs):
+      - Platform: IPFS/Filecoin
+      - Framework: Other
+      - Publish directory: `/app`
    5. Deploy!
 
 2. **Verify deployment**:
-   - In Fleek dashboard:
+   - In 4EVERLAND dashboard:
      - Note IPFS CID under "Site Info"
-     - Access site via *.on.fleek.co subdomain
+     - Access site via *.4everland.app subdomain
    - Verify on public gateway:
-     `https://ipfs.io/ipfs/<CID-from-fleek>`
+     `https://ipfs.io/ipfs/<CID-from-4EVERLAND>`
 
 ---
 
@@ -91,15 +92,15 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
    - Public Gateway URL: [link]
 
    ## Task 2 Results
-   - Fleek Project URL: [your-site.on.fleek.co]
-   - GitHub Repository: [github.com/your/repo]
-   - IPFS CID from Fleek: [CID shown in dashboard]
+   - 4EVERLAND Project URL: [your-site.on..4everland.app]
+   - GitHub Repository (if you used your own app): [github.com/your/repo]
+   - IPFS CID from 4EVERLAND: [CID shown in dashboard]
    ```
 
 2. Include screenshots of:
    - Successful access via local gateway (Task 1)
-   - Fleek deployment dashboard (Task 2)
-   - Site accessed through *.on.fleek.co domain
+   - 4EVERLAND deployment dashboard (Task 2)
+   - Site accessed through *.on.4EVERLAND.co domain
 
 3. Submit via pull request.
 
