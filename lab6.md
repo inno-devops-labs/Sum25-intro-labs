@@ -35,7 +35,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    Document image size in the `submission6.md` file.
 
 3. **Run Interactive Container**
-  
+
    ```sh
    docker run -it --name ubuntu_container ubuntu:latest
    ```
@@ -68,12 +68,12 @@ Gain practical experience with Docker fundamentals through hands-on container ma
 
      ```html
      <html>
-     <head>
-     <title>The best</title>
-     </head>
-     <body>
-     <h1>website</h1>
-     </body>
+       <head>
+         <title>The best</title>
+       </head>
+       <body>
+         <h1>website</h1>
+       </body>
      </html>
      ```
 
@@ -90,6 +90,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 4. **Remove Original Container**:
+
    - Remove the original container (`nginx_container`) and verify that it has been successfully removed.
 
      ```sh
@@ -97,6 +98,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
      ```
 
 5. **Create New Container**:
+
    - Create a new container using the custom image you've created (the same way as the original container).
 
      ```sh
@@ -104,6 +106,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
      ```
 
 6. **Test Web Server**:
+
    - Use the `curl` command to access the web server at `127.0.0.1:80`.
 
      ```sh
@@ -111,6 +114,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
      ```
 
 7. **Analyze Image Changes**:
+
    - Use the `docker diff` command to analyze the changes made to the new image.
 
      ```sh
@@ -124,6 +128,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
 **Objective**: Explore Docker networking fundamentals.
 
 1. **Create Network**:
+
    - Create a bridge network named `lab_network`
 
    ```sh
@@ -131,6 +136,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 2. **Run Connected Containers**:
+
    - Start two Alpine containers attached to the network:
 
    ```sh
@@ -139,6 +145,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 3. **Test Connectivity**:
+
    - From `container1`, ping `container2` by name:
 
    ```sh
@@ -154,6 +161,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
 **Objective**: Understand data persistence in containers.
 
 1. **Create Volume**:
+
    - Create a named volume `app_data`:
 
    ```sh
@@ -161,6 +169,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 2. **Run Container with Volume**:
+
    - Start Nginx with volume mounted:
 
    ```sh
@@ -168,6 +177,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 3. **Modify Content**:
+
    - Create custom `index.html` file
    - Copy to volume:
 
@@ -176,6 +186,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 4. **Verify Persistence**:
+
    - Stop and remove container:
 
    ```sh
@@ -201,6 +212,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 2. **Inspect Processes**:
+
    - Find Redis server process:
 
    ```sh
@@ -208,6 +220,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 3. **Network Inspection**:
+
    - Get container IP address:
 
    ```sh
@@ -223,6 +236,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
 **Objective**: Practice resource management.
 
 1. **Verify Cleanup**:
+
    - Check disk usage:
 
    ```sh
@@ -230,6 +244,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 2. **Create Test Objects**:
+
    - Create 3 stopped containers:
 
    ```sh
@@ -255,6 +270,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    ```
 
 5. **Verify Cleanup**:
+
    - Check disk usage after cleanup:
 
    ```sh
