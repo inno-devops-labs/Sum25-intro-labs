@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Engineering Courses</title>
+  <meta name="description" content="Master DevOps from fundamentals to advanced topics with two structured tracks. Learn Kubernetes, CI/CD, GitOps, SRE, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary: #0f0f0f;
+      --secondary: #00d1b2;
+      --accent: #1f2937;
+      --highlight: #ff4081;
+      --text: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    header {
+      background: var(--accent);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--highlight);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem 0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      padding: 5rem 2rem;
+      text-align: center;
+      border-radius: 0 0 40px 40px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-button {
+      background: var(--highlight);
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      display: inline-block;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    section h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--secondary);
+    }
+
+    .why-us-grid, .topic-grid, .pricing-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .why-us-grid div, .topic-card, .pricing-card {
+      background: var(--accent);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .why-us-grid div:hover, .topic-card:hover, .pricing-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .why-us-grid i, .topic-card i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .syllabus ol {
+      padding-left: 2rem;
+    }
+
+    .syllabus li {
+      margin: 0.8rem 0;
+    }
+
+    .roadmap-step {
+      background: var(--accent);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin: 1rem 0;
+    }
+
+    .footer {
+      background: var(--accent);
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    a {
+      color: var(--secondary);
+    }
+
+    a:hover {
+      color: var(--highlight);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#intro">Intro Course</a></li>
+        <li><a href="#expert">Expert Track</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Learn DevOps From Zero to Hero</h1>
+    <p>2 comprehensive courses: Introduction & Expert Track with 26+ labs</p>
+    <a href="https://github.com/inno-devops-labs" class="hero-button">Explore on GitHub →</a>
+  </section>
+
+  <section id="intro" class="container syllabus">
+    <h2>DevOps Introduction Course</h2>
+    <p>This foundational course helps you understand essential DevOps principles and practices, including Git, CI/CD, Containers, Cloud, SRE, and DevSecOps.</p>
+    <ol>
+      <li>Introduction to DevOps</li>
+      <li>Version Control</li>
+      <li>CI/CD</li>
+      <li>Networking & OS for DevOps</li>
+      <li>Virtualization</li>
+      <li>Containers</li>
+      <li>GitOps & Progressive Delivery</li>
+      <li>SRE & Resilience</li>
+      <li>DevSecOps</li>
+      <li>Cloud Fundamentals</li>
+    </ol>
+    <p><a href="https://github.com/inno-devops-labs/Sum25-intro-labs">🔗 View Intro Course on GitHub</a></p>
+  </section>
+
+  <section id="expert" class="container syllabus">
+    <h2>DevOps Expert Track</h2>
+    <p>This hands-on course takes you through the full application lifecycle, from development to production-grade deployment. You'll start with web app development, then progressively master containerization, automation, observability, Kubernetes orchestration, and GitOps.</p>
+    <ol>
+      <li>Web Application Development</li>
+      <li>Containerization</li>
+      <li>Continuous Integration</li>
+      <li>Infrastructure as Code & Terraform</li>
+      <li>Configuration Management</li>
+      <li>Ansible Automation</li>
+      <li>Observability, Logging, Loki Stack</li>
+      <li>Monitoring & Prometheus</li>
+      <li>Kubernetes & Declarative Manifests</li>
+      <li>Helm Charts & Library Charts</li>
+      <li>Kubernetes Secrets Management</li>
+      <li>Kubernetes ConfigMaps & Environment Variables</li>
+      <li>GitOps with ArgoCD</li>
+      <li>StatefulSet Optimization</li>
+      <li>Kubernetes Monitoring & Init Containers</li>
+      <li>IPFS & Fleek Decentralization</li>
+    </ol>
+    <p><a href="https://github.com/inno-devops-labs/S25-core-course-labs">🔗 View Expert Course on GitHub</a></p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 DevOps Engineering Institute</p>
+    <p>Questions? <a href="mailto:creed@soramitsu.co.jp">Email Us</a> | <a href="https://github.com/inno-devops-labs">GitHub Repo</a></p>
+  </footer>
+</body>
+</html>
