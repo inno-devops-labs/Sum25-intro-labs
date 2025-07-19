@@ -1,0 +1,29 @@
+name: GitHub get info
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  workflow_dispatch:      # Ручной запуск из интерфейса GitHub
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was manually triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: Gather system info
+        run: |
+          echo "=== 🖥️ System Information ==="
+          echo "OS: $(lsb_release -d | cut -f2)"
+          echo "Kernel: $(uname -a)"
+          echo "CPU: $(nproc) cores, $(lscpu | grep 'Model name' | cut -d':' -f2 | xargs)"
+          echo "RAM: $(free -h | grep Mem | awk '{print $2}')"
+          echo "Disk: $(df -h | grep -vE 'tmpfs|udev' | awk '{print $1 " " $4}')"
+          echo "Runner: ${{ runner.os }} (${{ runner.name }})"
+          echo "============================"
+      - run: echo "🍏 This job's status is ${{ job.status }}."

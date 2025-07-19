@@ -1,0 +1,190 @@
+﻿2025-06-18T18:12:14.5400946Z Current runner version: '2.325.0'
+2025-06-18T18:12:14.5428383Z ##[group]Runner Image Provisioner
+2025-06-18T18:12:14.5429457Z Hosted Compute Agent
+2025-06-18T18:12:14.5429988Z Version: 20250617.347
+2025-06-18T18:12:14.5430581Z Commit: a94982a9c1baf5723aa59f6acd00bd3c220e8de7
+2025-06-18T18:12:14.5431329Z Build Date: 2025-06-17T13:43:39Z
+2025-06-18T18:12:14.5432076Z ##[endgroup]
+2025-06-18T18:12:14.5432618Z ##[group]Operating System
+2025-06-18T18:12:14.5433290Z Ubuntu
+2025-06-18T18:12:14.5433751Z 24.04.2
+2025-06-18T18:12:14.5434216Z LTS
+2025-06-18T18:12:14.5434732Z ##[endgroup]
+2025-06-18T18:12:14.5435189Z ##[group]Runner Image
+2025-06-18T18:12:14.5435786Z Image: ubuntu-24.04
+2025-06-18T18:12:14.5436295Z Version: 20250602.3.0
+2025-06-18T18:12:14.5437413Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250602.3/images/ubuntu/Ubuntu2404-Readme.md
+2025-06-18T18:12:14.5438927Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250602.3
+2025-06-18T18:12:14.5439953Z ##[endgroup]
+2025-06-18T18:12:14.5442519Z ##[group]GITHUB_TOKEN Permissions
+2025-06-18T18:12:14.5444746Z Actions: write
+2025-06-18T18:12:14.5445261Z Attestations: write
+2025-06-18T18:12:14.5445863Z Checks: write
+2025-06-18T18:12:14.5446347Z Contents: write
+2025-06-18T18:12:14.5446887Z Deployments: write
+2025-06-18T18:12:14.5447345Z Discussions: write
+2025-06-18T18:12:14.5447927Z Issues: write
+2025-06-18T18:12:14.5448390Z Metadata: read
+2025-06-18T18:12:14.5448855Z Models: read
+2025-06-18T18:12:14.5449410Z Packages: write
+2025-06-18T18:12:14.5449908Z Pages: write
+2025-06-18T18:12:14.5450385Z PullRequests: write
+2025-06-18T18:12:14.5450953Z RepositoryProjects: write
+2025-06-18T18:12:14.5451526Z SecurityEvents: write
+2025-06-18T18:12:14.5452490Z Statuses: write
+2025-06-18T18:12:14.5453062Z ##[endgroup]
+2025-06-18T18:12:14.5455300Z Secret source: Actions
+2025-06-18T18:12:14.5456021Z Prepare workflow directory
+2025-06-18T18:12:14.5855582Z Prepare all required actions
+2025-06-18T18:12:14.5906038Z Getting action download info
+2025-06-18T18:12:15.0208724Z ##[group]Download immutable action package 'actions/checkout@v4'
+2025-06-18T18:12:15.0210117Z Version: 4.2.2
+2025-06-18T18:12:15.0211273Z Digest: sha256:ccb2698953eaebd21c7bf6268a94f9c26518a7e38e27e0b83c1fe1ad049819b1
+2025-06-18T18:12:15.0212641Z Source commit SHA: 11bd71901bbe5b1630ceea73d27597364c9af683
+2025-06-18T18:12:15.0213342Z ##[endgroup]
+2025-06-18T18:12:15.6103934Z Complete job name: Explore-GitHub-Actions
+2025-06-18T18:12:15.6866491Z ##[group]Run echo "🎉 The job was manually triggered by a workflow_dispatch event."
+2025-06-18T18:12:15.6867664Z [36;1mecho "🎉 The job was manually triggered by a workflow_dispatch event."[0m
+2025-06-18T18:12:15.6973471Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:15.6974560Z ##[endgroup]
+2025-06-18T18:12:15.7142491Z 🎉 The job was manually triggered by a workflow_dispatch event.
+2025-06-18T18:12:15.7233966Z ##[group]Run echo "🐧 This job is now running on a Linux server hosted by GitHub!"
+2025-06-18T18:12:15.7235057Z [36;1mecho "🐧 This job is now running on a Linux server hosted by GitHub!"[0m
+2025-06-18T18:12:15.7289560Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:15.7290141Z ##[endgroup]
+2025-06-18T18:12:15.7374153Z 🐧 This job is now running on a Linux server hosted by GitHub!
+2025-06-18T18:12:15.7415847Z ##[group]Run echo "🔎 The name of your branch is refs/heads/master and your repository is der-rozanov/Sum25-intro-labs-fork."
+2025-06-18T18:12:15.7417529Z [36;1mecho "🔎 The name of your branch is refs/heads/master and your repository is der-rozanov/Sum25-intro-labs-fork."[0m
+2025-06-18T18:12:15.7473295Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:15.7473899Z ##[endgroup]
+2025-06-18T18:12:15.7557066Z 🔎 The name of your branch is refs/heads/master and your repository is der-rozanov/Sum25-intro-labs-fork.
+2025-06-18T18:12:15.7684668Z ##[group]Run actions/checkout@v4
+2025-06-18T18:12:15.7685283Z with:
+2025-06-18T18:12:15.7685743Z   repository: der-rozanov/Sum25-intro-labs-fork
+2025-06-18T18:12:15.7686543Z   token: ***
+2025-06-18T18:12:15.7687230Z   ssh-strict: true
+2025-06-18T18:12:15.7687650Z   ssh-user: git
+2025-06-18T18:12:15.7688080Z   persist-credentials: true
+2025-06-18T18:12:15.7688551Z   clean: true
+2025-06-18T18:12:15.7688977Z   sparse-checkout-cone-mode: true
+2025-06-18T18:12:15.7689477Z   fetch-depth: 1
+2025-06-18T18:12:15.7689901Z   fetch-tags: false
+2025-06-18T18:12:15.7690331Z   show-progress: true
+2025-06-18T18:12:15.7690763Z   lfs: false
+2025-06-18T18:12:15.7691164Z   submodules: false
+2025-06-18T18:12:15.7691616Z   set-safe-directory: true
+2025-06-18T18:12:15.7692247Z ##[endgroup]
+2025-06-18T18:12:15.8860031Z Syncing repository: der-rozanov/Sum25-intro-labs-fork
+2025-06-18T18:12:15.8862580Z ##[group]Getting Git version info
+2025-06-18T18:12:15.8863648Z Working directory is '/home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork'
+2025-06-18T18:12:15.8864860Z [command]/usr/bin/git version
+2025-06-18T18:12:15.9639500Z git version 2.49.0
+2025-06-18T18:12:15.9669472Z ##[endgroup]
+2025-06-18T18:12:15.9689380Z Temporarily overriding HOME='/home/runner/work/_temp/7cfb48d8-6762-4edf-b09c-3b7e5dfc8804' before making global git config changes
+2025-06-18T18:12:15.9692557Z Adding repository directory to the temporary git global config as a safe directory
+2025-06-18T18:12:15.9706826Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork
+2025-06-18T18:12:15.9786909Z Deleting the contents of '/home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork'
+2025-06-18T18:12:15.9792006Z ##[group]Initializing the repository
+2025-06-18T18:12:15.9798226Z [command]/usr/bin/git init /home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork
+2025-06-18T18:12:16.0257579Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-06-18T18:12:16.0259150Z hint: is subject to change. To configure the initial branch name to use in all
+2025-06-18T18:12:16.0260348Z hint: of your new repositories, which will suppress this warning, call:
+2025-06-18T18:12:16.0261220Z hint:
+2025-06-18T18:12:16.0262086Z hint: 	git config --global init.defaultBranch <name>
+2025-06-18T18:12:16.0262867Z hint:
+2025-06-18T18:12:16.0263551Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-06-18T18:12:16.0264728Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-06-18T18:12:16.0265637Z hint:
+2025-06-18T18:12:16.0266115Z hint: 	git branch -m <name>
+2025-06-18T18:12:16.0330569Z Initialized empty Git repository in /home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork/.git/
+2025-06-18T18:12:16.0344935Z [command]/usr/bin/git remote add origin https://github.com/der-rozanov/Sum25-intro-labs-fork
+2025-06-18T18:12:16.0450205Z ##[endgroup]
+2025-06-18T18:12:16.0452066Z ##[group]Disabling automatic garbage collection
+2025-06-18T18:12:16.0455734Z [command]/usr/bin/git config --local gc.auto 0
+2025-06-18T18:12:16.0491180Z ##[endgroup]
+2025-06-18T18:12:16.0493064Z ##[group]Setting up auth
+2025-06-18T18:12:16.0500455Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-06-18T18:12:16.0537770Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-06-18T18:12:16.1835112Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-06-18T18:12:16.1876759Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-06-18T18:12:16.2144623Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-06-18T18:12:16.2185651Z ##[endgroup]
+2025-06-18T18:12:16.2186762Z ##[group]Fetching the repository
+2025-06-18T18:12:16.2203654Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b8080f64054048cb8a0e8077d9a66681eabd5eef:refs/remotes/origin/master
+2025-06-18T18:12:16.9507757Z From https://github.com/der-rozanov/Sum25-intro-labs-fork
+2025-06-18T18:12:16.9511657Z  * [new ref]         b8080f64054048cb8a0e8077d9a66681eabd5eef -> origin/master
+2025-06-18T18:12:16.9600185Z ##[endgroup]
+2025-06-18T18:12:16.9602461Z ##[group]Determining the checkout info
+2025-06-18T18:12:16.9604681Z ##[endgroup]
+2025-06-18T18:12:16.9606786Z [command]/usr/bin/git sparse-checkout disable
+2025-06-18T18:12:16.9687277Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-06-18T18:12:16.9721973Z ##[group]Checking out the ref
+2025-06-18T18:12:16.9725872Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2025-06-18T18:12:16.9843466Z Reset branch 'master'
+2025-06-18T18:12:16.9845179Z branch 'master' set up to track 'origin/master'.
+2025-06-18T18:12:16.9852356Z ##[endgroup]
+2025-06-18T18:12:16.9892312Z [command]/usr/bin/git log -1 --format=%H
+2025-06-18T18:12:16.9919715Z b8080f64054048cb8a0e8077d9a66681eabd5eef
+2025-06-18T18:12:17.0088279Z ##[group]Run echo "💡 The der-rozanov/Sum25-intro-labs-fork repository has been cloned to the runner."
+2025-06-18T18:12:17.0091162Z [36;1mecho "💡 The der-rozanov/Sum25-intro-labs-fork repository has been cloned to the runner."[0m
+2025-06-18T18:12:17.0146440Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:17.0147472Z ##[endgroup]
+2025-06-18T18:12:17.0236178Z 💡 The der-rozanov/Sum25-intro-labs-fork repository has been cloned to the runner.
+2025-06-18T18:12:17.0297785Z ##[group]Run echo "🖥️ The workflow is now ready to test your code on the runner."
+2025-06-18T18:12:17.0299907Z [36;1mecho "🖥️ The workflow is now ready to test your code on the runner."[0m
+2025-06-18T18:12:17.0356122Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:17.0357118Z ##[endgroup]
+2025-06-18T18:12:17.0445712Z 🖥️ The workflow is now ready to test your code on the runner.
+2025-06-18T18:12:17.0506041Z ##[group]Run ls /home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork
+2025-06-18T18:12:17.0508117Z [36;1mls /home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork[0m
+2025-06-18T18:12:17.0564918Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:17.0565878Z ##[endgroup]
+2025-06-18T18:12:17.0696720Z README.md
+2025-06-18T18:12:17.0698070Z image-1.png
+2025-06-18T18:12:17.0699226Z image-2.png
+2025-06-18T18:12:17.0700712Z image.png
+2025-06-18T18:12:17.0701926Z lab1.md
+2025-06-18T18:12:17.0703027Z lab2.md
+2025-06-18T18:12:17.0704142Z submission1.md
+2025-06-18T18:12:17.0705320Z submission2.md
+2025-06-18T18:12:17.0778370Z ##[group]Run echo "=== 🖥️ System Information ==="
+2025-06-18T18:12:17.0779728Z [36;1mecho "=== 🖥️ System Information ==="[0m
+2025-06-18T18:12:17.0780941Z [36;1mecho "OS: $(lsb_release -d | cut -f2)"[0m
+2025-06-18T18:12:17.0782358Z [36;1mecho "Kernel: $(uname -a)"[0m
+2025-06-18T18:12:17.0783843Z [36;1mecho "CPU: $(nproc) cores, $(lscpu | grep 'Model name' | cut -d':' -f2 | xargs)"[0m
+2025-06-18T18:12:17.0785600Z [36;1mecho "RAM: $(free -h | grep Mem | awk '{print $2}')"[0m
+2025-06-18T18:12:17.0787160Z [36;1mecho "Disk: $(df -h | grep -vE 'tmpfs|udev' | awk '{print $1 " " $4}')"[0m
+2025-06-18T18:12:17.0788726Z [36;1mecho "Runner: Linux (GitHub Actions 1000000047)"[0m
+2025-06-18T18:12:17.0789953Z [36;1mecho "============================"[0m
+2025-06-18T18:12:17.0847566Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:17.0848532Z ##[endgroup]
+2025-06-18T18:12:17.0938869Z === 🖥️ System Information ===
+2025-06-18T18:12:17.1023159Z OS: Ubuntu 24.04.2 LTS
+2025-06-18T18:12:17.1036989Z Kernel: Linux pkrvmxyh4eaekms 6.11.0-1015-azure #15~24.04.1-Ubuntu SMP Thu May  1 02:52:08 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+2025-06-18T18:12:17.1108238Z CPU: 4 cores, AMD EPYC 7763 64-Core Processor
+2025-06-18T18:12:17.1140009Z RAM: 15Gi
+2025-06-18T18:12:17.1257153Z Disk: Filesystem Avail
+2025-06-18T18:12:17.1258883Z /dev/root 25G
+2025-06-18T18:12:17.1260131Z /dev/sda16 760M
+2025-06-18T18:12:17.1260994Z /dev/sda15 99M
+2025-06-18T18:12:17.1263188Z /dev/sdb1 66G
+2025-06-18T18:12:17.1264169Z Runner: Linux (GitHub Actions 1000000047)
+2025-06-18T18:12:17.1265684Z ============================
+2025-06-18T18:12:17.1400741Z ##[group]Run echo "🍏 This job's status is success."
+2025-06-18T18:12:17.1402281Z [36;1mecho "🍏 This job's status is success."[0m
+2025-06-18T18:12:17.1459200Z shell: /usr/bin/bash -e {0}
+2025-06-18T18:12:17.1460119Z ##[endgroup]
+2025-06-18T18:12:17.1548084Z 🍏 This job's status is success.
+2025-06-18T18:12:17.1711562Z Post job cleanup.
+2025-06-18T18:12:17.2729863Z [command]/usr/bin/git version
+2025-06-18T18:12:17.2770231Z git version 2.49.0
+2025-06-18T18:12:17.2817208Z Temporarily overriding HOME='/home/runner/work/_temp/24d4fa29-51e5-48aa-a24e-c5033d77d4bf' before making global git config changes
+2025-06-18T18:12:17.2820475Z Adding repository directory to the temporary git global config as a safe directory
+2025-06-18T18:12:17.2823960Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Sum25-intro-labs-fork/Sum25-intro-labs-fork
+2025-06-18T18:12:17.2864418Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-06-18T18:12:17.2902705Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-06-18T18:12:17.3179939Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-06-18T18:12:17.3204459Z http.https://github.com/.extraheader
+2025-06-18T18:12:17.3218732Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-06-18T18:12:17.3257475Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-06-18T18:12:17.3633427Z Cleaning up orphan processes
