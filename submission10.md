@@ -73,6 +73,7 @@ local gateway:
 ![ipfs](/img/26.png)
 
 public gateways:
+
 ![ipfs](/img/27.png)
 
 IPFS web UI:
