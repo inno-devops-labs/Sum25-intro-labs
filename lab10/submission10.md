@@ -22,8 +22,14 @@ Uploaded using Fleek, because ipfs.io took too long for me to bother
 
 # Task 2
 
+![](image-7.png)
+
+![](image-10.png)
+
+![](image-11.png)
+
 ## Task 2 Results
 
-- 4EVERLAND Project URL: [your-site.on..4everland.app]
-- GitHub Repository: [github.com/your/repo]
-- IPFS CID from Fleek: [CID shown in dashboard]
+- 4EVERLAND Project URL: https://beginner-html-site-styled-djbw.4everland.app
+- GitHub Repository: https://github.com/dnbabkov/beginner-html-site-styled (Someone else's forked repo)
+- IPFS CID from 4EVERLAND: bafybeifvll24sgnigj2ehffon3rvnrukxlqyrjpvz723yqhv4wacf2ocay
