@@ -1,0 +1,39 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Run a one-line script
+      run: echo "Hello, GitHub Actions!"
+
+    - name: Gather Basic System Info
+      run: |
+        echo "=== UNAME ==="
+        uname -a
+        echo "=== DISK SPACE ==="
+        df -h
+        echo "=== MEMORY USAGE ==="
+        free -h
+        echo "=== UPTIME ==="
+        uptime
+
+    - name: Gather Detailed Runner Info
+      run: |
+        echo "=== CPU Info ==="
+        lscpu || cat /proc/cpuinfo
+        echo "=== Memory Info ==="
+        cat /proc/meminfo | head -n 10
+        echo "=== OS Release Info ==="
+        cat /etc/os-release
+        echo "=== Runner Environment ==="
+        echo "Runner OS: $RUNNER_OS"
+        echo "Runner Arch: $RUNNER_ARCH"
+        echo "Runner Temp: $RUNNER_TEMP"
+        echo "Runner Workspace: $GITHUB_WORKSPACE"
