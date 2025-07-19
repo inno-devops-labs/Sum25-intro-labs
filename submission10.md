@@ -1,7 +1,7 @@
 ## LAB 10
 Nikita Yaneev n.yaneev@innopolis.unversity
 
-### Task 1
+## Task 1
 
 1. 
 
@@ -83,3 +83,22 @@ Hello IPFS Lab
 ![alt text](image-2.png)
 
 ![alt text](image-3.png)
+
+
+![alt text](image-4.png)
+
+## Task 1 Results
+- IPFS Node Peer Count: 326
+- IPFS Node Bandwidth: Input 606 KiB/s; output 27 KiB/s
+- Test File CID: `mUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1`
+- Public Gateway URL: https://ipfs.io/ipfs/mUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1  
+
+
+## Task 2
+
+
+## Task 2 Results
+- 4EVERLAND Project URL: https://sum25-intro-labs-10-ia1w.4everland.app/
+- GitHub Repository (if you used your own app): https://github.com/adbedlam/Sum25-intro-labs/tree/lab10
+- IPFS CID from 4EVERLAND: bafybeic4rk5i3mgcnl3d7ex7we544hcyxn4peunbfe5mijfeqkkmo2pa7q
+
