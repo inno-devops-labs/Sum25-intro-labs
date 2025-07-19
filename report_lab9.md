@@ -1,99 +1,96 @@
-# Введение в инструменты DevSecOps
+# Introduction to DevSecOps Tools
 
-В этой лабораторной работе вы изучите основные практики DevSecOps, выполняя сканирование безопасности контейнеров и веб-приложений с использованием стандартных отраслевых инструментов. Вы научитесь выявлять уязвимости в безопасной, контролируемой среде, используя намеренно уязвимые цели.
+In this lab, you'll explore fundamental DevSecOps practices by performing security scans on containers and web applications using industry-standard tools. You'll learn how to identify vulnerabilities in a safe, controlled environment using intentionally vulnerable targets.
 
-## Задание 1: Сканирование веб-приложений с помощью OWASP ZAP
+## Task 1: Web Application Scanning with OWASP ZAP
 
-**Цель**: Выполнить автоматическое сканирование безопасности уязвимого веб-приложения с помощью OWASP ZAP в Docker для выявления распространённых веб-уязвимостей. Сканирование веб-приложений помогает обнаружить такие уязвимости безопасности, как XSS, SQL-инъекции и ошибки конфигурации, до того, как злоумышленники ими воспользуются. ZAP — это стандартный отраслевой инструмент, поддерживаемый OWASP.
+**Objective**: Perform automated security scanning of a vulnerable web application using OWASP ZAP in Docker to identify common web vulnerabilities. Web application scanning helps discover security flaws like XSS, SQL injection, and misconfigurations before attackers exploit them. ZAP is an industry-standard tool maintained by OWASP.
 
-1. **Запустите уязвимое целевое приложение** (Juice Shop):
+1. **Start the vulnerable target application** (Juice Shop):
 
-```bash
-docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop
-```
+   ```bash
+      docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop
+   ```
 
-Убедитесь, что оно запущено: `http://localhost:3000` в вашем браузере
+   Verify it's running: `http://localhost:3000` in your browser
 
-2. **Сканируйте с помощью OWASP ZAP**:
+2. **Scan with OWASP ZAP**:
 
-```bash
-docker run --rm -u zap -v $(pwd):/zap/wrk:rw \
--t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
--t http://host.docker.internal:3000 \
--g gen.conf \
--r zap-report.html
-```
+   ```bash
+      docker run --rm -u zap -v $(pwd):/zap/wrk:rw \
+      -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+      -t http://host.docker.internal:3000 \
+      -g gen.conf \
+      -r zap-report.html
+   ```
 
-> *Примечание*:
-> - Mac/Windows: Используйте `host.docker.internal`, как указано выше
-> - Linux: Замените на свой IP-адрес локальной сети компьютера. Вы можете использовать следующую команду: `ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1`
+   > *Note*:
+   > - Mac/Windows: Use `host.docker.internal` as above
+   > - Linux: Replace with your machine's LAN IP. You can use following command `ip -f inet -o addr show docker0 | awk '{print $4}' | cut -d '/' -f 1`
 
-3. **Проанализируйте результаты**:
+3. **Analyze results**:
+    - Find the HTML report in your current directory: `zap-report.html`
+    - Open it in a browser and identify:
+    - 2 Medium risk vulnerabilities
+    - Security headers status
 
-- Найдите HTML-отчёт в текущем каталоге: `zap-report.html`
+4. **Clean up**:
 
-- Откройте его в браузере и определите:
-- 2 уязвимости среднего уровня риска
-- Состояние заголовков безопасности
-
-4. **Очистка**:
-
-```bash
-docker stop juice-shop && docker rm juice-shop
-```
+   ```bash
+      docker stop juice-shop && docker rm juice-shop
+   ```
 
 ---
 
-## Задание 2: Сканирование уязвимостей контейнеров с помощью Trivy
+## Task 2: Container Vulnerability Scanning with Trivy
 
-**Цель**: Выявить уязвимости в образах контейнеров с помощью Trivy, запущенного через Docker, уделяя особое внимание намеренно уязвимым образам в образовательных целях. Сканирование контейнеров выявляет уязвимости ОС/библиотек в образах перед их развертыванием. Trivy — самый полный сканер с открытым исходным кодом в отрасли.
+**Objective**: Identify vulnerabilities in container images using Trivy executed via Docker, focusing on intentionally vulnerable images for education. Container scanning detects OS/library vulnerabilities in images before deployment. Trivy is the industry's most comprehensive open-source scanner.
 
-1. **Сканирование с помощью Trivy в Docker**:
+1. **Scan using Trivy in Docker**:
 
-```bash
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-aquasec/trivy:latest image \
---severity HIGH,CRITICAL \
-bkimminich/juice-shop
-```
+   ```bash
+      docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+      aquasec/trivy:latest image \
+      --severity HIGH,CRITICAL \
+      bkimminich/juice-shop
+   ```
 
-2. **Анализ результатов**:
-- Определить:
-- Общее количество КРИТИЧЕСКИХ уязвимостей
-- 2 имени уязвимых пакетов
-- Наиболее распространённый тип уязвимости
+2. **Analyze results**:
+    - Identify:
+    - The total number of CRITICAL vulnerabilities
+    - 2 vulnerable package names
+    - The most common vulnerability type
 
-3. **Очистка**:
+3. **Clean up**:
 
-```bash
-docker rmi bkimminich/juice-shop
-```
+   ```bash
+      docker rmi bkimminich/juice-shop
+   ```
 
 ---
 
-## Правила отправки
+## Submission Guidelines
 
-1. Создать `submission9.md` с:
+1. Create `submission9.md` with:
 
-``markdown
-## Результаты задания 1
-- Обнаружено уязвимостей Juice Shop (среднего уровня): [Количество]
-- Наиболее Обнаружена интересная уязвимость: [Имя]
+   ```markdown
+   ## Task 1 Results
+   - Juice Shop vulnerabilities found (Medium): [Number]
+   - Most interesting vulnerability found: [Name]
+   - Security headers present: [Yes/No]
 
-- Заголовки безопасности присутствуют: [Да/Нет]
+   ## Task 2 Results
+   - Critical vulnerabilities in Juice Shop image: [Number]
+   - Vulnerable packages: 
+      1. [Package 1]
+      2. [Package 2]
+   - Dominant vulnerability type: [e.g., SQLi, XSS]
+   ```
 
-## Результаты задания 2
-- Критические уязвимости в образе Juice Shop: [Количество]
-- Уязвимые пакеты:
-1. [Пакет 1]
-2. [Пакет 2]
-- Основной тип уязвимости: [например, SQLi, XSS]
-```
+2. Include screenshot evidence:
+    - ZAP HTML report overview
+    - Trivy terminal output showing critical findings
 
-2. Приложите скриншоты:
-- Обзор отчёта ZAP HTML
-- Вывод терминала Trivy, показывающий критические результаты
+3. Submit via pull request to course repository.
 
-3. Отправьте запрос на извлечение в репозиторий курса.
-
-> **Примечание о безопасности**: Все сканирования намеренно нацелены на уязвимые контейнеры/веб-приложения, работающие локально. Никогда не запускайте автоматизированные сканеры на производственных системах без явного разрешения.
+> **Safety Note**: All scans target intentionally vulnerable containers/web apps running locally. Never run automated scanners against production systems without explicit permission.
