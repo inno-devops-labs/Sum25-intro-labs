@@ -2,6 +2,8 @@
 
 Gain practical experience with Docker fundamentals through hands-on container management, image operations, networking, and storage tasks.
 
+[Docker Documentation](https://docs.docker.com/)
+
 ```txt
 dev@b2b-ip-host:~$ docker --help
 Usage:  docker [OPTIONS] COMMAND
@@ -307,6 +309,103 @@ Exporting:
 
 ## Task 4: Volume Persistence
 
+**Objective**: Understand data persistence in containers.
+
+1. **Create Volume**:
+    - Create a named [volume](https://docs.docker.com/engine/storage/volumes/) `app_data`:
+
+    ```sh
+        docker volume create app_data
+    ```
+
+    ![volume_creation](../images/volume_creation.png)
+
+2. **Run Container with Volume**:
+    - Start Nginx with volume mounted:
+
+    ```sh
+        docker run -d -p 80:80 -v app_data:/usr/share/nginx/html --name web nginx
+    ```
+
+    ![container_with_volume](../images/container_with_volume.png)
+
+3. **Modify Content**:
+    - Create custom `index.html` file
+    - Copy to volume:
+
+    ```sh
+        docker cp index.html web:/usr/share/nginx/html/
+    ```
+
+    ![copy_content_to_volume](../images/copy_content_to_volume.png)
+
+4. **Verify Persistence**:
+    - Stop and remove container:
+
+    ```sh
+        docker stop web && docker rm web
+    ```
+
+    ![stop&remove_web](../images/stop&remove_web.png)
+
+    - Create new container with same volume:
+
+    ```sh
+        docker run -d -p 80:80 -v app_data:/usr/share/nginx/html --name web_new nginx
+    ```
+
+    - Verify content persists using `curl localhost`
+
+    ![chech_volume_content_after_container_recreation](../images/chech_volume_content_after_container_recreation.png)
+
 ## Task 5: Container Inspection
+
+**Objective**: Examine container internals.
+
+1. **Run Redis Container**:
+
+    [Redis container information](https://hub.docker.com/_/redis)
+
+    ```sh
+        docker run -d --name redis_container redis
+    ```
+
+    ![run_redis](../images/run_redis.png)
+
+2. **Inspect Processes**:
+    - Find Redis server process:
+
+    ```sh
+        docker exec redis_container ps aux
+    ```
+
+    ![redis_server_process](../images/redis_server_process.png)
+
+3. **Network Inspection**:
+    - Get container IP address:
+
+    ```sh
+        docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redis_container
+    ```
+
+    ![redis_ip](../images/redis_ip.png)
+
+4. **Document Differences**:
+    - Compare `docker exec` vs `docker attach` in `submission6.md`
+    - Explain use cases for each
+
+    From command's `help`:
+    - `exec` - Execute a command in a running container
+    - `attach` - Attach local standard input, output, and error streams to a running container
+
+    | Feature                      | `docker exec`                                      | `docker attach`                                       |
+    | ---------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
+    | 🎯 **Purpose**               | Run a **new command** inside a running container   | Attach to the **existing running main process**       |
+    | 🔁 **Processes**             | Starts a **separate process** inside container     | Attaches to **PID 1** (the main process, e.g. Redis)  |
+    | 🧠 **Use case**              | Debugging, admin tasks, running interactive shells | View live logs/output of container's main process     |
+    | 🚪 **Detachment**            | You exit **only your command**                     | Exiting can stop the container if not careful         |
+    | 🔒 **Safety**                | ✅ Safe, sandboxed                                  | ❌ Risky: e.g. `Ctrl+C` can kill container's main proc |
+    | 🖥️ **TTY support**          | Supports `-it` for interactive terminal            | Inherits the I/O of the running container process     |
+    | 🗃️ **Multiple connections** | Each exec is **independent**                       | You can attach only to the container's output/input   |
 
 ## Task 6: Cleanup Operations
