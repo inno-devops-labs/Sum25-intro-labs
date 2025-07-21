@@ -409,3 +409,58 @@ Exporting:
     | 🗃️ **Multiple connections** | Each exec is **independent**                       | You can attach only to the container's output/input   |
 
 ## Task 6: Cleanup Operations
+
+**Objective**: Practice resource management.
+
+1. **Verify Cleanup**:
+    - Check disk usage:
+
+    ```sh
+        docker system df
+    ```
+
+    `-v` - for verbose output
+
+    ![docker_system_df](../images/docker_system_df.png)
+
+2. **Create Test Objects**:
+    - Create 3 stopped containers:
+
+    ```sh
+        for i in {1..3}; do docker run --name temp$i alpine echo "hello"; done
+    ```
+
+    ![temp_containers](../images/temp_containers.png)
+
+    - Create 2 dangling images:
+
+    ```sh
+        docker build -t temp-image . && docker rmi temp-image
+    ```
+
+    ![dangling_images](../images/dangling_images.png)
+
+3. **Remove Stopped Containers**:
+
+    ```sh
+        docker container prune -f
+    ```
+
+    ![rm_stopped_containers](../images/rm_stopped_containers.png)
+
+4. **Remove Unused Images**:
+
+    ```sh
+        docker image prune -a -f
+    ```
+
+    ![rm_unused_images](../images/rm_unused_images.png)
+
+5. **Verify Cleanup**:
+    - Check disk usage after cleanup:
+
+    ```sh
+        docker system df
+    ```
+
+    ![after_cleaning](../images/after_cleaning.png)
