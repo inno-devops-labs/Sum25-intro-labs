@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My IPFS Site</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 50px; text-align: center; }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { color: #333; }
+        .ipfs-info { background: #f0f0f0; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Decentralized Site!</h1>
+        <p>This site is hosted on IPFS through 4EVERLAND</p>
+        <div class="ipfs-info">
+            <h3>IPFS Features:</h3>
+            <ul>
+                <li>Decentralized storage</li>
+                <li>Content addressing</li>
+                <li>Peer-to-peer distribution</li>
+                <li>Immutable content</li>
+            </ul>
+        </div>
+        <p>Deployment time: <span id="deployTime"></span></p>
+    </div>
+    
+    <script>
+        document.getElementById('deployTime').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
