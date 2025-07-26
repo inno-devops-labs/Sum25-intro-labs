@@ -111,3 +111,69 @@ Tools Used:
 | Reconciliation        | Syncing live infra with Git-declared state         |
 | Reconciliation Script | Code or tool that performs the reconciliation loop |
 | Tools                 | Flux, ArgoCD, Jenkins (custom), etc.               |
+
+## **Task 2: GitOps Health Monitoring**
+
+**Objective**: Implement health checks for configuration synchronization
+
+Why This Matters:
+
+- Learn to validate system state consistency
+- Detect configuration drift before it causes failures
+- Build proactive monitoring for GitOps systems
+
+Tools Used:
+
+`md5sum` | `cron` | `echo` | `date`
+
+1. **Create health check script**:
+
+    ```bash
+        #!/bin/bash
+        # healthcheck.sh
+        DESIRED_MD5=$(md5sum desired-state.txt | awk '{print $1}')
+        CURRENT_MD5=$(md5sum current-state.txt | awk '{print $1}')
+        
+        if [ "$DESIRED_MD5" != "$CURRENT_MD5" ]; then
+        echo "$(date) - CRITICAL: State mismatch!" >> health.log
+        else
+        echo "$(date) - OK: States synchronized" >> health.log
+        fi
+    ```
+
+2. **Make executable**:
+
+    ```bash
+        chmod +x healthcheck.sh
+    ```
+
+3. **Simulate healthy state**:
+
+    ```bash
+        ./healthcheck.sh
+        cat health.log# Should show "OK"
+    ```
+
+    ![health_check](../images/health_check.png)
+
+4. **Create drift**:
+
+    ```bash
+        echo "unapproved change" >> current-state.txt
+    ```
+
+5. **Run health check**:
+
+    ```bash
+        ./healthcheck.sh
+        cat health.log# Now shows "CRITICAL"
+    ```
+
+    ![helth_after_change](../images/helth_after_change.png)
+
+## Key Concepts Demonstrated
+
+   | Task | GitOps Principle | Real-World Equivalent |
+   |------|------------------|------------------------|
+   | 1 | Continuous Reconciliation | Argo CD/Flux sync loops |
+   | 2 | Health Monitoring | Kubernetes operator status checks |
