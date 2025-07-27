@@ -31,6 +31,8 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 
     ![start_ipfs_container](../images/start_ipfs_container.png)
 
+
+
 2. **Verify node operation**:
 
     ```bash
@@ -75,6 +77,12 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 
     ![ipfs_webui](../images/ipfs_webui.png)
 
+    I fixed that:
+
+    ![ipfs_webui_fix](../images/ipfs_webui_fix.png)
+
+    ![ipfa_fixed_ui](../images/ipfa_fixed_ui.png)
+
 ---
 
 ## Task 2: Static Site Deployment with 4EVERLAND
@@ -91,11 +99,39 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
         - Publish directory: `/app`
     5. Deploy!
 
+    ![set_up_4ever_project](../images/set_up_4ever_project.png)
+
 2. **Verify deployment**:
     - In 4EVERLAND dashboard:
         - Note IPFS CID under "Site Info"
         - Access site via *.4everland.app subdomain
+
+    ![sum_dev_ops_labs_4everland_app](../images/sum_dev_ops_labs_4everland_app.png)
+
     - Verify on public gateway:
         `https://ipfs.io/ipfs/<CID-from-4EVERLAND>`
 
 ---
+
+## Task 1 Results
+
+- IPFS Node Peer Count:
+
+    ![peer_count](../images/peer_count.png)
+- IPFS Node Bandwidth: [Number from web UI]
+
+    ![bandwidth](../images/bandwidth.png)
+- Test File CID: `QmUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1`
+- Public Gateway URL: `https://ipfs.io/ipfs/QmUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1`
+
+## Task 2 Results
+
+- 4EVERLAND Project URL: `https://sum25-intro-labs-20-jmjz.4everland.app/`
+- GitHub Repository (if you used your own app): `https://github.com/Samatgator/Sum25-intro-labs`
+- IPFS CID from 4EVERLAND: `bafybeibm4hjiuhxxhr65rk5yn7mss6b5no6ybswtz37eghuucbob4455fy`
+
+![4ever_task2_result](../images/4ever_task2_result.png)
+
+---
+
+> **Note**: IPFS propagation delays are normal. If public gateways don't work immediately, try on a next day.
