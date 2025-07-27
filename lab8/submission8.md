@@ -55,3 +55,32 @@ In this lab, you will explore the principles of Site Reliability Engineering (SR
 2. Content validation (is a key element visible?)
 3. Interaction performance (how long does a button click take?)
 4. Alerting (get notified when something breaks)
+
+### Step 1: Choose Your Website
+
+Pick ANY public website you want to monitor (e.g., your favorite store, news site, or portfolio)
+
+Choosen website: `https://www.kinopoisk.ru/`
+
+### Step 2: Create Checks in Checkly
+
+1. **Sign up at [Checkly](https://checklyhq.com/)** (free account)
+2. Create **API Check** for basic availability:
+    - URL: Your chosen website
+    - Assertion: Status code is 200
+3. Create **Browser Check** for content & interactions:
+    - URL: Same website
+
+![chekly_checks](../images/chekly_checks.png)
+
+### Step 3: Set Up Alerts
+
+Configure **alert rules** of YOUR choice:
+
+- What to alert on? (e.g., failed checks, slow latency)
+- How to be notified? (email, telegram, etc.)
+- Set thresholds that make sense for your site
+
+![alert_notification](../images/alert_notification.png)
+
+> *We should use Checkly to actively explore Site Reliability Engineering (SRE) metrics and Service Level Agreements (SLAs) because it gives us real-time synthetic monitoring and insights into latency, uptime, and error rates. This helps us understand, track, and validate key reliability indicators like SLOs (Service Level Objectives) and ensure your system consistently meets user expectations and business commitments.*
