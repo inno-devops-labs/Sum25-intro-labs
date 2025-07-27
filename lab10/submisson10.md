@@ -31,8 +31,6 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
 
     ![start_ipfs_container](../images/start_ipfs_container.png)
 
-
-
 2. **Verify node operation**:
 
     ```bash
