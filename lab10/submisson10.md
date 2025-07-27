@@ -76,3 +76,26 @@ IPFS (InterPlanetary File System) enables decentralized, content-addressed stora
     ![ipfs_webui](../images/ipfs_webui.png)
 
 ---
+
+## Task 2: Static Site Deployment with 4EVERLAND
+
+**Objective**: Deploy a website to IPFS using 4EVERLAND's automation platform and manage continuous deployment workflows. 4EVERLAND simplifies deploying and managing websites on decentralized infrastructure, providing CI/CD-like workflows for Web3 hosting with automatic IPFS publishing.
+
+1. **Set up 4EVERLAND project**:
+    1. Sign up at [4EVERLAND.org](https://www.4everland.org/) (use GitHub or any wallet like Metamask auth)
+    2. Click "Create New Project" → "Connect GitHub repository"
+    3. Select your current repository and branch or any real pet web app/site
+    4. Configure build settings for this repo (if you use your own repo adjust configs):
+        - Platform: IPFS/Filecoin
+        - Framework: Other
+        - Publish directory: `/app`
+    5. Deploy!
+
+2. **Verify deployment**:
+    - In 4EVERLAND dashboard:
+        - Note IPFS CID under "Site Info"
+        - Access site via *.4everland.app subdomain
+    - Verify on public gateway:
+        `https://ipfs.io/ipfs/<CID-from-4EVERLAND>`
+
+---
