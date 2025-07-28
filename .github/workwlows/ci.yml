@@ -1,8 +1,9 @@
-name: First CI Workflow
+name: Enhanced CI Workflow
 
 on:
   push:
     branches: [lab3]
+  workflow_dispatch:  # This enables manual triggering
 
 jobs:
   build:
@@ -13,3 +14,16 @@ jobs:
 
       - name: Say Hello
         run: echo "Hello, GitHub Actions!"
+
+      - name: Gather system information
+        run: |
+          echo "### System Information ###"
+          echo "Runner OS: $(uname -a)"
+          echo "CPU Info:"
+          lscpu
+          echo "Memory Info:"
+          free -h
+          echo "Disk Usage:"
+          df -h
+          echo "Environment Variables:"
+          printenv
