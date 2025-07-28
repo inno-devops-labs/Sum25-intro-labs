@@ -1,57 +1,57 @@
-# DevOps Introduction Course: Learn the Fundamentals of DevOps
+# DevOps Introduction Course:  Principles, Practices & Tooling
 
 Welcome to the DevOps Introduction Course, where you will gain a solid foundation in DevOps principles and practical skills. This course is designed to provide you with a comprehensive understanding of DevOps and its key components. Through hands-on labs and lectures, you will learn about various topics such as version control, software distribution, CI/CD, containers, and cloud computing.
 
-## Course Overview
+## Course Roadmap
 
-In this course, we will cover the following topics:
+Practical modules designed for incremental skill development:
 
-1. Introduction to DevOps: Understand the core principles, essential tools and concepts of DevOps.
-2. Version Control: Learn about version control systems and their importance in collaborative software development. Tooling: Explore the  used in the DevOps ecosystem.
-3. Networking & OS for DevOps: IP, DNS, firewalls, Linux fundamentals (shell, systemd, logs, users), permissions, basic troubleshooting, DevOps-friendly distros.
-4. Virtualization: Understand the concepts and benefits of virtualization in modern IT infrastructures.
-5. Containers: Dive into containerization technologies like Docker and container orchestration with Kubernetes.
-6. CI/CD: Explore continuous integration and continuous deployment practices.
-7. Software Distribution: Gain insights into software distribution strategies and best practices.
-8. GitOps & Progressive Delivery: Git as the source of truth, FluxCD, Argo CD. Canary deployments, blue/green, feature flags, and rollbacks.
-9. Site Reliability Engineering (SRE) & Resilience: SLOs, SLAs, SLIs, error budgets, incident management, chaos engineering (ChaosMesh, Litmus), and postmortems.
-10. Security in DevOps (DevSecOps): Shift-left security, SAST/DAST, SBOM, container/image scanning (Trivy, Snyk), secret management (Vault, Doppler, SOPS).
-11. Monitoring, Observability & Logging: Concepts of observability vs monitoring, metrics/logs/traces. Tools: Prometheus, Grafana, Loki, ELK stack, OpenTelemetry.
-12. Infrastructure as Code (IaC): Automating infrastructure with Terraform, Pulumi, AWS CDK. Immutable infrastructure, state management, modularization.
-13. Configuration Management: Tools like Ansible, Chef, Puppet. Declarative vs procedural, idempotency, real-world examples.
-14. Cloud Fundamentals: AWS, Azure, GCP basics. IaaS, PaaS, SaaS. Regions/zones, pricing, basic services (EC2, S3, IAM, VPC). Cloud-native patterns.
+| #  | Module                              | Key Topics & Technologies                                                                                                 |
+|----|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| 1  | **Introduction to DevOps**          | Core principles, essential tools, DevOps concepts                                                                        |
+| 2  | **Version Control**                 | Collaborative development workflows, Git tooling                                                                         |
+| 3  | **CI/CD**                           | Continuous integration/deployment practices                                                                              |
+| 4  | **Networking & OS for DevOps**      | IP/DNS, firewalls, Linux fundamentals (shell/systemd/logs), permissions, troubleshooting, DevOps-friendly distros        |
+| 5  | **Virtualization**                  | Virtualization concepts, benefits in modern IT infrastructures                                                           |
+| 6  | **Containers**                      | Docker containerization, Kubernetes orchestration                                                                        |
+| 7  | **GitOps & Progressive Delivery**   | Git as source of truth, Argo CD, canary/blue-green deployments, feature flags, rollbacks                         |
+| 8  | **SRE & Resilience**                | SLOs/SLAs/SLIs, error budgets, incident management, chaos engineering, postmortems                   |
+| 9  | **Security in DevOps (DevSecOps)**  | Shift-left security, SAST/DAST, SBOM, container/image scanning (Trivy/Snyk), secret management                          |
+| 10 | **Cloud Fundamentals**              | AWS/Azure/GCP basics, IaaS/PaaS/SaaS, regions/zones, pricing, core services (EC2/S3/IAM/VPC), cloud-native patterns      |
+| 11 | **Bonus**                           | Web3 Infrastructure, decentralized storage, IPFS, Fleek                                                                 |
 
-## Lab Instructions and Grading
+## Lab-Based Learning Experience
 
-To ensure hands-on learning, this course includes practical labs. Each lab has specific tasks that need to be completed for grading purposes. The labs contribute 80% to your final grade, while a final exam accounts for the remaining 20%.
+**80% of your grade comes from hands-on labs** - each designed to build real-world skills:
 
-Here are some guidelines and rules for lab submissions:
+1. **Lab Structure**
+   - Task-oriented challenges with clear objectives
+   - Safe environments using containers/local VMs
 
-- You need to submit each lab and achieve a minimum score of 6/10 to pass the course.
-- Attending all lectures, practices, and submitting all lab assignments exempts you from the final exam and earns you extra points.
-- To create a lab submission, create a new branch in your forked repository specifically for that lab.
-- Complete the lab tasks in your branch and submit a pull request (PR) to the main branch of the course repository.
-- Only the last commit of your PR before the deadline will be checked and graded.
-- The deadline for lab submissions will be discussed and communicated.
+2. **Submission Workflow**
+   - Fork course repository → Create lab branch → Complete tasks
+   - Push to fork → Create Pull Request → Receive evaluation
 
-## Grading and Grades Distribution
+3. **Grading Advantage**  
+   - **Perfect Lab Submissions (10/10)**: Exam exemption + bonus points
+   - **Timely Submissions (≥6/10)**: Qualify for C or higher
+   - **Late Submissions**: Maximum 6/10
 
-The course grading is as follows:
+## Evaluation Framework
 
-- Labs: 80% of the final grade.
-- Final Exam: 20% of the final grade.
+*Transparent assessment for skill validation*  
 
-The grade ranges are as follows:
+### Grade Composition
 
-- [90-100] - A
-- [75-90) - B
-- [60-75) - C
-- [0-60) - D
+- Labs (10 @ 8 points each): **80%**
+- Final Exam (comprehensive): **20%**
 
-Each lab is marked out of 10 points. Completing the main tasks correctly will earn you the maximum of 10 points. However, if you're short on time or unable to complete all tasks, you can still achieve a minimum of 6 points by completing a subset of tasks.
+### Performance Tiers
 
-## Submission Policy
+- **A (90-100)**: Mastered all core concepts, innovative solutions  
+- **B (75-89)**: Consistent task completion, minor improvements needed  
+- **C (60-74)**: Basic competency, requires reinforcement  
+- **D (0-59)**: Fundamental gaps requiring re-attempt  
 
-It's essential to submit your lab results on time to maximize your grading. Late submissions will receive a maximum score of 6 points for the corresponding lab. Remember, submitting all labs is a requirement to pass the course successfully.
-
-We look forward to embarking on this DevOps learning journey together and helping you build valuable skills for your career.
+**Success Path**  
+> "Complete all labs with ≥6/10 to pass the course. Perfect lab scores earn exam exemption and bonus points toward A grade."  
