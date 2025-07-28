@@ -139,4 +139,21 @@ Peers:
 ### 1) Signed In:
 ![4EVERLAND](submission10_pics/4EVERLAND.png)
 
-### 2)                
+### 2) Deployed repo app
+![deploy](submission10_pics/deploy.png)
+
+- Verify on public gateway: http://sum25-intro-labs-xwr873cs-dm1stry.4everland.app/
+
+![deployed](submission10_pics/image.png)
+
+Verify on public gateway: https://ipfs.io/ipfs/bafybeihzarmfcsys5au2yx3mhemrowy2x4xg4pckz3s7rxbipa3etpsjzm
+
+## Task 1 Results
+- IPFS Node Peer Count: 618
+- IPFS Node Bandwidth: Incoming 86 KiB/s, outgoing 26 KiB/s
+- Test File CID: QmUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1
+- Public Gateway URL: `https://ipfs.io/ipfs/    QmUFJmQRosK4Amzcjwbip8kV3gkJ8jqCURjCNxuv3bWYS1`
+
+## Task 2 Results
+- 4EVERLAND Project URL: `https://sum25-intro-labs-3govxwgh-valikv.4everland.app/`
+- IPFS CID from 4EVERLAND: `bafybeihzarmfcsys5au2yx3mhemrowy2x4xg4pckz3s7rxbipa3etpsjzm`
