@@ -1,4 +1,4 @@
-# Lab 1: Introduction to DevOps with Git
+# Introduction to DevOps with Git
 
 ## Overview
 
