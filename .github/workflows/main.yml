@@ -1,0 +1,23 @@
+name: CI/CD Pipeline
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: echo Hello, world! This is my first GitHub Action!
+      - name: Gather System Information
+        run: |
+          echo "--- Operating System ---"
+          uname -a
+          echo ""
+          echo "--- CPU Information ---"
+          lscpu
+          echo ""
+          echo "--- Memory Information ---"
+          free -h
