@@ -239,7 +239,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
    - Create 2 dangling images:
 
    ```sh
-   docker build -t temp-image . && docker rmi temp-image
+   docker build -t temp-Images . && docker rmi temp-Images
    ```
 
 3. **Remove Stopped Containers**:
@@ -251,7 +251,7 @@ Gain practical experience with Docker fundamentals through hands-on container ma
 4. **Remove Unused Images**:
 
    ```sh
-   docker image prune -a -f
+   docker Images prune -a -f
    ```
 
 5. **Verify Cleanup**:
